@@ -283,6 +283,56 @@
     .legal { font-size: 12.5px; color: var(--gray); margin-top: 18px; }
     .legal a { color: var(--gray); }
 
+    /* ============ Gráficas de producto ============ */
+    /* Tinta de gráfica validada por modo (contraste >= 3:1 sobre la tarjeta):
+       en claro, pasos oscuros de cada apellido; en noche, los tokens vivos. */
+    :root { --viz-fitness: #1F8A43; --viz-velocity: #0F87A0; --viz-control: #8E3FD1; --viz-force: #C25E00; --viz-signal: #8F7A00; }
+    @media (prefers-color-scheme: dark) {
+      :root { --viz-fitness: #30D158; --viz-velocity: #40C8E0; --viz-control: #BF5AF2; --viz-force: #FF9F0A; --viz-signal: #FFD60A; }
+    }
+    .fila-cols { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 26px; align-items: start; }
+    @media (max-width: 820px) { .fila-cols { grid-template-columns: 1fr; } }
+    .viz-card { background: var(--card); border: 1px solid var(--sep); border-radius: 16px; padding: 16px 16px 12px; }
+    .viz-tit { font-size: 13px; font-weight: 800; margin-bottom: 2px; }
+    .viz-sub { font-size: 11.5px; color: var(--gray); margin-bottom: 10px; }
+    svg.viz { width: 100%; height: auto; display: block; }
+    .viz .grid { stroke: var(--sep); stroke-width: 1; }
+    .viz .eje { fill: var(--gray); font-size: 10px; font-weight: 600; }
+    .viz .val { fill: var(--ink2); font-size: 10.5px; font-weight: 800; font-variant-numeric: tabular-nums; }
+    figure.viz-fig { margin: 0; }
+    figcaption { font-size: 11.5px; color: var(--gray); margin-top: 8px; line-height: 1.45; }
+    .tip {
+      position: fixed; z-index: 50; background: var(--azul-noche); color: #F4F7FB;
+      font-size: 12px; font-weight: 600; padding: 6px 10px; border-radius: 8px;
+      pointer-events: none; opacity: 0; transition: opacity .12s; white-space: nowrap;
+      box-shadow: 0 6px 18px rgba(0,0,0,.3);
+    }
+
+    /* El teléfono: la pantalla de la app recreada a tamaño tarjeta */
+    .showcase { display: grid; grid-template-columns: 1.1fr auto; gap: 26px; margin-top: 26px; align-items: start; }
+    @media (max-width: 860px) { .showcase { grid-template-columns: 1fr; } .phone-fig { justify-self: center; } }
+    .phone {
+      width: 264px; background: var(--bg); border: 1px solid var(--sep); border-radius: 34px;
+      padding: 14px 12px 16px; box-shadow: 0 18px 44px rgba(0,0,0,.14);
+    }
+    .phone .isla { width: 78px; height: 20px; background: var(--azul-noche); border-radius: 12px; margin: 0 auto 12px; }
+    .phone .p-tit { font-size: 17px; font-weight: 800; padding: 0 4px; }
+    .p-card { background: var(--card); border: 1px solid var(--sep); border-radius: 14px; padding: 12px; margin-top: 8px; }
+    .p-lbl { font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--gray); }
+    .p-dato { font-size: 38px; font-weight: 900; font-variant-numeric: tabular-nums; letter-spacing: -0.5px; line-height: 1.15; }
+    .p-chip { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: var(--tint-green); color: var(--viz-fitness); }
+    .p-fila { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ink2); }
+    .p-sec { font-size: 13.5px; font-weight: 800; color: var(--ink); }
+    .p-mini { font-size: 11.5px; color: var(--gray); }
+    .p-btn { display: block; text-align: center; background: var(--azul-pulso); color: #fff; font-size: 12.5px; font-weight: 700; border-radius: 10px; padding: 8px; margin-top: 10px; }
+    .p-dias { display: flex; justify-content: space-between; margin-top: 8px; }
+    .p-dia { width: 24px; text-align: center; font-size: 10px; color: var(--gray); font-weight: 700; }
+    .p-dia i { display: block; width: 8px; height: 8px; border-radius: 50%; background: var(--sep); margin: 4px auto 0; }
+    .p-dia.on i { background: var(--viz-fitness); }
+    .mini-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--sep); }
+    .mini-stats .v { font-size: 16px; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .mini-stats .k { font-size: 10.5px; color: var(--gray); margin-top: 1px; }
+
     /* ============ Pie (azul noche, como el símbolo manda) ============ */
     footer { background: var(--hbg); color: var(--hmuted); padding: 44px 0; }
     footer .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
@@ -459,6 +509,86 @@
           <p><span class="es">Fuerza, resistencia e híbrido en la misma herramienta, con las métricas propias de cada mundo.</span><span class="en">Strength, endurance and hybrid in one tool, with the right metrics for each world.</span></p>
         </div>
       </div>
+
+      <div class="showcase">
+        <figure class="viz-fig viz-card">
+          <div class="viz-tit"><span class="es">El riesgo se ve venir: ACWR de un atleta, 10 semanas</span><span class="en">Risk seen coming: one athlete's ACWR, 10 weeks</span></div>
+          <div class="viz-sub"><span class="es">Carga aguda / crónica · zona óptima de 0,8 a 1,3 · datos de ejemplo</span><span class="en">Acute / chronic load · optimal zone 0.8 to 1.3 · sample data</span></div>
+          <svg class="viz" viewBox="0 0 360 176" role="img" aria-label="ACWR de 10 semanas con la zona óptima sombreada y una semana en aviso">
+            <rect x="36" y="54.6" width="312" height="60.9" fill="var(--viz-fitness)" opacity="0.10" />
+            <line class="grid" x1="36" y1="115.5" x2="348" y2="115.5"/>
+            <line class="grid" x1="36" y1="91.1" x2="348" y2="91.1"/>
+            <line class="grid" x1="36" y1="54.6" x2="348" y2="54.6"/>
+            <text class="eje" x="30" y="119" text-anchor="end">0,8</text>
+            <text class="eje" x="30" y="94.6" text-anchor="end">1,0</text>
+            <text class="eje" x="30" y="58" text-anchor="end">1,3</text>
+            <text class="eje" x="344" y="110" text-anchor="end"><tspan class="es">zona óptima</tspan><tspan class="en">optimal zone</tspan></text>
+            <polyline points="36,109.4 70.7,100.8 105.3,88.7 140,93.5 174.7,78.9 209.3,65.5 244,35.1 278.7,69.2 313.3,81.3 348,76.5" fill="none" stroke="var(--viz-fitness)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="36" cy="109.4" r="3" fill="var(--viz-fitness)" stroke="var(--card)" stroke-width="2" data-tip="S1 · ACWR 0,85"/>
+            <circle cx="70.7" cy="100.8" r="3" fill="var(--viz-fitness)" stroke="var(--card)" stroke-width="2" data-tip="S2 · ACWR 0,92"/>
+            <circle cx="105.3" cy="88.7" r="3" fill="var(--viz-fitness)" stroke="var(--card)" stroke-width="2" data-tip="S3 · ACWR 1,02"/>
+            <circle cx="140" cy="93.5" r="3" fill="var(--viz-fitness)" stroke="var(--card)" stroke-width="2" data-tip="S4 · ACWR 0,98"/>
+            <circle cx="174.7" cy="78.9" r="3" fill="var(--viz-fitness)" stroke="var(--card)" stroke-width="2" data-tip="S5 · ACWR 1,10"/>
+            <circle cx="209.3" cy="65.5" r="3" fill="var(--viz-fitness)" stroke="var(--card)" stroke-width="2" data-tip="S6 · ACWR 1,21"/>
+            <circle cx="244" cy="35.1" r="4.5" fill="var(--orange)" stroke="var(--card)" stroke-width="2" data-tip="S7 · ACWR 1,46"/>
+            <circle cx="278.7" cy="69.2" r="3" fill="var(--viz-fitness)" stroke="var(--card)" stroke-width="2" data-tip="S8 · ACWR 1,18"/>
+            <circle cx="313.3" cy="81.3" r="3" fill="var(--viz-fitness)" stroke="var(--card)" stroke-width="2" data-tip="S9 · ACWR 1,08"/>
+            <circle cx="348" cy="76.5" r="3" fill="var(--viz-fitness)" stroke="var(--card)" stroke-width="2" data-tip="S10 · ACWR 1,12"/>
+            <text class="val" x="244" y="22" text-anchor="middle"><tspan class="es">1,46 · atención</tspan><tspan class="en">1.46 · caution</tspan></text>
+            <text class="val" x="36" y="99" text-anchor="start"><tspan class="es">0,85</tspan><tspan class="en">0.85</tspan></text>
+            <text class="val" x="348" y="66" text-anchor="end"><tspan class="es">1,12</tspan><tspan class="en">1.12</tspan></text>
+            <text class="eje" x="36" y="168" text-anchor="middle"><tspan class="es">S1</tspan><tspan class="en">W1</tspan></text>
+            <text class="eje" x="105.3" y="168" text-anchor="middle"><tspan class="es">S3</tspan><tspan class="en">W3</tspan></text>
+            <text class="eje" x="174.7" y="168" text-anchor="middle"><tspan class="es">S5</tspan><tspan class="en">W5</tspan></text>
+            <text class="eje" x="244" y="168" text-anchor="middle"><tspan class="es">S7</tspan><tspan class="en">W7</tspan></text>
+            <text class="eje" x="313.3" y="168" text-anchor="middle"><tspan class="es">S9</tspan><tspan class="en">W9</tspan></text>
+          </svg>
+          <figcaption>
+            <span class="es">Cuando la carga sube demasiado rápido, la app lo enseña antes de que duela: la semana 7 salta el aviso y la 8 ya corrige.</span>
+            <span class="en">When load climbs too fast, the app shows it before it hurts: week 7 raises the flag and week 8 already corrects.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="viz-fig phone-fig">
+          <div class="phone" role="img" aria-label="La pantalla Hoy del atleta en TrainLab Fitness, recreada">
+            <div class="isla"></div>
+            <div class="p-tit"><span class="es">Hoy</span><span class="en">Today</span></div>
+            <div class="p-card">
+              <div class="p-lbl"><span class="es">Disponibilidad</span><span class="en">Readiness</span></div>
+              <div style="display:flex; align-items:center; gap:10px;">
+                <div class="p-dato">92</div>
+                <span class="p-chip"><span class="es">Listo para entrenar</span><span class="en">Ready to train</span></span>
+              </div>
+            </div>
+            <div class="p-card">
+              <div class="p-sec"><span class="es">Tu próxima sesión</span><span class="en">Your next session</span></div>
+              <div class="p-mini" style="margin-top:2px;"><span class="es">Fuerza · Bloque 3 · Semana 2</span><span class="en">Strength · Block 3 · Week 2</span></div>
+              <div class="p-fila" style="margin-top:8px;"><span><span class="es">Sentadilla</span><span class="en">Back squat</span></span><b>5×3 · RPE 8</b></div>
+              <div class="p-fila" style="margin-top:4px;"><span><span class="es">Press banca</span><span class="en">Bench press</span></span><b>4×5 · RPE 7</b></div>
+              <span class="p-btn"><span class="es">Empezar</span><span class="en">Start</span></span>
+            </div>
+            <div class="p-card">
+              <div class="p-sec"><span class="es">Tu semana</span><span class="en">Your week</span></div>
+              <div class="p-dias">
+                <span class="p-dia on"><span class="es">L</span><span class="en">M</span><i></i></span>
+                <span class="p-dia on"><span class="es">M</span><span class="en">T</span><i></i></span>
+                <span class="p-dia"><span class="es">X</span><span class="en">W</span><i></i></span>
+                <span class="p-dia on"><span class="es">J</span><span class="en">T</span><i></i></span>
+                <span class="p-dia"><span class="es">V</span><span class="en">F</span><i></i></span>
+                <span class="p-dia on"><span class="es">S</span><span class="en">S</span><i></i></span>
+                <span class="p-dia"><span class="es">D</span><span class="en">S</span><i></i></span>
+              </div>
+            </div>
+            <div class="p-card">
+              <div class="p-fila"><span class="p-sec"><span class="es">Batería de la pulsera</span><span class="en">Band battery</span></span><b style="color: var(--viz-fitness);">78 %</b></div>
+            </div>
+          </div>
+          <figcaption style="text-align:center;">
+            <span class="es">La pantalla Hoy del atleta, recreada.</span>
+            <span class="en">The athlete's Today screen, recreated.</span>
+          </figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -469,12 +599,46 @@
         <div class="banda"></div>
         <div>
           <h3><span class="tl">TrainLab</span> Velocity <span class="estado"><span class="es">App lista · sensor encargado</span><span class="en">App ready · sensor ordered</span></span></h3>
-          <p><span class="es">La velocidad de la barra es la medida objetiva del esfuerzo real. Velocity la trae a tu gimnasio con un sensor propio y una metodología clara, sin pagar los cientos de euros de los sensores de siempre.</span><span class="en">Bar velocity is the objective measure of real effort. Velocity brings it to your gym with its own sensor and a clear methodology, without paying the hundreds of euros of the usual sensors.</span></p>
-          <ul>
-            <li><span class="es">Sensor en la barra con la app incluida, sin suscripción.</span><span class="en">Bar sensor with the app included, no subscription.</span></li>
-            <li><span class="es">Perfil fuerza-velocidad y control del esfuerzo serie a serie.</span><span class="en">Force velocity profile and set by set effort control.</span></li>
-            <li><span class="es">Conectado con Fitness: el dato entra solo en el expediente del atleta.</span><span class="en">Connected to Fitness: the data flows straight into the athlete record.</span></li>
-          </ul>
+          <div class="fila-cols">
+            <div>
+              <p><span class="es">La velocidad de la barra es la medida objetiva del esfuerzo real. Velocity la trae a tu gimnasio con un sensor propio y una metodología clara, sin pagar los cientos de euros de los sensores de siempre.</span><span class="en">Bar velocity is the objective measure of real effort. Velocity brings it to your gym with its own sensor and a clear methodology, without paying the hundreds of euros of the usual sensors.</span></p>
+              <ul>
+                <li><span class="es">Sensor en la barra con la app incluida, sin suscripción.</span><span class="en">Bar sensor with the app included, no subscription.</span></li>
+                <li><span class="es">Perfil fuerza-velocidad y control del esfuerzo serie a serie.</span><span class="en">Force velocity profile and set by set effort control.</span></li>
+                <li><span class="es">Conectado con Fitness: el dato entra solo en el expediente del atleta.</span><span class="en">Connected to Fitness: the data flows straight into the athlete record.</span></li>
+              </ul>
+            </div>
+            <figure class="viz-fig viz-card">
+              <div class="viz-tit"><span class="es">Una serie al 75 %: la velocidad de cada repetición</span><span class="en">One set at 75%: the velocity of every rep</span></div>
+              <div class="viz-sub"><span class="es">Metros por segundo · corte al perder el 20 % · datos de ejemplo</span><span class="en">Meters per second · cutoff at 20% loss · sample data</span></div>
+              <svg class="viz" viewBox="0 0 360 176" role="img" aria-label="Velocidad por repetición de una serie con la línea de corte del 20 por ciento">
+                <line class="grid" x1="36" y1="32.9" x2="348" y2="32.9"/>
+                <line class="grid" x1="36" y1="92.4" x2="348" y2="92.4"/>
+                <text class="eje" x="30" y="36.4" text-anchor="end">0,8</text>
+                <text class="eje" x="30" y="95.9" text-anchor="end">0,4</text>
+                <rect x="40" y="29.9" width="27" height="122.1" rx="4" fill="var(--viz-velocity)" data-tip="R1 · 0,82 m/s"/>
+                <rect x="79" y="32.9" width="27" height="119.1" rx="4" fill="var(--viz-velocity)" data-tip="R2 · 0,80 m/s"/>
+                <rect x="118" y="37.3" width="27" height="114.7" rx="4" fill="var(--viz-velocity)" data-tip="R3 · 0,77 m/s"/>
+                <rect x="157" y="43.3" width="27" height="108.7" rx="4" fill="var(--viz-velocity)" data-tip="R4 · 0,73 m/s"/>
+                <rect x="196" y="49.3" width="27" height="102.7" rx="4" fill="var(--viz-velocity)" data-tip="R5 · 0,69 m/s"/>
+                <rect x="235" y="53.7" width="27" height="98.3" rx="4" fill="var(--viz-velocity)" data-tip="R6 · 0,66 m/s"/>
+                <rect x="274" y="59.7" width="27" height="92.3" rx="4" fill="var(--gray)" opacity="0.35" data-tip="R7 · 0,62 m/s"/>
+                <rect x="313" y="64.1" width="27" height="87.9" rx="4" fill="var(--gray)" opacity="0.35" data-tip="R8 · 0,59 m/s"/>
+                <line x1="36" y1="54.3" x2="348" y2="54.3" stroke="var(--ink2)" stroke-width="1.5" stroke-dasharray="5 4"/>
+                <text class="val" x="53.5" y="22" text-anchor="middle"><tspan class="es">0,82</tspan><tspan class="en">0.82</tspan></text>
+                <text class="val" x="268" y="46" text-anchor="end"><tspan class="es">corta aquí · −20 %</tspan><tspan class="en">cut here · −20%</tspan></text>
+                <line x1="36" y1="152" x2="348" y2="152" stroke="var(--sep)" stroke-width="1.5"/>
+                <text class="eje" x="53.5" y="168" text-anchor="middle">R1</text>
+                <text class="eje" x="131.5" y="168" text-anchor="middle">R3</text>
+                <text class="eje" x="209.5" y="168" text-anchor="middle">R5</text>
+                <text class="eje" x="287.5" y="168" text-anchor="middle">R7</text>
+              </svg>
+              <figcaption>
+                <span class="es">La primera repetición es la que cuenta: al perder el 20 % de velocidad, la serie ya cumplió su objetivo y las repeticiones grises sobran.</span>
+                <span class="en">The first rep is the one that counts: at 20% velocity loss the set has done its job, and the gray reps are wasted.</span>
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </div>
 
@@ -482,12 +646,41 @@
         <div class="banda"></div>
         <div>
           <h3><span class="tl">TrainLab</span> Control <span class="estado"><span class="es">Pulsera en validación</span><span class="en">Band in validation</span></span></h3>
-          <p><span class="es">Las pulseras de recuperación miran el descanso de forma aislada. Control lo cruza con la carga real que planifica el entrenador, y le cuenta a los dos cómo llega el atleta a la sesión de hoy.</span><span class="en">Recovery wearables look at rest in isolation. Control crosses it with the real load the coach plans, and tells both how the athlete arrives at today's session.</span></p>
-          <ul>
-            <li><span class="es">Con la pulsera TrainLab o con tu propio reloj vía Apple Salud.</span><span class="en">With the TrainLab band or your own watch via Apple Health.</span></li>
-            <li><span class="es">Sueño, frecuencia cardiaca y recuperación en un feedback directo.</span><span class="en">Sleep, heart rate and recovery in direct feedback.</span></li>
-            <li><span class="es">La pulsera incluye la suscripción de Control para siempre.</span><span class="en">The band includes the Control subscription forever.</span></li>
-          </ul>
+          <div class="fila-cols">
+            <div>
+              <p><span class="es">Las pulseras de recuperación miran el descanso de forma aislada. Control lo cruza con la carga real que planifica el entrenador, y le cuenta a los dos cómo llega el atleta a la sesión de hoy.</span><span class="en">Recovery wearables look at rest in isolation. Control crosses it with the real load the coach plans, and tells both how the athlete arrives at today's session.</span></p>
+              <ul>
+                <li><span class="es">Con la pulsera TrainLab o con tu propio reloj vía Apple Salud.</span><span class="en">With the TrainLab band or your own watch via Apple Health.</span></li>
+                <li><span class="es">Sueño, frecuencia cardiaca y recuperación en un feedback directo.</span><span class="en">Sleep, heart rate and recovery in direct feedback.</span></li>
+                <li><span class="es">La pulsera incluye la suscripción de Control para siempre.</span><span class="en">The band includes the Control subscription forever.</span></li>
+              </ul>
+            </div>
+            <figure class="viz-fig viz-card">
+              <div class="p-lbl"><span class="es">Recuperación · hoy</span><span class="en">Recovery · today</span></div>
+              <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                <div class="p-dato">83</div>
+                <span class="p-chip"><span class="es">Listo para entrenar</span><span class="en">Ready to train</span></span>
+              </div>
+              <div class="viz-sub"><span class="es">VFC de 14 noches frente a tu base de 28 días · datos de ejemplo</span><span class="en">14 nights of HRV against your 28 day baseline · sample data</span></div>
+              <svg class="viz" viewBox="0 0 300 84" role="img" aria-label="VFC de 14 noches con la banda de la base y una noche corta señalada">
+                <rect x="10" y="24" width="280" height="20" fill="var(--viz-control)" opacity="0.12"/>
+                <text class="eje" x="287" y="38" text-anchor="end"><tspan class="es">base</tspan><tspan class="en">baseline</tspan></text>
+                <polyline points="10,32 31.5,28 53.1,34 74.6,30 96.2,38 117.7,26 139.2,32 160.8,62 182.3,50 203.8,40 225.4,34 246.9,28 268.5,30 290,26" fill="none" stroke="var(--viz-control)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+                <circle cx="160.8" cy="62" r="4" fill="var(--orange)" stroke="var(--card)" stroke-width="2" data-tip="VFC 49 ms"/>
+                <circle cx="290" cy="26" r="3.5" fill="var(--viz-control)" stroke="var(--card)" stroke-width="2" data-tip="VFC 67 ms"/>
+                <text class="eje" x="160.8" y="78" text-anchor="middle"><tspan class="es">noche corta</tspan><tspan class="en">short night</tspan></text>
+              </svg>
+              <div class="mini-stats">
+                <div><div class="v">64 <small>ms</small></div><div class="k"><span class="es">VFC anoche</span><span class="en">HRV last night</span></div></div>
+                <div><div class="v">52</div><div class="k"><span class="es">FC reposo (ppm)</span><span class="en">Resting HR (bpm)</span></div></div>
+                <div><div class="v">7,4 <small>h</small></div><div class="k"><span class="es">Sueño</span><span class="en">Sleep</span></div></div>
+              </div>
+              <figcaption>
+                <span class="es">La tarjeta de recuperación, recreada: la noche corta se ve al momento y la sesión de hoy se adapta.</span>
+                <span class="en">The recovery card, recreated: the short night shows up instantly and today's session adapts.</span>
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </div>
 
@@ -495,12 +688,46 @@
         <div class="banda"></div>
         <div>
           <h3><span class="tl">TrainLab</span> Force <span class="estado"><span class="es">En desarrollo</span><span class="en">In development</span></span></h3>
-          <p><span class="es">La fuerza isométrica y las asimetrías son la base de la readaptación de lesiones. Force es un dinamómetro de tracción asequible cuyo resultado cae en el mismo expediente que usan el entrenador y el readaptador.</span><span class="en">Isometric strength and asymmetries are the foundation of return to sport. Force is an affordable pulling dynamometer whose results land in the same record the coach and the rehab professional already use.</span></p>
-          <ul>
-            <li><span class="es">Tests isométricos con criterios claros de progresión.</span><span class="en">Isometric tests with clear progression criteria.</span></li>
-            <li><span class="es">Asimetrías entre lados, medidas y seguidas en el tiempo.</span><span class="en">Side to side asymmetries, measured and tracked over time.</span></li>
-            <li><span class="es">Pensado junto a los criterios internacionales de vuelta al deporte.</span><span class="en">Built around international return to sport criteria.</span></li>
-          </ul>
+          <div class="fila-cols">
+            <div>
+              <p><span class="es">La fuerza isométrica y las asimetrías son la base de la readaptación de lesiones. Force es un dinamómetro de tracción asequible cuyo resultado cae en el mismo expediente que usan el entrenador y el readaptador.</span><span class="en">Isometric strength and asymmetries are the foundation of return to sport. Force is an affordable pulling dynamometer whose results land in the same record the coach and the rehab professional already use.</span></p>
+              <ul>
+                <li><span class="es">Tests isométricos con criterios claros de progresión.</span><span class="en">Isometric tests with clear progression criteria.</span></li>
+                <li><span class="es">Asimetrías entre lados, medidas y seguidas en el tiempo.</span><span class="en">Side to side asymmetries, measured and tracked over time.</span></li>
+                <li><span class="es">Pensado junto a los criterios internacionales de vuelta al deporte.</span><span class="en">Built around international return to sport criteria.</span></li>
+              </ul>
+            </div>
+            <figure class="viz-fig viz-card">
+              <div class="viz-tit"><span class="es">Una readaptación: la simetría entre piernas, test a test</span><span class="en">One rehab: side to side symmetry, test by test</span></div>
+              <div class="viz-sub"><span class="es">LSI, pierna lesionada frente a sana · criterio de vuelta al 90 % · datos de ejemplo</span><span class="en">LSI, injured vs healthy leg · return criterion at 90% · sample data</span></div>
+              <svg class="viz" viewBox="0 0 360 176" role="img" aria-label="Índice de simetría subiendo del 72 al 95 por ciento en ocho tests, con el criterio del 90 por ciento marcado">
+                <line class="grid" x1="36" y1="85" x2="348" y2="85"/>
+                <line class="grid" x1="36" y1="18" x2="348" y2="18"/>
+                <text class="eje" x="30" y="88.5" text-anchor="end">50 %</text>
+                <text class="eje" x="30" y="21.5" text-anchor="end">100 %</text>
+                <rect x="40" y="55.5" width="27" height="96.5" rx="4" fill="var(--viz-force)" data-tip="Test 1 · LSI 72 %"/>
+                <rect x="79" y="50.2" width="27" height="101.8" rx="4" fill="var(--viz-force)" data-tip="Test 2 · LSI 76 %"/>
+                <rect x="118" y="46.1" width="27" height="105.9" rx="4" fill="var(--viz-force)" data-tip="Test 3 · LSI 79 %"/>
+                <rect x="157" y="40.8" width="27" height="111.2" rx="4" fill="var(--viz-force)" data-tip="Test 4 · LSI 83 %"/>
+                <rect x="196" y="36.8" width="27" height="115.2" rx="4" fill="var(--viz-force)" data-tip="Test 5 · LSI 86 %"/>
+                <rect x="235" y="32.7" width="27" height="119.3" rx="4" fill="var(--viz-force)" data-tip="Test 6 · LSI 89 %"/>
+                <rect x="274" y="27.4" width="27" height="124.6" rx="4" fill="var(--viz-force)" data-tip="Test 7 · LSI 93 %"/>
+                <rect x="313" y="24.7" width="27" height="127.3" rx="4" fill="var(--viz-force)" data-tip="Test 8 · LSI 95 %"/>
+                <line x1="36" y1="31.4" x2="348" y2="31.4" stroke="var(--ink2)" stroke-width="1.5" stroke-dasharray="5 4"/>
+                <text class="val" x="40" y="46" text-anchor="start">72 %</text>
+                <text class="val" x="258" y="24" text-anchor="end"><tspan class="es">criterio · 90 %</tspan><tspan class="en">criterion · 90%</tspan></text>
+                <line x1="36" y1="152" x2="348" y2="152" stroke="var(--sep)" stroke-width="1.5"/>
+                <text class="eje" x="53.5" y="168" text-anchor="middle">1</text>
+                <text class="eje" x="131.5" y="168" text-anchor="middle">3</text>
+                <text class="eje" x="209.5" y="168" text-anchor="middle">5</text>
+                <text class="eje" x="287.5" y="168" text-anchor="middle">7</text>
+              </svg>
+              <figcaption>
+                <span class="es">La vuelta al deporte deja de ser una sensación: la pierna lesionada alcanza el criterio y el alta se decide con un número.</span>
+                <span class="en">Return to sport stops being a feeling: the injured leg reaches the criterion and clearance is decided with a number.</span>
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </div>
 
@@ -508,7 +735,57 @@
         <div class="banda"></div>
         <div>
           <h3><span class="tl">TrainLab</span> Signal <span class="estado"><span class="es">En diseño</span><span class="en">In design</span></span></h3>
-          <p><span class="es">La electromiografía enseña qué músculo trabaja de verdad en cada ejercicio. Signal es el quinto miembro de la familia y completa la foto del atleta: lo que planificas, lo que mueves, cómo te recuperas, cuánta fuerza tienes y qué músculo la produce.</span><span class="en">Electromyography shows which muscle is really working in each exercise. Signal is the fifth member of the family and completes the athlete picture: what you plan, what you move, how you recover, how much strength you have and which muscle produces it.</span></p>
+          <div class="fila-cols">
+            <div>
+              <p><span class="es">La electromiografía enseña qué músculo trabaja de verdad en cada ejercicio. Signal es el quinto miembro de la familia y completa la foto del atleta: lo que planificas, lo que mueves, cómo te recuperas, cuánta fuerza tienes y qué músculo la produce.</span><span class="en">Electromyography shows which muscle is really working in each exercise. Signal is the fifth member of the family and completes the athlete picture: what you plan, what you move, how you recover, how much strength you have and which muscle produces it.</span></p>
+            </div>
+            <figure class="viz-fig viz-card">
+              <div class="viz-tit"><span class="es">Lo que ve Signal: la activación de un músculo</span><span class="en">What Signal sees: one muscle's activation</span></div>
+              <div class="viz-sub"><span class="es">Electromiografía de superficie durante una sentadilla · concepto, producto en diseño</span><span class="en">Surface electromyography during a squat · concept, product in design</span></div>
+              <svg class="viz" viewBox="0 0 360 176" role="img" aria-label="Señal de electromiografía de una repetición con el pico de activación marcado">
+                <line class="grid" x1="36" y1="92" x2="348" y2="92"/>
+                <rect x="42" y="90" width="3.4" height="4" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="52.2" y="89.5" width="3.4" height="5" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="62.4" y="90" width="3.4" height="4" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="72.6" y="89" width="3.4" height="6" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="82.8" y="89" width="3.4" height="6" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="93" y="87.5" width="3.4" height="9" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="103.2" y="86" width="3.4" height="12" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="113.4" y="84" width="3.4" height="16" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="123.6" y="76" width="3.4" height="32" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="133.8" y="67" width="3.4" height="50" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="144" y="58" width="3.4" height="68" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="154.2" y="51" width="3.4" height="82" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="164.4" y="47" width="3.4" height="90" rx="1.7" fill="var(--viz-signal)" data-tip="Pico de activación"/>
+                <rect x="174.6" y="49" width="3.4" height="86" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="184.8" y="55" width="3.4" height="74" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="195" y="62" width="3.4" height="60" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="205.2" y="69" width="3.4" height="46" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="215.4" y="66" width="3.4" height="52" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="225.6" y="60" width="3.4" height="64" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="235.8" y="64" width="3.4" height="56" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="246" y="71" width="3.4" height="42" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="256.2" y="77" width="3.4" height="30" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="266.4" y="82" width="3.4" height="20" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="276.6" y="85.5" width="3.4" height="13" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="286.8" y="87.5" width="3.4" height="9" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="297" y="88.5" width="3.4" height="7" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="307.2" y="89.5" width="3.4" height="5" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="317.4" y="90" width="3.4" height="4" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="327.6" y="90" width="3.4" height="4" rx="1.7" fill="var(--viz-signal)"/>
+                <rect x="337.8" y="90.5" width="3.4" height="3" rx="1.7" fill="var(--viz-signal)"/>
+                <text class="val" x="176" y="38" text-anchor="start"><tspan class="es">pico de activación</tspan><tspan class="en">activation peak</tspan></text>
+                <line x1="123.6" y1="158" x2="256" y2="158" stroke="var(--gray)" stroke-width="1"/>
+                <line x1="123.6" y1="154" x2="123.6" y2="162" stroke="var(--gray)" stroke-width="1"/>
+                <line x1="256" y1="154" x2="256" y2="162" stroke="var(--gray)" stroke-width="1"/>
+                <text class="eje" x="190" y="172" text-anchor="middle"><tspan class="es">una repetición</tspan><tspan class="en">one rep</tspan></text>
+              </svg>
+              <figcaption>
+                <span class="es">El músculo que debía trabajar, trabajando: la activación se ve, se compara entre lados y se sigue en el tiempo.</span>
+                <span class="en">The muscle that should be working, working: activation is seen, compared between sides and tracked over time.</span>
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </div>
@@ -777,6 +1054,24 @@
           btn.disabled = false;
           msg.className = "form-msg mal"; msg.textContent = TXT[l].mal;
         });
+    });
+
+    // ---- Tooltips de las gráficas (marcas con data-tip) ----
+    var tip = document.createElement("div");
+    tip.className = "tip";
+    document.body.appendChild(tip);
+    function mueveTip(e) {
+      tip.style.left = Math.min(e.clientX + 12, window.innerWidth - tip.offsetWidth - 8) + "px";
+      tip.style.top = (e.clientY - 36) + "px";
+    }
+    Array.prototype.forEach.call(document.querySelectorAll("[data-tip]"), function (el) {
+      el.addEventListener("mouseenter", function (e) {
+        tip.textContent = el.getAttribute("data-tip");
+        tip.style.opacity = "1";
+        mueveTip(e);
+      });
+      el.addEventListener("mousemove", mueveTip);
+      el.addEventListener("mouseleave", function () { tip.style.opacity = "0"; });
     });
   </script>
 </body>
