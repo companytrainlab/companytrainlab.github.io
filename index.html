@@ -83,6 +83,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    [hidden] { display: none !important; }
     html { scroll-behavior: smooth; }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -327,6 +328,12 @@
     .form-msg { margin-top: 16px; font-size: 15px; font-weight: 600; display: none; }
     .form-msg.ok { color: var(--green); display: block; }
     .form-msg.mal { color: var(--red); display: block; }
+    .compartir { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--sep); }
+    .compartir p { font-size: 14.5px; color: var(--ink2); }
+    .comp-botones { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 14px; }
+    .comp-botones .btn { font-size: 14px; padding: 11px 20px; }
+    .btn.wa { background: #25D366; color: #fff; text-decoration: none; }
+    .btn.borde { background: transparent; color: var(--ink); border: 1px solid var(--sep); }
     .legal { font-size: 12.5px; color: var(--gray); margin-top: 18px; }
     .legal a { color: var(--gray); }
 
@@ -1101,6 +1108,14 @@
           <button class="btn primary" type="submit" id="f-btn"><span class="es">Apuntarme</span><span class="en">Sign up</span></button>
         </form>
         <p class="form-msg" id="form-msg" role="status"></p>
+        <div class="compartir" id="compartir" hidden>
+          <p id="comp-txt"></p>
+          <div class="comp-botones">
+            <button class="btn primary" id="btn-nativo" type="button" hidden></button>
+            <a class="btn wa" id="btn-wa" target="_blank" rel="noopener" hidden>WhatsApp</a>
+            <button class="btn borde" id="btn-copiar" type="button" hidden></button>
+          </div>
+        </div>
         <p class="legal">
           <span class="es">Solo usaremos tu email para avisarte del lanzamiento. Puedes pedir que lo borremos cuando quieras. Más en la <a href="privacidad.html">política de privacidad</a>.</span>
           <span class="en">We will only use your email to tell you about the launch. You can ask us to delete it any time. More in the <a href="privacidad.html">privacy policy</a>.</span>
@@ -1148,7 +1163,12 @@
         ya: "Ya estabas en la lista: todo en orden.",
         mal: "No se pudo enviar. Prueba de nuevo en un momento.",
         email_mal: "Ese email no parece válido.",
-        movil_mal: "Dinos qué móvil tienes."
+        movil_mal: "Dinos qué móvil tienes.",
+        comp_titulo: "Los buenos métodos se comparten: pásaselo a un colega.",
+        comp_btn: "Compartir",
+        comp_copiar: "Copiar enlace",
+        comp_copiado: "Enlace copiado.",
+        comp_msg: "Échale un ojo a TrainLab: entrenar con datos, no con sensaciones. Yo ya estoy en la lista de espera de la beta: https://companytrainlab.github.io/"
       },
       en: {
         title: "TrainLab: coach with data, not guesswork",
@@ -1159,7 +1179,12 @@
         ya: "You were already on the list: all good.",
         mal: "Could not send. Please try again in a moment.",
         email_mal: "That email does not look valid.",
-        movil_mal: "Tell us which phone you use."
+        movil_mal: "Tell us which phone you use.",
+        comp_titulo: "Good methods get shared: pass it on to a colleague.",
+        comp_btn: "Share",
+        comp_copiar: "Copy link",
+        comp_copiado: "Link copied.",
+        comp_msg: "Check out TrainLab: coaching with data, not guesswork. I am already on the beta waitlist: https://companytrainlab.github.io/"
       }
     };
     function setLang(l) {
@@ -1216,6 +1241,7 @@
             form.style.display = "none";
             msg.className = "form-msg ok";
             msg.textContent = res.d.ya_apuntado ? TXT[l].ya : TXT[l].ok;
+            ensenaCompartir(l);
           } else {
             btn.disabled = false;
             msg.className = "form-msg mal";
@@ -1227,6 +1253,41 @@
           msg.className = "form-msg mal"; msg.textContent = TXT[l].mal;
         });
     });
+
+    // ---- Compartir tras el alta: hoja nativa en el móvil, WhatsApp
+    //      Web y copiar enlace en el ordenador ----
+    function ensenaCompartir(l) {
+      var caja = document.getElementById("compartir");
+      var m = TXT[l].comp_msg;
+      document.getElementById("comp-txt").textContent = TXT[l].comp_titulo;
+      caja.hidden = false;
+      if (navigator.share) {
+        var b = document.getElementById("btn-nativo");
+        b.hidden = false;
+        b.textContent = TXT[l].comp_btn;
+        b.onclick = function () { navigator.share({ text: m }).catch(function () {}); };
+      } else {
+        var wa = document.getElementById("btn-wa");
+        wa.hidden = false;
+        wa.href = "https://wa.me/?text=" + encodeURIComponent(m);
+        var cp = document.getElementById("btn-copiar");
+        cp.hidden = false;
+        cp.textContent = TXT[l].comp_copiar;
+        cp.onclick = function () {
+          var listo = function () { cp.textContent = TXT[l].comp_copiado; };
+          // Plan B para navegadores sin clipboard API o que la deniegan
+          var aLaAntigua = function () {
+            var t = document.createElement("textarea");
+            t.value = m; t.style.position = "fixed"; t.style.left = "-9999px";
+            document.body.appendChild(t); t.select();
+            try { if (document.execCommand("copy")) listo(); } catch (e) { /* nada */ }
+            document.body.removeChild(t);
+          };
+          if (navigator.clipboard) navigator.clipboard.writeText(m).then(listo, aLaAntigua);
+          else aLaAntigua();
+        };
+      }
+    }
 
     // ---- Tooltips de las gráficas (marcas con data-tip) ----
     var tip = document.createElement("div");
