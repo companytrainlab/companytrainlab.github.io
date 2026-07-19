@@ -267,8 +267,12 @@
     }
     .lista-card h2 { font-size: clamp(24px, 3.6vw, 32px); }
     .lista-card .lead { margin: 12px auto 0; }
-    form.alta { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 28px; text-align: left; }
-    @media (min-width: 560px) { form.alta { grid-template-columns: 1.4fr 1fr auto; } }
+    form.alta { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 24px; text-align: left; }
+    @media (min-width: 560px) {
+      form.alta { grid-template-columns: 1fr 1fr; }
+      .alta input[type="email"], .alta .btn.primary { grid-column: 1 / -1; }
+    }
+    .nota-plataforma { font-size: 13px; color: var(--ink2); margin: 14px auto 0; max-width: 480px; }
     .alta input[type="email"], .alta select {
       width: 100%; font: inherit; font-size: 15px; color: var(--ink);
       background: var(--card-alt); border: 1px solid var(--sep); border-radius: 12px; padding: 13px 14px;
@@ -925,6 +929,10 @@
           <span class="es">Déjanos tu email y te avisamos en cuanto se abran plazas de la beta. Nada más: ni cadenas de correos ni spam.</span>
           <span class="en">Leave your email and we will let you know as soon as beta spots open. Nothing else: no email chains, no spam.</span>
         </p>
+        <p class="nota-plataforma">
+          <span class="es">TrainLab llega primero a iPhone. Si tienes Android, apúntate igual: nos ayuda a decidir cuándo dar el salto y serás de los primeros en saberlo.</span>
+          <span class="en">TrainLab comes to iPhone first. On Android? Sign up anyway: it helps us decide when to make the jump and you will be among the first to know.</span>
+        </p>
         <form class="alta" id="form-alta" novalidate>
           <label class="hp" aria-hidden="true">
             <span class="es">No rellenes este campo</span><span class="en">Do not fill this field</span>
@@ -936,6 +944,12 @@
             <option value="centro">Llevo un centro o club</option>
             <option value="atleta">Soy atleta</option>
             <option value="otro">Curiosidad</option>
+          </select>
+          <select name="movil" id="f-movil" required aria-label="Tu móvil">
+            <option value="" disabled selected>¿Tu móvil?</option>
+            <option value="iphone">Tengo iPhone</option>
+            <option value="android">Tengo Android</option>
+            <option value="ambos">Tengo los dos</option>
           </select>
           <button class="btn primary" type="submit" id="f-btn"><span class="es">Apuntarme</span><span class="en">Sign up</span></button>
         </form>
@@ -982,19 +996,23 @@
         title: "TrainLab: entrena con datos, no con sensaciones",
         email: "tu@email.com",
         perfiles: ["Soy entrenador/a", "Llevo un centro o club", "Soy atleta", "Curiosidad"],
+        moviles: ["¿Tu móvil?", "Tengo iPhone", "Tengo Android", "Tengo los dos"],
         ok: "Hecho. Te avisaremos en cuanto haya plazas.",
         ya: "Ya estabas en la lista: todo en orden.",
         mal: "No se pudo enviar. Prueba de nuevo en un momento.",
-        email_mal: "Ese email no parece válido."
+        email_mal: "Ese email no parece válido.",
+        movil_mal: "Dinos qué móvil tienes."
       },
       en: {
         title: "TrainLab: coach with data, not guesswork",
         email: "you@email.com",
         perfiles: ["I am a coach", "I run a center or club", "I am an athlete", "Just curious"],
+        moviles: ["Your phone?", "I have an iPhone", "I have Android", "I have both"],
         ok: "Done. We will let you know as soon as spots open.",
         ya: "You were already on the list: all good.",
         mal: "Could not send. Please try again in a moment.",
-        email_mal: "That email does not look valid."
+        email_mal: "That email does not look valid.",
+        movil_mal: "Tell us which phone you use."
       }
     };
     function setLang(l) {
@@ -1004,6 +1022,8 @@
       document.getElementById("f-email").placeholder = TXT[l].email;
       var opts = document.getElementById("f-perfil").options;
       for (var i = 0; i < opts.length; i++) opts[i].textContent = TXT[l].perfiles[i];
+      var movs = document.getElementById("f-movil").options;
+      for (var j = 0; j < movs.length; j++) movs[j].textContent = TXT[l].moviles[j];
       try { localStorage.setItem("tl-lang", l); } catch (e) {}
     }
     (function () {
@@ -1027,6 +1047,10 @@
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
         msg.className = "form-msg mal"; msg.textContent = TXT[l].email_mal; return;
       }
+      var movil = document.getElementById("f-movil").value;
+      if (!movil) {
+        msg.className = "form-msg mal"; msg.textContent = TXT[l].movil_mal; return;
+      }
       var btn = document.getElementById("f-btn");
       btn.disabled = true; msg.className = "form-msg";
       fetch(API, {
@@ -1035,6 +1059,7 @@
         body: JSON.stringify({
           email: email,
           perfil: document.getElementById("f-perfil").value,
+          movil: movil,
           idioma: l,
           telefono: form.elements["telefono"].value
         })
