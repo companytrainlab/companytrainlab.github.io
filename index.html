@@ -39,7 +39,7 @@
       { "@type": "Question", "name": "¿Cuándo sale TrainLab?", "acceptedAnswer": { "@type": "Answer", "text": "Fitness está en beta cerrada, madurando con un grupo pequeño antes de llegar a la App Store. La lista de espera es la puerta: en cuanto se abren plazas, avisamos por orden de llegada." } },
       { "@type": "Question", "name": "¿Funciona en Android?", "acceptedAnswer": { "@type": "Answer", "text": "Todavía no: TrainLab llega primero a iPhone. Si tienes Android, apúntate a la lista de espera y dínoslo en el formulario: ese dato decide cuándo damos el salto." } },
       { "@type": "Question", "name": "¿Qué pasa con mis datos y los de mis atletas?", "acceptedAnswer": { "@type": "Answer", "text": "Viven en servidores de la Unión Europea, protegidos con seguridad a nivel de fila. La web no usa cookies ni rastreadores, y el borrado se pide por email y se hace." } },
-      { "@type": "Question", "name": "¿Cuánto cuesta TrainLab?", "acceptedAnswer": { "@type": "Answer", "text": "Fitness va por tramos según los atletas que gestionas, de 2,99 a 9,99 euros al mes, con 14 días de prueba y unos 2 meses gratis en el plan anual. Precios de lanzamiento." } },
+      { "@type": "Question", "name": "¿Cuánto cuesta TrainLab?", "acceptedAnswer": { "@type": "Answer", "text": "Los precios están en proceso mientras la app sigue en desarrollo. Los de partida: Fitness por tramos según los atletas que gestionas, de 2,99 a 9,99 euros al mes, con 14 días de prueba y unos 2 meses gratis en el plan anual." } },
       { "@type": "Question", "name": "¿Necesito comprar algún aparato?", "acceptedAnswer": { "@type": "Answer", "text": "No. Fitness es un producto completo solo con la app. El sensor de Velocity, la pulsera de Control y el dinamómetro de Force son el salto profesional opcional." } },
       { "@type": "Question", "name": "¿Cómo entro en la beta?", "acceptedAnswer": { "@type": "Answer", "text": "Apuntándote a la lista de espera. Las plazas son limitadas a propósito para cuidar de verdad a los primeros entrenadores." } },
       { "@type": "Question", "name": "¿Sirve para mi deporte?", "acceptedAnswer": { "@type": "Answer", "text": "TrainLab es multideporte: fuerza, resistencia e híbrido, cada uno con sus métricas propias." } },
@@ -265,6 +265,11 @@
 
     /* --- Precios --- */
     #precios .sec-eyebrow { color: var(--fitness); }
+    .badge-proceso {
+      display: inline-block; margin-top: 14px; font-size: 12.5px; font-weight: 700;
+      color: var(--viz-force); background: color-mix(in srgb, var(--orange) 13%, transparent);
+      padding: 5px 12px; border-radius: 999px;
+    }
     .planes { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin-top: 40px; }
     .plan { background: var(--card); border: 1px solid var(--sep); border-radius: 16px; padding: 22px 20px; }
     .plan .nombre { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--fitness); }
@@ -941,12 +946,16 @@
     <div class="wrap">
       <p class="sec-eyebrow"><span class="es">Precios</span><span class="en">Pricing</span></p>
       <h2>
-        <span class="es">Rigor de laboratorio, a precio europeo.</span>
-        <span class="en">Laboratory rigor, at a European price.</span>
+        <span class="es">Rigor de laboratorio, a precio de bolsillo.</span>
+        <span class="en">Laboratory rigor, at a pocket friendly price.</span>
       </h2>
+      <span class="badge-proceso">
+        <span class="es">Precios en proceso · les daremos una vuelta antes del lanzamiento</span>
+        <span class="en">Prices in progress · to be tuned before launch</span>
+      </span>
       <p class="lead">
-        <span class="es">La suscripción de Fitness crece contigo: pagas según los atletas que gestionas, con 14 días de prueba y unos 2 meses gratis en el plan anual. Precios de lanzamiento, se revisarán con los primeros clientes.</span>
-        <span class="en">The Fitness subscription grows with you: you pay for the athletes you manage, with a 14 day trial and about 2 months free on the yearly plan. Launch prices, to be reviewed with the first customers.</span>
+        <span class="es">La suscripción de Fitness crece contigo: pagas según los atletas que gestionas, con 14 días de prueba y unos 2 meses gratis en el plan anual. La app sigue en desarrollo y estos son los precios de partida, no los definitivos.</span>
+        <span class="en">The Fitness subscription grows with you: you pay for the athletes you manage, with a 14 day trial and about 2 months free on the yearly plan. The app is still in development and these are starting prices, not final ones.</span>
       </p>
 
       <div class="planes">
@@ -1040,8 +1049,8 @@
         <details class="faq">
           <summary><span class="es">¿Cuánto cuesta de verdad?</span><span class="en">What does it really cost?</span></summary>
           <div class="resp">
-            <span class="es">Fitness va por tramos según los atletas que gestionas, de 2,99 a 9,99 euros al mes, con 14 días de prueba y unos 2 meses gratis si pagas el año. Son precios de lanzamiento y se revisarán con los datos de los primeros clientes.</span>
-            <span class="en">Fitness is tiered by the athletes you manage, from €2.99 to €9.99 a month, with a 14 day trial and about 2 months free on the yearly plan. These are launch prices, to be reviewed with data from the first customers.</span>
+            <span class="es">Los precios están todavía en proceso, porque la app sigue en desarrollo. Los de partida: Fitness por tramos según los atletas que gestionas, de 2,99 a 9,99 euros al mes, con 14 días de prueba y unos 2 meses gratis si pagas el año. Antes del lanzamiento les daremos la última vuelta.</span>
+            <span class="en">Prices are still in progress, because the app is still in development. The starting point: Fitness is tiered by the athletes you manage, from €2.99 to €9.99 a month, with a 14 day trial and about 2 months free on the yearly plan. We will give them a final pass before launch.</span>
           </div>
         </details>
         <details class="faq">
