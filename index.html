@@ -31,6 +31,23 @@
   }
   </script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "¿Cuándo sale TrainLab?", "acceptedAnswer": { "@type": "Answer", "text": "Fitness está en beta cerrada, madurando con un grupo pequeño antes de llegar a la App Store. La lista de espera es la puerta: en cuanto se abren plazas, avisamos por orden de llegada." } },
+      { "@type": "Question", "name": "¿Funciona en Android?", "acceptedAnswer": { "@type": "Answer", "text": "Todavía no: TrainLab llega primero a iPhone. Si tienes Android, apúntate a la lista de espera y dínoslo en el formulario: ese dato decide cuándo damos el salto." } },
+      { "@type": "Question", "name": "¿Qué pasa con mis datos y los de mis atletas?", "acceptedAnswer": { "@type": "Answer", "text": "Viven en servidores de la Unión Europea, protegidos con seguridad a nivel de fila. La web no usa cookies ni rastreadores, y el borrado se pide por email y se hace." } },
+      { "@type": "Question", "name": "¿Cuánto cuesta TrainLab?", "acceptedAnswer": { "@type": "Answer", "text": "Fitness va por tramos según los atletas que gestionas, de 2,99 a 9,99 euros al mes, con 14 días de prueba y unos 2 meses gratis en el plan anual. Precios de lanzamiento." } },
+      { "@type": "Question", "name": "¿Necesito comprar algún aparato?", "acceptedAnswer": { "@type": "Answer", "text": "No. Fitness es un producto completo solo con la app. El sensor de Velocity, la pulsera de Control y el dinamómetro de Force son el salto profesional opcional." } },
+      { "@type": "Question", "name": "¿Cómo entro en la beta?", "acceptedAnswer": { "@type": "Answer", "text": "Apuntándote a la lista de espera. Las plazas son limitadas a propósito para cuidar de verdad a los primeros entrenadores." } },
+      { "@type": "Question", "name": "¿Sirve para mi deporte?", "acceptedAnswer": { "@type": "Answer", "text": "TrainLab es multideporte: fuerza, resistencia e híbrido, cada uno con sus métricas propias." } },
+      { "@type": "Question", "name": "Soy atleta, no entrenador. ¿Me sirve de algo?", "acceptedAnswer": { "@type": "Answer", "text": "Sí: si tu entrenador usa TrainLab te vincula con un código, y Control funcionará también como app de salud personal sin necesidad de entrenador." } }
+    ]
+  }
+  </script>
+
   <style>
     /* ============ Paleta oficial (producto/kit/tokens.css) ============ */
     :root {
@@ -271,6 +288,19 @@
     @media (max-width: 720px) { .centros-band { grid-template-columns: 1fr; } }
     .centros-band h2 { font-size: clamp(22px, 3vw, 28px); }
     .centros-band p { font-size: 15px; color: var(--ink2); margin-top: 10px; max-width: 620px; }
+
+    /* --- FAQ --- */
+    .faqs { margin-top: 36px; border: 1px solid var(--sep); border-radius: 16px; overflow: hidden; }
+    .faq { background: var(--card); border-top: 1px solid var(--sep); }
+    .faq:first-child { border-top: none; }
+    .faq summary {
+      list-style: none; cursor: pointer; padding: 16px 20px; font-size: 15.5px; font-weight: 700;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; font-size: 20px; font-weight: 700; color: var(--gray); flex-shrink: 0; transition: transform .15s; }
+    .faq[open] summary::after { transform: rotate(45deg); }
+    .faq .resp { padding: 0 20px 16px; font-size: 14px; color: var(--ink2); max-width: 760px; line-height: 1.6; }
 
     /* --- Lista de espera --- */
     #lista { padding-bottom: 104px; }
@@ -967,6 +997,72 @@
           <p><span class="es">Un panel propio para agrupar a tus entrenadores, supervisar la calidad del servicio y reducir el riesgo de lesión de la plantilla. Cada entrenador conserva su cuenta y el centro paga una sola factura.</span><span class="en">A dedicated panel to group your coaches, supervise service quality and reduce squad injury risk. Each coach keeps their account and the center pays a single invoice.</span></p>
         </div>
         <a class="btn primary" href="mailto:companytrainlab@gmail.com?subject=TrainLab%20para%20centros"><span class="es">Escríbenos</span><span class="en">Write to us</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Preguntas frecuentes ============ -->
+  <section id="faq" style="padding-top: 0;">
+    <div class="wrap">
+      <p class="sec-eyebrow" style="color: var(--azul-pulso);"><span class="es">Preguntas frecuentes</span><span class="en">Frequently asked questions</span></p>
+      <h2><span class="es">Las dudas, respondidas.</span><span class="en">The doubts, answered.</span></h2>
+      <div class="faqs">
+        <details class="faq">
+          <summary><span class="es">¿Cuándo sale TrainLab?</span><span class="en">When does TrainLab launch?</span></summary>
+          <div class="resp">
+            <span class="es">Fitness está en beta cerrada, madurando con un grupo pequeño antes de llegar a la App Store. La lista de espera es la puerta: en cuanto se abren plazas, avisamos por orden de llegada.</span>
+            <span class="en">Fitness is in closed beta, maturing with a small group before reaching the App Store. The waitlist is the door: as spots open, we notify in order of arrival.</span>
+          </div>
+        </details>
+        <details class="faq">
+          <summary><span class="es">¿Funciona en Android?</span><span class="en">Does it work on Android?</span></summary>
+          <div class="resp">
+            <span class="es">Todavía no: TrainLab llega primero a iPhone, porque construir bien para una plataforma antes que regular para dos es parte del listón de calidad. Si tienes Android, apúntate igual y dínoslo en el formulario: ese dato decide cuándo damos el salto, y serás de los primeros en saberlo.</span>
+            <span class="en">Not yet: TrainLab comes to iPhone first, because building well for one platform before building average for two is part of the quality bar. On Android? Sign up anyway and tell us in the form: that data decides when we make the jump, and you will be among the first to know.</span>
+          </div>
+        </details>
+        <details class="faq">
+          <summary><span class="es">¿Qué pasa con mis datos y los de mis atletas?</span><span class="en">What happens with my data and my athletes' data?</span></summary>
+          <div class="resp">
+            <span class="es">Viven en servidores de la Unión Europea, protegidos con seguridad a nivel de fila: cada entrenador ve lo suyo y cada atleta lo suyo. Esta web no usa cookies ni rastreadores, y el borrado se pide por email y se hace, sin vueltas. El detalle está en la <a href="privacidad.html">política de privacidad</a>.</span>
+            <span class="en">It lives on European Union servers, protected with row level security: each coach sees their own and each athlete theirs. This website uses no cookies or trackers, and deletion is requested by email and done, no hoops. Details in the <a href="privacidad.html">privacy policy</a>.</span>
+          </div>
+        </details>
+        <details class="faq">
+          <summary><span class="es">¿Cuánto cuesta de verdad?</span><span class="en">What does it really cost?</span></summary>
+          <div class="resp">
+            <span class="es">Fitness va por tramos según los atletas que gestionas, de 2,99 a 9,99 euros al mes, con 14 días de prueba y unos 2 meses gratis si pagas el año. Son precios de lanzamiento y se revisarán con los datos de los primeros clientes.</span>
+            <span class="en">Fitness is tiered by the athletes you manage, from €2.99 to €9.99 a month, with a 14 day trial and about 2 months free on the yearly plan. These are launch prices, to be reviewed with data from the first customers.</span>
+          </div>
+        </details>
+        <details class="faq">
+          <summary><span class="es">¿Necesito comprar algún aparato?</span><span class="en">Do I need to buy any hardware?</span></summary>
+          <div class="resp">
+            <span class="es">No. Fitness es un producto completo solo con la app: trae de serie la medición por vídeo y la lectura de la salud del iPhone. El sensor de Velocity, la pulsera de Control y el dinamómetro de Force son el salto profesional de esas capacidades, para cuando tú decidas darlo.</span>
+            <span class="en">No. Fitness is a complete product with the app alone: it ships with video based measurement and iPhone health data. The Velocity sensor, the Control band and the Force dynamometer are the professional upgrade of those capabilities, for whenever you decide to take it.</span>
+          </div>
+        </details>
+        <details class="faq">
+          <summary><span class="es">¿Cómo entro en la beta?</span><span class="en">How do I get into the beta?</span></summary>
+          <div class="resp">
+            <span class="es">Apuntándote a la lista de espera. Las plazas son limitadas a propósito: preferimos cuidar de verdad a los primeros entrenadores antes que crecer más rápido de lo que podemos atender.</span>
+            <span class="en">By joining the waitlist. Spots are limited on purpose: we would rather truly take care of the first coaches than grow faster than we can serve.</span>
+          </div>
+        </details>
+        <details class="faq">
+          <summary><span class="es">¿Sirve para mi deporte?</span><span class="en">Does it work for my sport?</span></summary>
+          <div class="resp">
+            <span class="es">TrainLab es multideporte: fuerza, resistencia e híbrido, cada uno con sus métricas propias. Si entrenas o preparas a gente que levanta, corre o combina las dos cosas, está pensado para ti.</span>
+            <span class="en">TrainLab is multi sport: strength, endurance and hybrid, each with its own metrics. If you train or coach people who lift, run or combine both, it is built for you.</span>
+          </div>
+        </details>
+        <details class="faq">
+          <summary><span class="es">Soy atleta, no entrenador. ¿Me sirve de algo?</span><span class="en">I am an athlete, not a coach. Is this for me?</span></summary>
+          <div class="resp">
+            <span class="es">Sí, por dos caminos. Si tu entrenador usa TrainLab, te vincula con un código y tu parte de la app va incluida en su plan. Y Control funcionará también como app de salud personal, con tu propio reloj o con la pulsera, sin necesidad de entrenador.</span>
+            <span class="en">Yes, in two ways. If your coach uses TrainLab, they link you with a code and your side of the app is included in their plan. And Control will also work as a personal health app, with your own watch or the band, no coach needed.</span>
+          </div>
+        </details>
       </div>
     </div>
   </section>
