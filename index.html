@@ -230,6 +230,19 @@
       border-radius: 0 16px 16px 0; padding: 20px 24px; font-size: 16px; color: var(--ink);
     }
 
+    /* --- Quién hay detrás --- */
+    .fundador-card {
+      background: var(--card); border: 1px solid var(--sep); border-radius: 20px;
+      padding: 30px 28px; display: grid; grid-template-columns: auto 1fr; gap: 22px; margin-top: 36px;
+    }
+    @media (max-width: 640px) { .fundador-card { grid-template-columns: 1fr; } }
+    .fundador-card .logo { width: 64px; height: 64px; border-radius: 16px; }
+    .fundador-card h3 { font-size: 18px; font-weight: 800; }
+    .fundador-card .rol { font-size: 13px; color: var(--gray); font-weight: 600; margin-top: 2px; }
+    .fundador-card p { font-size: 14.5px; color: var(--ink2); margin-top: 10px; max-width: 720px; }
+    .pilares { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .pilar { font-size: 12px; font-weight: 700; color: var(--azul-pulso); background: var(--accent-bg); padding: 5px 11px; border-radius: 999px; }
+
     /* --- Precios --- */
     #precios .sec-eyebrow { color: var(--fitness); }
     .planes { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin-top: 40px; }
@@ -842,6 +855,44 @@
       <div class="honesta">
         <span class="es">Y cuando no hay datos suficientes para un cálculo fiable, la app lo dice. Antes honesto que impresionante.</span>
         <span class="en">And when there is not enough data for a reliable calculation, the app says so. Honest before impressive.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Quién hay detrás ============ -->
+  <section id="fundador" style="padding-top: 0;">
+    <div class="wrap">
+      <p class="sec-eyebrow" style="color: var(--azul-pulso);"><span class="es">El fundador</span><span class="en">The founder</span></p>
+      <h2><span class="es">Quién hay detrás.</span><span class="en">Who is behind this.</span></h2>
+      <div class="fundador-card">
+        <svg class="logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#232C40"/><stop offset="1" stop-color="#0B0E16"/></linearGradient></defs>
+          <rect width="120" height="120" rx="28" fill="url(#g3)"/>
+          <rect x="18" y="38" width="36" height="9" rx="2" fill="#F4F7FB"/><rect x="31" y="38" width="9" height="44" rx="2" fill="#F4F7FB"/>
+          <rect x="80" y="38" width="9" height="44" rx="2" fill="#F4F7FB"/><rect x="80" y="73" width="24" height="9" rx="2" fill="#F4F7FB"/>
+          <path d="M10 62 H38 l6 -18 l9 34 l7 -24 l5 12 H110" fill="none" stroke="#2E7DF6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <h3>José David Pérez Barrera</h3>
+          <div class="rol"><span class="es">Ciencias del Deporte · doctorando · fundador de TrainLab</span><span class="en">Sports Science · PhD candidate · founder of TrainLab</span></div>
+          <p>
+            <span class="es">TrainLab lo construye una sola persona: un profesional de las Ciencias del Deporte, doctorando e investigador en el entrenamiento de fuerza, que no se conforma con aplicar protocolos. Busca el porqué de cada intervención y lo fundamenta en la mejor evidencia disponible.</span>
+            <span class="en">TrainLab is built by one person: a Sports Science professional, PhD candidate and researcher in strength training, who does not settle for applying protocols. He looks for the why behind every intervention and grounds it in the best available evidence.</span>
+          </p>
+          <p>
+            <span class="es">Sus tres pilares son los de la propia marca: la fuerza como herramienta de salud, rendimiento y prevención; la readaptación de lesiones con criterios clínicos y de rendimiento a la vez; y la investigación, de donde sale la regla de la casa: ningún número sin una referencia detrás.</span>
+            <span class="en">His three pillars are the brand's own: strength as a tool for health, performance and prevention; return to sport with clinical and performance criteria at once; and research, where the house rule comes from: no number without a reference behind it.</span>
+          </p>
+          <p>
+            <span class="es">TrainLab es su manera de conectar el laboratorio, la clínica y el gimnasio. Por eso la marca lleva Lab en el nombre.</span>
+            <span class="en">TrainLab is his way of connecting the laboratory, the clinic and the gym. That is why the brand carries Lab in its name.</span>
+          </p>
+          <div class="pilares">
+            <span class="pilar"><span class="es">Entrenamiento de fuerza</span><span class="en">Strength training</span></span>
+            <span class="pilar"><span class="es">Readaptación de lesiones</span><span class="en">Return to sport</span></span>
+            <span class="pilar"><span class="es">Investigación</span><span class="en">Research</span></span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
