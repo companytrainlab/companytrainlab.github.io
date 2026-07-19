@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+# El landing de las cajas es transaccional (necesita el código de una
+# unidad física): sin código enseña un error, así que mejor no indexarlo.
+Disallow: /caja/
+
+Sitemap: https://companytrainlab.github.io/sitemap.xml
