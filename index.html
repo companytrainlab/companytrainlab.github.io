@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrainLab: entrena con datos, no con sensaciones</title>
+  <meta name="description" content="TrainLab es el ecosistema de entrenamiento con ciencia publicada detrás de cada número: gestión, carga, velocidad, recuperación y fuerza para entrenadores, centros y atletas." />
+  <link rel="canonical" href="https://companytrainlab.github.io/" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta name="theme-color" content="#141A28" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="TrainLab" />
+  <meta property="og:title" content="TrainLab: entrena con datos, no con sensaciones" />
+  <meta property="og:description" content="El ecosistema de entrenamiento con ciencia publicada detrás de cada número. Para entrenadores, centros deportivos y atletas." />
+  <meta property="og:url" content="https://companytrainlab.github.io/" />
+  <meta property="og:image" content="https://companytrainlab.github.io/og.png" />
+  <meta property="og:locale" content="es_ES" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "TrainLab",
+    "url": "https://companytrainlab.github.io/",
+    "logo": "https://companytrainlab.github.io/apple-touch-icon.png",
+    "email": "companytrainlab@gmail.com",
+    "description": "Ecosistema de productos de entrenamiento deportivo con rigor científico: gestión, velocidad, recuperación y fuerza."
+  }
+  </script>
+
+  <style>
+    /* ============ Paleta oficial (producto/kit/tokens.css) ============ */
+    :root {
+      color-scheme: light dark;
+      --bg: #F2F2F7; --card: #FFFFFF; --card-alt: #F6F7F9; --sep: #E5E5EA;
+      --ink: #1C1C1E; --ink2: #3A3A3C; --gray: #8E8E93;
+      --blue: #007AFF; --green: #34C759; --orange: #FF9500; --red: #FF3B30;
+      --teal: #30B0C7; --purple: #AF52DE;
+      --accent-bg: #EAF3FF; --tint-green: #EAF9EF;
+
+      /* Marca (no cambian con el modo) */
+      --azul-noche: #141A28; --azul-pulso: #2E7DF6;
+
+      /* Apellidos de la familia */
+      --fitness: #34C759; --velocity: #17AEC9; --control: #AF52DE;
+      --force: #FF9500; --signal: #FFD60A;
+
+      /* Escenario nocturno del hero y del pie (fijo en ambos modos) */
+      --hbg: #141A28; --hcard: #1A2233; --hline: #2A3346;
+      --hink: #F4F7FB; --hmuted: #9AA6BC;
+
+      --signal-ink: #8F7A00;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0E1117; --card: #181F2E; --card-alt: #212A3B; --sep: #2B3344;
+        --ink: #EAEEF6; --ink2: #AEB7C8; --gray: #79839A;
+        --blue: #2E7DF6; --green: #30D158; --orange: #FF9F0A; --red: #FF453A;
+        --teal: #40C8E0; --purple: #BF5AF2;
+        --accent-bg: #16233E; --tint-green: #15281E;
+        --signal-ink: #FFD60A;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { animation: none !important; transition: none !important; }
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+      background: var(--bg); color: var(--ink);
+      line-height: 1.55; -webkit-font-smoothing: antialiased;
+    }
+    body.lang-es .en { display: none; }
+    body.lang-en .es { display: none; }
+
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+    section { padding: 88px 0; }
+    a { color: var(--azul-pulso); }
+
+    /* ============ Barra superior ============ */
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      background: color-mix(in srgb, var(--bg) 84%, transparent);
+      -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--sep);
+    }
+    .topbar .wrap { display: flex; align-items: center; gap: 20px; height: 62px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 800; color: var(--ink); text-decoration: none; }
+    .brand .train { color: var(--gray); }
+    .brand .lab { color: var(--azul-pulso); }
+    .logo { width: 34px; height: 34px; border-radius: 9px; display: block; }
+    .nav { display: flex; gap: 22px; margin-left: auto; }
+    .nav a { color: var(--ink2); text-decoration: none; font-size: 14px; font-weight: 600; }
+    .nav a:hover { color: var(--azul-pulso); }
+    .langs { display: flex; gap: 6px; margin-left: auto; }
+    .nav + .langs { margin-left: 0; }
+    .langs button {
+      background: transparent; border: 1px solid var(--sep); color: var(--gray);
+      border-radius: 8px; padding: 5px 10px; font-size: 12.5px; font-weight: 700; cursor: pointer;
+    }
+    body.lang-es #b-es, body.lang-en #b-en { background: var(--azul-pulso); border-color: var(--azul-pulso); color: #fff; }
+    .top-cta {
+      background: var(--azul-pulso); color: #fff; text-decoration: none;
+      font-size: 13.5px; font-weight: 700; padding: 9px 16px; border-radius: 10px; white-space: nowrap;
+    }
+    @media (max-width: 860px) { .nav { display: none; } .langs { margin-left: auto; } }
+    @media (max-width: 420px) { .top-cta { display: none; } }
+
+    /* ============ Héroe (siempre azul noche: es el escenario del símbolo) ============ */
+    .hero { background: var(--hbg); color: var(--hink); position: relative; overflow: hidden; padding: 96px 0 88px; }
+    .hero .wrap { display: grid; grid-template-columns: 1.2fr 0.9fr; gap: 56px; align-items: center; position: relative; }
+    @media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; gap: 44px; } }
+    .eyebrow {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--hmuted); margin-bottom: 18px;
+    }
+    .hero h1 { font-size: clamp(34px, 5.4vw, 54px); font-weight: 800; line-height: 1.08; letter-spacing: -0.8px; }
+    .hero h1 .accent { color: var(--azul-pulso); }
+    .hero p.sub { font-size: clamp(16px, 2.2vw, 19px); color: var(--hmuted); margin-top: 20px; max-width: 560px; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+    .btn {
+      display: inline-block; text-decoration: none; font-size: 16px; font-weight: 700;
+      padding: 14px 26px; border-radius: 12px; border: none; cursor: pointer;
+    }
+    .btn.primary { background: var(--azul-pulso); color: #fff; box-shadow: 0 6px 22px rgba(46,125,246,.35); }
+    .btn.primary:hover { filter: brightness(1.07); }
+    .btn.ghost { background: transparent; color: var(--hink); border: 1px solid var(--hline); }
+    .btn.ghost:hover { border-color: var(--hmuted); }
+    .cta-note { font-size: 13px; color: var(--hmuted); margin-top: 14px; }
+
+    /* La línea de pulso, la firma de la marca, cruzando el escenario */
+    .pulse-svg { position: absolute; left: 0; right: 0; bottom: -6px; width: 100%; height: 90px; opacity: .3; pointer-events: none; }
+    .pulse-svg path { stroke: var(--azul-pulso); stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* La tarjeta de app: el dato protagonista como firma visual */
+    .app-card {
+      background: var(--hcard); border: 1px solid var(--hline); border-radius: 20px;
+      padding: 24px; box-shadow: 0 24px 60px rgba(0,0,0,.4); max-width: 400px; justify-self: end; width: 100%;
+    }
+    @media (max-width: 900px) { .app-card { justify-self: start; } }
+    .app-card .cab { display: flex; justify-content: space-between; align-items: center; }
+    .lbl { font-size: 11.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--hmuted); }
+    .estado-chip { display: flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 700; color: #30D158; }
+    .estado-chip::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #30D158; }
+    .dato { font-size: 58px; font-weight: 900; letter-spacing: -1px; font-variant-numeric: tabular-nums; line-height: 1.05; margin-top: 14px; }
+    .dato-sub { font-size: 13.5px; color: var(--hmuted); margin-top: 2px; }
+    .zona { display: inline-block; margin-top: 12px; background: rgba(48,209,88,.14); color: #30D158; font-size: 12.5px; font-weight: 700; padding: 5px 11px; border-radius: 999px; }
+    .mini-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--hline); }
+    .mini .v { font-size: 19px; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .mini .k { font-size: 11px; color: var(--hmuted); margin-top: 2px; }
+    .bars { display: flex; align-items: flex-end; gap: 7px; height: 56px; margin-top: 20px; }
+    .bars i { flex: 1; background: rgba(46,125,246,.34); border-radius: 4px 4px 2px 2px; }
+    .bars i.hoy { background: var(--azul-pulso); }
+
+    /* ============ Secciones ============ */
+    .sec-eyebrow {
+      font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 12px;
+    }
+    h2 { font-size: clamp(26px, 4vw, 38px); font-weight: 800; letter-spacing: -0.5px; line-height: 1.15; }
+    .lead { font-size: clamp(15.5px, 2vw, 17.5px); color: var(--ink2); margin-top: 14px; max-width: 700px; }
+
+    /* --- Ecosistema --- */
+    .prods { display: grid; grid-template-columns: repeat(auto-fit, minmax(196px, 1fr)); gap: 14px; margin-top: 40px; }
+    .prod {
+      background: var(--card); border: 1px solid var(--sep); border-radius: 16px; padding: 20px 18px;
+      display: flex; flex-direction: column; gap: 10px; border-top: 3px solid var(--acc, var(--sep));
+    }
+    .prod .apellido {
+      align-self: flex-start; font-size: 11px; font-weight: 800; letter-spacing: .1em;
+      color: var(--acc-ink, var(--acc)); background: color-mix(in srgb, var(--acc) 13%, transparent);
+      padding: 4px 9px; border-radius: 6px;
+    }
+    .prod h3 { font-size: 16.5px; font-weight: 800; }
+    .prod h3 .tl { color: var(--gray); font-weight: 700; }
+    .prod p { font-size: 13.5px; color: var(--ink2); flex: 1; }
+    .prod .estado { font-size: 12px; font-weight: 600; color: var(--gray); }
+    .prod.fitness  { --acc: var(--fitness); }
+    .prod.velocity { --acc: var(--velocity); }
+    .prod.control  { --acc: var(--control); }
+    .prod.force    { --acc: var(--force); }
+    .prod.signal   { --acc: var(--signal); --acc-ink: var(--signal-ink); }
+
+    .integrada {
+      margin-top: 26px; background: var(--accent-bg); border: 1px solid var(--sep);
+      border-radius: 16px; padding: 20px 22px; font-size: 15px; color: var(--ink2);
+    }
+    .integrada b { color: var(--ink); }
+
+    /* --- Fitness --- */
+    #fitness .sec-eyebrow { color: var(--fitness); }
+    .feats { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 40px; }
+    .feat { background: var(--card); border: 1px solid var(--sep); border-radius: 16px; padding: 20px; }
+    .feat h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
+    .feat p { font-size: 13.5px; color: var(--ink2); }
+
+    /* --- Resto de la familia --- */
+    .fila { display: grid; grid-template-columns: auto 1fr; gap: 20px; padding: 26px 0; border-top: 1px solid var(--sep); }
+    .fila:last-child { border-bottom: 1px solid var(--sep); }
+    .fila .banda { width: 4px; border-radius: 4px; background: var(--acc); }
+    .fila h3 { font-size: 19px; font-weight: 800; }
+    .fila h3 .tl { color: var(--gray); font-weight: 700; }
+    .fila .estado {
+      display: inline-block; margin-left: 10px; font-size: 11.5px; font-weight: 700; letter-spacing: .04em;
+      color: var(--acc-ink, var(--acc)); background: color-mix(in srgb, var(--acc) 13%, transparent);
+      padding: 3px 9px; border-radius: 999px; vertical-align: 2px;
+    }
+    .fila p { font-size: 14.5px; color: var(--ink2); margin-top: 6px; max-width: 720px; }
+    .fila ul { margin: 10px 0 0 18px; font-size: 13.5px; color: var(--ink2); }
+    .fila li { margin-top: 4px; }
+    .fila.velocity { --acc: var(--velocity); }
+    .fila.control  { --acc: var(--control); }
+    .fila.force    { --acc: var(--force); }
+    .fila.signal   { --acc: var(--signal); --acc-ink: var(--signal-ink); }
+
+    /* --- Ciencia --- */
+    #ciencia .sec-eyebrow { color: var(--azul-pulso); }
+    .refs { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 40px; }
+    .ref { background: var(--card); border: 1px solid var(--sep); border-radius: 16px; padding: 20px; }
+    .ref h3 { font-size: 16px; font-weight: 800; }
+    .ref .autor { font-size: 12px; font-weight: 700; color: var(--azul-pulso); margin-top: 2px; }
+    .ref p { font-size: 13.5px; color: var(--ink2); margin-top: 8px; }
+    .honesta {
+      margin-top: 26px; border-left: 4px solid var(--azul-pulso); background: var(--card);
+      border-radius: 0 16px 16px 0; padding: 20px 24px; font-size: 16px; color: var(--ink);
+    }
+
+    /* --- Precios --- */
+    #precios .sec-eyebrow { color: var(--fitness); }
+    .planes { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin-top: 40px; }
+    .plan { background: var(--card); border: 1px solid var(--sep); border-radius: 16px; padding: 22px 20px; }
+    .plan .nombre { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--fitness); }
+    .plan .precio { font-size: 34px; font-weight: 900; font-variant-numeric: tabular-nums; letter-spacing: -0.5px; margin-top: 8px; }
+    .plan .precio small { font-size: 14px; font-weight: 600; color: var(--gray); letter-spacing: 0; }
+    .plan .det { font-size: 13px; color: var(--ink2); margin-top: 6px; }
+    .plan-nota { font-size: 13.5px; color: var(--gray); margin-top: 16px; }
+    .otros { margin-top: 34px; border: 1px solid var(--sep); border-radius: 16px; overflow: hidden; }
+    .otro { display: grid; grid-template-columns: 1fr auto; gap: 6px 18px; padding: 16px 20px; background: var(--card); border-top: 1px solid var(--sep); align-items: baseline; }
+    .otro:first-child { border-top: none; }
+    .otro .que { font-size: 15px; font-weight: 700; }
+    .otro .que .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 8px; background: var(--acc, var(--gray)); }
+    .otro .cuanto { font-size: 17px; font-weight: 800; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .otro .det { grid-column: 1 / -1; font-size: 13px; color: var(--ink2); }
+    .otro.control  { --acc: var(--control); }
+    .otro.velocity { --acc: var(--velocity); }
+    .otro.centros  { --acc: var(--azul-pulso); }
+
+    /* --- Centros --- */
+    .centros-band {
+      background: var(--card); border: 1px solid var(--sep); border-radius: 20px;
+      padding: 36px 32px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;
+    }
+    @media (max-width: 720px) { .centros-band { grid-template-columns: 1fr; } }
+    .centros-band h2 { font-size: clamp(22px, 3vw, 28px); }
+    .centros-band p { font-size: 15px; color: var(--ink2); margin-top: 10px; max-width: 620px; }
+
+    /* --- Lista de espera --- */
+    #lista { padding-bottom: 104px; }
+    .lista-card {
+      background: var(--card); border: 1px solid var(--sep); border-radius: 20px;
+      padding: 44px 32px; max-width: 660px; margin: 0 auto; text-align: center;
+    }
+    .lista-card h2 { font-size: clamp(24px, 3.6vw, 32px); }
+    .lista-card .lead { margin: 12px auto 0; }
+    form.alta { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 28px; text-align: left; }
+    @media (min-width: 560px) { form.alta { grid-template-columns: 1.4fr 1fr auto; } }
+    .alta input[type="email"], .alta select {
+      width: 100%; font: inherit; font-size: 15px; color: var(--ink);
+      background: var(--card-alt); border: 1px solid var(--sep); border-radius: 12px; padding: 13px 14px;
+    }
+    .alta input:focus, .alta select:focus { outline: 2px solid var(--azul-pulso); outline-offset: 1px; border-color: transparent; }
+    .alta .btn.primary { padding: 13px 22px; }
+    .alta .btn[disabled] { opacity: .6; cursor: wait; }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .form-msg { margin-top: 16px; font-size: 15px; font-weight: 600; display: none; }
+    .form-msg.ok { color: var(--green); display: block; }
+    .form-msg.mal { color: var(--red); display: block; }
+    .legal { font-size: 12.5px; color: var(--gray); margin-top: 18px; }
+    .legal a { color: var(--gray); }
+
+    /* ============ Pie (azul noche, como el símbolo manda) ============ */
+    footer { background: var(--hbg); color: var(--hmuted); padding: 44px 0; }
+    footer .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+    footer .brand { color: var(--hink); font-size: 17px; }
+    footer .brand .train { color: var(--hmuted); }
+    .familia-dots { display: flex; gap: 7px; }
+    .familia-dots i { width: 9px; height: 9px; border-radius: 50%; display: block; }
+    footer .enlaces { margin-left: auto; display: flex; gap: 18px; font-size: 13px; }
+    footer .enlaces a { color: var(--hmuted); text-decoration: none; }
+    footer .enlaces a:hover { color: var(--hink); }
+    footer .fin { width: 100%; font-size: 12.5px; border-top: 1px solid var(--hline); padding-top: 18px; margin-top: 8px; }
+  </style>
+</head>
+<body class="lang-es">
+
+  <!-- ============ Barra ============ -->
+  <div class="topbar">
+    <div class="wrap">
+      <a class="brand" href="#">
+        <svg class="logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#232C40"/><stop offset="1" stop-color="#0B0E16"/></linearGradient></defs>
+          <rect width="120" height="120" rx="28" fill="url(#g)"/>
+          <rect x="18" y="38" width="36" height="9" rx="2" fill="#F4F7FB"/><rect x="31" y="38" width="9" height="44" rx="2" fill="#F4F7FB"/>
+          <rect x="80" y="38" width="9" height="44" rx="2" fill="#F4F7FB"/><rect x="80" y="73" width="24" height="9" rx="2" fill="#F4F7FB"/>
+          <path d="M10 62 H38 l6 -18 l9 34 l7 -24 l5 12 H110" fill="none" stroke="#2E7DF6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span><span class="train">Train</span><span class="lab">Lab</span></span>
+      </a>
+      <nav class="nav">
+        <a href="#ecosistema"><span class="es">Ecosistema</span><span class="en">Ecosystem</span></a>
+        <a href="#fitness">Fitness</a>
+        <a href="#ciencia"><span class="es">Ciencia</span><span class="en">Science</span></a>
+        <a href="#precios"><span class="es">Precios</span><span class="en">Pricing</span></a>
+      </nav>
+      <div class="langs">
+        <button id="b-es" onclick="setLang('es')" aria-label="Español">ES</button>
+        <button id="b-en" onclick="setLang('en')" aria-label="English">EN</button>
+      </div>
+      <a class="top-cta" href="#lista"><span class="es">Lista de espera</span><span class="en">Waitlist</span></a>
+    </div>
+  </div>
+
+  <!-- ============ Héroe ============ -->
+  <header class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow"><span class="es">Ecosistema de entrenamiento deportivo</span><span class="en">Sports training ecosystem</span></p>
+        <h1>
+          <span class="es">Entrena con <span class="accent">datos</span>, no con sensaciones.</span>
+          <span class="en">Coach with <span class="accent">data</span>, not guesswork.</span>
+        </h1>
+        <p class="sub">
+          <span class="es">TrainLab une planificación, control científico de la carga, velocidad, recuperación y fuerza en una familia de productos que comparten una misma cuenta. Para entrenadores, centros deportivos y atletas.</span>
+          <span class="en">TrainLab brings planning, scientific load management, velocity, recovery and strength together in a family of products that share one account. For coaches, training centers and athletes.</span>
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="#lista"><span class="es">Únete a la lista de espera</span><span class="en">Join the waitlist</span></a>
+          <a class="btn ghost" href="#ecosistema"><span class="es">Descubre el ecosistema</span><span class="en">Explore the ecosystem</span></a>
+        </div>
+        <p class="cta-note"><span class="es">Beta con plazas limitadas. Sin compromiso.</span><span class="en">Limited beta spots. No commitment.</span></p>
+      </div>
+
+      <div class="app-card" role="img" aria-label="Ejemplo de panel de la app con la carga del atleta">
+        <div class="cab">
+          <span class="lbl"><span class="es">Resumen semanal</span><span class="en">Weekly summary</span></span>
+          <span class="estado-chip"><span class="es">Al día</span><span class="en">Up to date</span></span>
+        </div>
+        <div class="dato">1,12</div>
+        <div class="dato-sub"><span class="es">ACWR · carga aguda / crónica</span><span class="en">ACWR · acute / chronic load</span></div>
+        <span class="zona"><span class="es">En zona óptima</span><span class="en">In the optimal zone</span></span>
+        <div class="mini-grid">
+          <div class="mini"><div class="v">3.240</div><div class="k"><span class="es">sRPE semana (UA)</span><span class="en">Weekly sRPE (AU)</span></div></div>
+          <div class="mini"><div class="v">1,8</div><div class="k"><span class="es">Monotonía</span><span class="en">Monotony</span></div></div>
+          <div class="mini"><div class="v">52</div><div class="k"><span class="es">FC reposo (ppm)</span><span class="en">Resting HR (bpm)</span></div></div>
+        </div>
+        <div class="bars" aria-hidden="true">
+          <i style="height:42%"></i><i style="height:66%"></i><i style="height:30%"></i><i style="height:82%"></i><i style="height:56%"></i><i style="height:22%"></i><i class="hoy" style="height:72%"></i>
+        </div>
+      </div>
+    </div>
+    <svg class="pulse-svg" viewBox="0 0 1200 90" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 60 H340 l18 -28 l26 52 l20 -38 l14 20 H760 l16 -24 l24 44 l18 -32 l12 16 H1200" />
+    </svg>
+  </header>
+
+  <!-- ============ Ecosistema ============ -->
+  <section id="ecosistema">
+    <div class="wrap">
+      <p class="sec-eyebrow" style="color: var(--azul-pulso);"><span class="es">El ecosistema</span><span class="en">The ecosystem</span></p>
+      <h2>
+        <span class="es">Completos por separado. Imbatibles juntos.</span>
+        <span class="en">Complete on their own. Unbeatable together.</span>
+      </h2>
+      <p class="lead">
+        <span class="es">Como un iPhone y un Mac: cada producto funciona solo, pero juntos crean un flujo de trabajo que ninguno tiene por separado. Cinco productos, una cuenta y una sola foto del atleta construida desde todos los ángulos.</span>
+        <span class="en">Like an iPhone and a Mac: each product stands on its own, but together they create a workflow none of them has alone. Five products, one account, and a single picture of the athlete built from every angle.</span>
+      </p>
+
+      <div class="prods">
+        <div class="prod fitness">
+          <span class="apellido">Fitness</span>
+          <h3><span class="tl">TrainLab</span> Fitness</h3>
+          <p><span class="es">La app de gestión para entrenadores y centros: planifica, registra, mide la carga y habla con tus atletas. El centro del ecosistema.</span><span class="en">The management app for coaches and centers: plan, log, measure load and talk to your athletes. The heart of the ecosystem.</span></p>
+          <span class="estado"><span class="es">En beta cerrada</span><span class="en">In closed beta</span></span>
+        </div>
+        <div class="prod velocity">
+          <span class="apellido">Velocity</span>
+          <h3><span class="tl">TrainLab</span> Velocity</h3>
+          <p><span class="es">Entrenamiento basado en velocidad con un sensor propio en la barra, a una fracción del precio habitual.</span><span class="en">Velocity based training with its own bar sensor, at a fraction of the usual price.</span></p>
+          <span class="estado"><span class="es">App lista · sensor encargado</span><span class="en">App ready · sensor ordered</span></span>
+        </div>
+        <div class="prod control">
+          <span class="apellido">Control</span>
+          <h3><span class="tl">TrainLab</span> Control</h3>
+          <p><span class="es">La recuperación del atleta cruzada con su carga real de entrenamiento. Con la pulsera TrainLab o con tu propio reloj.</span><span class="en">Athlete recovery crossed with their real training load. With the TrainLab band or your own watch.</span></p>
+          <span class="estado"><span class="es">Pulsera en validación</span><span class="en">Band in validation</span></span>
+        </div>
+        <div class="prod force">
+          <span class="apellido">Force</span>
+          <h3><span class="tl">TrainLab</span> Force</h3>
+          <p><span class="es">Dinamómetro de tracción para fuerza isométrica, asimetrías y readaptación de lesiones.</span><span class="en">Pulling dynamometer for isometric strength, asymmetries and return to sport.</span></p>
+          <span class="estado"><span class="es">En desarrollo</span><span class="en">In development</span></span>
+        </div>
+        <div class="prod signal">
+          <span class="apellido">Signal</span>
+          <h3><span class="tl">TrainLab</span> Signal</h3>
+          <p><span class="es">Electromiografía para ver qué músculo trabaja de verdad en cada ejercicio.</span><span class="en">Electromyography to see which muscle is really working in each exercise.</span></p>
+          <span class="estado"><span class="es">En diseño</span><span class="en">In design</span></span>
+        </div>
+      </div>
+
+      <div class="integrada">
+        <span class="es"><b>Nadie necesita todas las apps para tener un producto redondo.</b> Fitness ya trae de serie una versión ligera de Velocity (medición por vídeo) y de Control (lectura de la salud del iPhone). Cada producto de la familia es el salto profesional de algo que ya probaste dentro de Fitness.</span>
+        <span class="en"><b>Nobody needs every app to get a complete product.</b> Fitness already ships with a light version of Velocity (video based measurement) and Control (iPhone health data). Each product in the family is the professional upgrade of something you already tried inside Fitness.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Fitness ============ -->
+  <section id="fitness">
+    <div class="wrap">
+      <p class="sec-eyebrow">TrainLab Fitness</p>
+      <h2>
+        <span class="es">Todo tu servicio, en una sola app.</span>
+        <span class="en">Your whole service, in a single app.</span>
+      </h2>
+      <p class="lead">
+        <span class="es">Lo que hoy vive en hojas de cálculo, notas sueltas y tres apps distintas, junto y conectado: el plan, la ejecución, la carga y la conversación con cada atleta.</span>
+        <span class="en">What lives today in spreadsheets, loose notes and three different apps, together and connected: the plan, the execution, the load and the conversation with every athlete.</span>
+      </p>
+      <div class="feats">
+        <div class="feat">
+          <h3><span class="es">Carga bajo control</span><span class="en">Load under control</span></h3>
+          <p><span class="es">sRPE, ACWR y monotonía con semáforos claros. El riesgo de lesión se ve venir, no se descubre tarde.</span><span class="en">sRPE, ACWR and monotony with clear traffic lights. Injury risk is seen coming, not discovered late.</span></p>
+        </div>
+        <div class="feat">
+          <h3><span class="es">Valoración de 9 puntos</span><span class="en">9 point assessment</span></h3>
+          <p><span class="es">La batería inicial conectada al día a día, con informe profesional en PDF para entregar al atleta.</span><span class="en">The initial test battery connected to daily training, with a professional PDF report for the athlete.</span></p>
+        </div>
+        <div class="feat">
+          <h3><span class="es">VBT por vídeo incluido</span><span class="en">Video VBT included</span></h3>
+          <p><span class="es">Mide la velocidad de la barra y el salto con la cámara, sin coste por análisis.</span><span class="en">Measure bar velocity and jump height with the camera, with no per analysis cost.</span></p>
+        </div>
+        <div class="feat">
+          <h3><span class="es">La salud del iPhone</span><span class="en">iPhone health data</span></h3>
+          <p><span class="es">El atleta autoriza sus datos al darse de alta: sueño, pasos y frecuencia cardiaca entran solos en su expediente.</span><span class="en">The athlete authorizes their data on signup: sleep, steps and heart rate flow into their record on their own.</span></p>
+        </div>
+        <div class="feat">
+          <h3><span class="es">Plan, registro y chat</span><span class="en">Plan, log and chat</span></h3>
+          <p><span class="es">Lo que planificas y lo que ejecuta tu atleta viven en el mismo sitio, en tiempo real.</span><span class="en">What you plan and what your athlete executes live in the same place, in real time.</span></p>
+        </div>
+        <div class="feat">
+          <h3><span class="es">Multideporte</span><span class="en">Multi sport</span></h3>
+          <p><span class="es">Fuerza, resistencia e híbrido en la misma herramienta, con las métricas propias de cada mundo.</span><span class="en">Strength, endurance and hybrid in one tool, with the right metrics for each world.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ El resto de la familia ============ -->
+  <section id="familia" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="fila velocity" id="velocity">
+        <div class="banda"></div>
+        <div>
+          <h3><span class="tl">TrainLab</span> Velocity <span class="estado"><span class="es">App lista · sensor encargado</span><span class="en">App ready · sensor ordered</span></span></h3>
+          <p><span class="es">La velocidad de la barra es la medida objetiva del esfuerzo real. Velocity la trae a tu gimnasio con un sensor propio y una metodología clara, sin pagar los cientos de euros de los sensores de siempre.</span><span class="en">Bar velocity is the objective measure of real effort. Velocity brings it to your gym with its own sensor and a clear methodology, without paying the hundreds of euros of the usual sensors.</span></p>
+          <ul>
+            <li><span class="es">Sensor en la barra con la app incluida, sin suscripción.</span><span class="en">Bar sensor with the app included, no subscription.</span></li>
+            <li><span class="es">Perfil fuerza-velocidad y control del esfuerzo serie a serie.</span><span class="en">Force velocity profile and set by set effort control.</span></li>
+            <li><span class="es">Conectado con Fitness: el dato entra solo en el expediente del atleta.</span><span class="en">Connected to Fitness: the data flows straight into the athlete record.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fila control" id="control">
+        <div class="banda"></div>
+        <div>
+          <h3><span class="tl">TrainLab</span> Control <span class="estado"><span class="es">Pulsera en validación</span><span class="en">Band in validation</span></span></h3>
+          <p><span class="es">Las pulseras de recuperación miran el descanso de forma aislada. Control lo cruza con la carga real que planifica el entrenador, y le cuenta a los dos cómo llega el atleta a la sesión de hoy.</span><span class="en">Recovery wearables look at rest in isolation. Control crosses it with the real load the coach plans, and tells both how the athlete arrives at today's session.</span></p>
+          <ul>
+            <li><span class="es">Con la pulsera TrainLab o con tu propio reloj vía Apple Salud.</span><span class="en">With the TrainLab band or your own watch via Apple Health.</span></li>
+            <li><span class="es">Sueño, frecuencia cardiaca y recuperación en un feedback directo.</span><span class="en">Sleep, heart rate and recovery in direct feedback.</span></li>
+            <li><span class="es">La pulsera incluye la suscripción de Control para siempre.</span><span class="en">The band includes the Control subscription forever.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fila force" id="force">
+        <div class="banda"></div>
+        <div>
+          <h3><span class="tl">TrainLab</span> Force <span class="estado"><span class="es">En desarrollo</span><span class="en">In development</span></span></h3>
+          <p><span class="es">La fuerza isométrica y las asimetrías son la base de la readaptación de lesiones. Force es un dinamómetro de tracción asequible cuyo resultado cae en el mismo expediente que usan el entrenador y el readaptador.</span><span class="en">Isometric strength and asymmetries are the foundation of return to sport. Force is an affordable pulling dynamometer whose results land in the same record the coach and the rehab professional already use.</span></p>
+          <ul>
+            <li><span class="es">Tests isométricos con criterios claros de progresión.</span><span class="en">Isometric tests with clear progression criteria.</span></li>
+            <li><span class="es">Asimetrías entre lados, medidas y seguidas en el tiempo.</span><span class="en">Side to side asymmetries, measured and tracked over time.</span></li>
+            <li><span class="es">Pensado junto a los criterios internacionales de vuelta al deporte.</span><span class="en">Built around international return to sport criteria.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fila signal" id="signal">
+        <div class="banda"></div>
+        <div>
+          <h3><span class="tl">TrainLab</span> Signal <span class="estado"><span class="es">En diseño</span><span class="en">In design</span></span></h3>
+          <p><span class="es">La electromiografía enseña qué músculo trabaja de verdad en cada ejercicio. Signal es el quinto miembro de la familia y completa la foto del atleta: lo que planificas, lo que mueves, cómo te recuperas, cuánta fuerza tienes y qué músculo la produce.</span><span class="en">Electromyography shows which muscle is really working in each exercise. Signal is the fifth member of the family and completes the athlete picture: what you plan, what you move, how you recover, how much strength you have and which muscle produces it.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Ciencia ============ -->
+  <section id="ciencia">
+    <div class="wrap">
+      <p class="sec-eyebrow"><span class="es">La ciencia</span><span class="en">The science</span></p>
+      <h2>
+        <span class="es">Cada número tiene una referencia detrás.</span>
+        <span class="en">Every number has a reference behind it.</span>
+      </h2>
+      <p class="lead">
+        <span class="es">TrainLab no inventa métricas: implementa métodos publicados y revisados por pares. Estos son algunos de los que ya viven dentro del ecosistema.</span>
+        <span class="en">TrainLab does not invent metrics: it implements published, peer reviewed methods. These are some of the ones already living inside the ecosystem.</span>
+      </p>
+      <div class="refs">
+        <div class="ref">
+          <h3><span class="es">Carga sRPE</span><span class="en">sRPE load</span></h3>
+          <div class="autor">Foster, 2001</div>
+          <p><span class="es">La carga interna de cada sesión, cuantificada en unidades arbitrarias a partir del esfuerzo percibido.</span><span class="en">The internal load of each session, quantified in arbitrary units from perceived exertion.</span></p>
+        </div>
+        <div class="ref">
+          <h3>ACWR</h3>
+          <div class="autor">Hulin · Gabbett</div>
+          <p><span class="es">El ratio de carga aguda frente a crónica que anticipa el riesgo de lesión antes de que aparezca.</span><span class="en">The acute to chronic workload ratio that anticipates injury risk before it shows up.</span></p>
+        </div>
+        <div class="ref">
+          <h3><span class="es">Entrenamiento por velocidad</span><span class="en">Velocity based training</span></h3>
+          <div class="autor">González-Badillo</div>
+          <p><span class="es">La velocidad de la barra como medida objetiva del esfuerzo real, en lugar del porcentaje teórico.</span><span class="en">Bar velocity as the objective measure of real effort, instead of a theoretical percentage.</span></p>
+        </div>
+        <div class="ref">
+          <h3><span class="es">Perfil fuerza-velocidad</span><span class="en">Force velocity profile</span></h3>
+          <div class="autor">Samozino · Morin</div>
+          <p><span class="es">El desequilibrio entre fuerza y velocidad de cada atleta, que orienta hacia dónde entrenar.</span><span class="en">Each athlete's imbalance between force and velocity, which guides what to train next.</span></p>
+        </div>
+        <div class="ref">
+          <h3><span class="es">Salto por vídeo</span><span class="en">Video jump testing</span></h3>
+          <div class="autor">Balsalobre-Fernández</div>
+          <p><span class="es">La altura del salto medida con la cámara del móvil, validada científicamente frente a plataformas.</span><span class="en">Jump height measured with the phone camera, scientifically validated against force platforms.</span></p>
+        </div>
+        <div class="ref">
+          <h3><span class="es">Vuelta al deporte</span><span class="en">Return to sport</span></h3>
+          <div class="autor"><span class="es">Consenso de Berna, 2016</span><span class="en">Bern consensus, 2016</span></div>
+          <p><span class="es">Los criterios internacionales que guían la readaptación de lesiones paso a paso.</span><span class="en">The international criteria that guide return to sport step by step.</span></p>
+        </div>
+      </div>
+      <div class="honesta">
+        <span class="es">Y cuando no hay datos suficientes para un cálculo fiable, la app lo dice. Antes honesto que impresionante.</span>
+        <span class="en">And when there is not enough data for a reliable calculation, the app says so. Honest before impressive.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Precios ============ -->
+  <section id="precios">
+    <div class="wrap">
+      <p class="sec-eyebrow"><span class="es">Precios</span><span class="en">Pricing</span></p>
+      <h2>
+        <span class="es">Rigor de laboratorio, a precio europeo.</span>
+        <span class="en">Laboratory rigor, at a European price.</span>
+      </h2>
+      <p class="lead">
+        <span class="es">La suscripción de Fitness crece contigo: pagas según los atletas que gestionas, con 14 días de prueba y unos 2 meses gratis en el plan anual. Precios de lanzamiento, se revisarán con los primeros clientes.</span>
+        <span class="en">The Fitness subscription grows with you: you pay for the athletes you manage, with a 14 day trial and about 2 months free on the yearly plan. Launch prices, to be reviewed with the first customers.</span>
+      </p>
+
+      <div class="planes">
+        <div class="plan">
+          <div class="nombre">Solo</div>
+          <div class="precio">2,99 €<small>/<span class="es">mes</span><span class="en">mo</span></small></div>
+          <div class="det"><span class="es">1 atleta</span><span class="en">1 athlete</span></div>
+        </div>
+        <div class="plan">
+          <div class="nombre">Coach</div>
+          <div class="precio">5,99 €<small>/<span class="es">mes</span><span class="en">mo</span></small></div>
+          <div class="det"><span class="es">Hasta 5 atletas</span><span class="en">Up to 5 athletes</span></div>
+        </div>
+        <div class="plan">
+          <div class="nombre">Pro</div>
+          <div class="precio">7,99 €<small>/<span class="es">mes</span><span class="en">mo</span></small></div>
+          <div class="det"><span class="es">Hasta 10 atletas</span><span class="en">Up to 10 athletes</span></div>
+        </div>
+        <div class="plan">
+          <div class="nombre">Club</div>
+          <div class="precio">9,99 €<small>/<span class="es">mes</span><span class="en">mo</span></small></div>
+          <div class="det"><span class="es">Más de 10 atletas</span><span class="en">More than 10 athletes</span></div>
+        </div>
+      </div>
+
+      <div class="otros">
+        <div class="otro control">
+          <div class="que"><span class="dot"></span><span class="es">Control, suscripción</span><span class="en">Control, subscription</span></div>
+          <div class="cuanto">2,99 €/<span class="es">mes</span><span class="en">mo</span></div>
+          <div class="det"><span class="es">Con tu propio reloj o pulsera, los datos llegan por Apple Salud.</span><span class="en">With your own watch or band, data arrives via Apple Health.</span></div>
+        </div>
+        <div class="otro control">
+          <div class="que"><span class="dot"></span><span class="es">Pulsera TrainLab Control</span><span class="en">TrainLab Control band</span></div>
+          <div class="cuanto">69 €</div>
+          <div class="det"><span class="es">Con la suscripción de Control incluida para siempre.</span><span class="en">With the Control subscription included forever.</span></div>
+        </div>
+        <div class="otro velocity">
+          <div class="que"><span class="dot"></span><span class="es">Sensor TrainLab Velocity</span><span class="en">TrainLab Velocity sensor</span></div>
+          <div class="cuanto"><span class="es">unos 99 €</span><span class="en">about €99</span></div>
+          <div class="det"><span class="es">Con la app incluida, sin suscripción.</span><span class="en">With the app included, no subscription.</span></div>
+        </div>
+        <div class="otro centros">
+          <div class="que"><span class="dot"></span><span class="es">Centros y clubes</span><span class="en">Centers and clubs</span></div>
+          <div class="cuanto"><span class="es">desde 19,99 €/mes</span><span class="en">from €19.99/mo</span></div>
+          <div class="det"><span class="es">Según el tamaño de la plantilla de entrenadores.</span><span class="en">Based on the size of the coaching staff.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Centros ============ -->
+  <section id="centros" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="centros-band">
+        <div>
+          <h2><span class="es">¿Llevas un centro o un club?</span><span class="en">Running a center or a club?</span></h2>
+          <p><span class="es">Un panel propio para agrupar a tus entrenadores, supervisar la calidad del servicio y reducir el riesgo de lesión de la plantilla. Cada entrenador conserva su cuenta y el centro paga una sola factura.</span><span class="en">A dedicated panel to group your coaches, supervise service quality and reduce squad injury risk. Each coach keeps their account and the center pays a single invoice.</span></p>
+        </div>
+        <a class="btn primary" href="mailto:companytrainlab@gmail.com?subject=TrainLab%20para%20centros"><span class="es">Escríbenos</span><span class="en">Write to us</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Lista de espera ============ -->
+  <section id="lista">
+    <div class="wrap">
+      <div class="lista-card">
+        <h2><span class="es">Sé de los primeros.</span><span class="en">Be among the first.</span></h2>
+        <p class="lead">
+          <span class="es">Déjanos tu email y te avisamos en cuanto se abran plazas de la beta. Nada más: ni cadenas de correos ni spam.</span>
+          <span class="en">Leave your email and we will let you know as soon as beta spots open. Nothing else: no email chains, no spam.</span>
+        </p>
+        <form class="alta" id="form-alta" novalidate>
+          <label class="hp" aria-hidden="true">
+            <span class="es">No rellenes este campo</span><span class="en">Do not fill this field</span>
+            <input type="text" name="telefono" tabindex="-1" autocomplete="off" />
+          </label>
+          <input type="email" name="email" id="f-email" required autocomplete="email" inputmode="email" placeholder="tu@email.com" aria-label="Email" />
+          <select name="perfil" id="f-perfil" aria-label="Perfil">
+            <option value="entrenador">Soy entrenador/a</option>
+            <option value="centro">Llevo un centro o club</option>
+            <option value="atleta">Soy atleta</option>
+            <option value="otro">Curiosidad</option>
+          </select>
+          <button class="btn primary" type="submit" id="f-btn"><span class="es">Apuntarme</span><span class="en">Sign up</span></button>
+        </form>
+        <p class="form-msg" id="form-msg" role="status"></p>
+        <p class="legal">
+          <span class="es">Solo usaremos tu email para avisarte del lanzamiento. Puedes pedir que lo borremos cuando quieras. Más en la <a href="privacidad.html">política de privacidad</a>.</span>
+          <span class="en">We will only use your email to tell you about the launch. You can ask us to delete it any time. More in the <a href="privacidad.html">privacy policy</a>.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Pie ============ -->
+  <footer>
+    <div class="wrap">
+      <a class="brand" href="#" style="text-decoration:none;">
+        <svg class="logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#232C40"/><stop offset="1" stop-color="#0B0E16"/></linearGradient></defs>
+          <rect width="120" height="120" rx="28" fill="url(#g2)"/>
+          <rect x="18" y="38" width="36" height="9" rx="2" fill="#F4F7FB"/><rect x="31" y="38" width="9" height="44" rx="2" fill="#F4F7FB"/>
+          <rect x="80" y="38" width="9" height="44" rx="2" fill="#F4F7FB"/><rect x="80" y="73" width="24" height="9" rx="2" fill="#F4F7FB"/>
+          <path d="M10 62 H38 l6 -18 l9 34 l7 -24 l5 12 H110" fill="none" stroke="#2E7DF6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span><span class="train">Train</span><span class="lab" style="color: var(--azul-pulso);">Lab</span></span>
+      </a>
+      <div class="familia-dots" title="Fitness · Velocity · Control · Force · Signal" aria-label="La familia TrainLab">
+        <i style="background: var(--fitness);"></i><i style="background: var(--velocity);"></i><i style="background: var(--control);"></i><i style="background: var(--force);"></i><i style="background: var(--signal);"></i>
+      </div>
+      <div class="enlaces">
+        <a href="mailto:companytrainlab@gmail.com"><span class="es">Contacto</span><span class="en">Contact</span></a>
+        <a href="privacidad.html"><span class="es">Privacidad</span><span class="en">Privacy</span></a>
+      </div>
+      <div class="fin">
+        <span class="es">© <span id="anio">2026</span> TrainLab · El laboratorio del entrenamiento · José David Pérez Barrera</span>
+        <span class="en">© <span id="anio-en">2026</span> TrainLab · The training laboratory · José David Pérez Barrera</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ---- Idioma: recuerda la elección; si no hay, el del navegador ----
+    var TXT = {
+      es: {
+        title: "TrainLab: entrena con datos, no con sensaciones",
+        email: "tu@email.com",
+        perfiles: ["Soy entrenador/a", "Llevo un centro o club", "Soy atleta", "Curiosidad"],
+        ok: "Hecho. Te avisaremos en cuanto haya plazas.",
+        ya: "Ya estabas en la lista: todo en orden.",
+        mal: "No se pudo enviar. Prueba de nuevo en un momento.",
+        email_mal: "Ese email no parece válido."
+      },
+      en: {
+        title: "TrainLab: coach with data, not guesswork",
+        email: "you@email.com",
+        perfiles: ["I am a coach", "I run a center or club", "I am an athlete", "Just curious"],
+        ok: "Done. We will let you know as soon as spots open.",
+        ya: "You were already on the list: all good.",
+        mal: "Could not send. Please try again in a moment.",
+        email_mal: "That email does not look valid."
+      }
+    };
+    function setLang(l) {
+      document.body.className = "lang-" + l;
+      document.documentElement.lang = l;
+      document.title = TXT[l].title;
+      document.getElementById("f-email").placeholder = TXT[l].email;
+      var opts = document.getElementById("f-perfil").options;
+      for (var i = 0; i < opts.length; i++) opts[i].textContent = TXT[l].perfiles[i];
+      try { localStorage.setItem("tl-lang", l); } catch (e) {}
+    }
+    (function () {
+      var guardado = null;
+      try { guardado = localStorage.getItem("tl-lang"); } catch (e) {}
+      var l = guardado || ((navigator.language || "es").toLowerCase().indexOf("es") === 0 ? "es" : "en");
+      setLang(l === "en" ? "en" : "es");
+      var y = String(new Date().getFullYear());
+      document.getElementById("anio").textContent = y;
+      document.getElementById("anio-en").textContent = y;
+    })();
+
+    // ---- Lista de espera: la Edge Function `lista-espera` ----
+    var API = "https://owzxkjnxipjalnprghmy.supabase.co/functions/v1/lista-espera";
+    var form = document.getElementById("form-alta");
+    var msg = document.getElementById("form-msg");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var l = document.body.className === "lang-en" ? "en" : "es";
+      var email = document.getElementById("f-email").value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        msg.className = "form-msg mal"; msg.textContent = TXT[l].email_mal; return;
+      }
+      var btn = document.getElementById("f-btn");
+      btn.disabled = true; msg.className = "form-msg";
+      fetch(API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email,
+          perfil: document.getElementById("f-perfil").value,
+          idioma: l,
+          telefono: form.elements["telefono"].value
+        })
+      }).then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+        .then(function (res) {
+          if (res.ok && res.d.ok) {
+            form.style.display = "none";
+            msg.className = "form-msg ok";
+            msg.textContent = res.d.ya_apuntado ? TXT[l].ya : TXT[l].ok;
+          } else {
+            btn.disabled = false;
+            msg.className = "form-msg mal";
+            msg.textContent = (res.d && res.d.error) || TXT[l].mal;
+          }
+        })
+        .catch(function () {
+          btn.disabled = false;
+          msg.className = "form-msg mal"; msg.textContent = TXT[l].mal;
+        });
+    });
+  </script>
+</body>
+</html>

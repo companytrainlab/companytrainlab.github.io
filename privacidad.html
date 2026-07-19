@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrainLab · Privacidad</title>
+  <meta name="description" content="Política de privacidad de la web de TrainLab y de su lista de espera." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="theme-color" content="#141A28" />
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #F2F2F7; --card: #FFFFFF; --sep: #E5E5EA;
+      --ink: #1C1C1E; --ink2: #3A3A3C; --gray: #8E8E93;
+      --azul-pulso: #2E7DF6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0E1117; --card: #181F2E; --sep: #2B3344;
+        --ink: #EAEEF6; --ink2: #AEB7C8; --gray: #79839A;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+      background: var(--bg); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    body.lang-es .en { display: none; } body.lang-en .es { display: none; }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 800; color: var(--ink); text-decoration: none; }
+    .brand .train { color: var(--gray); } .brand .lab { color: var(--azul-pulso); }
+    .logo { width: 34px; height: 34px; border-radius: 9px; }
+    .langs button { background: transparent; border: 1px solid var(--sep); color: var(--gray); border-radius: 8px; padding: 5px 10px; font-size: 12.5px; font-weight: 700; cursor: pointer; }
+    body.lang-es #b-es, body.lang-en #b-en { background: var(--azul-pulso); border-color: var(--azul-pulso); color: #fff; }
+    h1 { font-size: clamp(26px, 5vw, 34px); font-weight: 800; letter-spacing: -0.5px; }
+    h2 { font-size: 18px; font-weight: 800; margin-top: 32px; }
+    p, li { font-size: 15px; color: var(--ink2); margin-top: 10px; }
+    ul { margin-left: 20px; }
+    a { color: var(--azul-pulso); }
+    .fecha { font-size: 13px; color: var(--gray); margin-top: 8px; }
+  </style>
+</head>
+<body class="lang-es">
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="index.html">
+        <svg class="logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#232C40"/><stop offset="1" stop-color="#0B0E16"/></linearGradient></defs>
+          <rect width="120" height="120" rx="28" fill="url(#g)"/>
+          <rect x="18" y="38" width="36" height="9" rx="2" fill="#F4F7FB"/><rect x="31" y="38" width="9" height="44" rx="2" fill="#F4F7FB"/>
+          <rect x="80" y="38" width="9" height="44" rx="2" fill="#F4F7FB"/><rect x="80" y="73" width="24" height="9" rx="2" fill="#F4F7FB"/>
+          <path d="M10 62 H38 l6 -18 l9 34 l7 -24 l5 12 H110" fill="none" stroke="#2E7DF6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span><span class="train">Train</span><span class="lab">Lab</span></span>
+      </a>
+      <div class="langs">
+        <button id="b-es" onclick="setLang('es')">ES</button>
+        <button id="b-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+
+    <h1><span class="es">Política de privacidad</span><span class="en">Privacy policy</span></h1>
+    <p class="fecha"><span class="es">Última actualización: julio de 2026</span><span class="en">Last updated: July 2026</span></p>
+
+    <h2><span class="es">Quién es el responsable</span><span class="en">Who is responsible</span></h2>
+    <p>
+      <span class="es">José David Pérez Barrera, responsable de la marca TrainLab. Para cualquier asunto de privacidad puedes escribir a <a href="mailto:companytrainlab@gmail.com">companytrainlab@gmail.com</a>.</span>
+      <span class="en">José David Pérez Barrera, responsible for the TrainLab brand. For any privacy matter you can write to <a href="mailto:companytrainlab@gmail.com">companytrainlab@gmail.com</a>.</span>
+    </p>
+
+    <h2><span class="es">Qué datos recoge esta web</span><span class="en">What data this website collects</span></h2>
+    <p>
+      <span class="es">Esta web no usa cookies ni herramientas de analítica ni rastreadores. El único dato personal que recoge es el que tú dejas voluntariamente en el formulario de la lista de espera:</span>
+      <span class="en">This website uses no cookies, no analytics tools and no trackers. The only personal data it collects is what you voluntarily leave in the waitlist form:</span>
+    </p>
+    <ul>
+      <li><span class="es">Tu dirección de email.</span><span class="en">Your email address.</span></li>
+      <li><span class="es">El perfil que elijas (entrenador, centro, atleta u otro) y el idioma en el que navegabas.</span><span class="en">The profile you choose (coach, center, athlete or other) and the language you were browsing in.</span></li>
+      <li><span class="es">La fecha del alta.</span><span class="en">The signup date.</span></li>
+    </ul>
+
+    <h2><span class="es">Para qué se usa</span><span class="en">What it is used for</span></h2>
+    <p>
+      <span class="es">Para una sola cosa: avisarte del lanzamiento de TrainLab y de la apertura de plazas de la beta. La base legal es tu consentimiento al enviar el formulario. No se usa para publicidad de terceros ni se cede ni se vende a nadie.</span>
+      <span class="en">For one thing only: to tell you about the TrainLab launch and the opening of beta spots. The legal basis is your consent when submitting the form. It is not used for third party advertising, and it is never shared or sold.</span>
+    </p>
+
+    <h2><span class="es">Dónde se guarda</span><span class="en">Where it is stored</span></h2>
+    <p>
+      <span class="es">En la base de datos de TrainLab, alojada en Supabase en servidores de la Unión Europea, con acceso restringido.</span>
+      <span class="en">In the TrainLab database, hosted on Supabase on European Union servers, with restricted access.</span>
+    </p>
+
+    <h2><span class="es">Cuánto tiempo</span><span class="en">For how long</span></h2>
+    <p>
+      <span class="es">Hasta que se complete el lanzamiento o hasta que pidas la baja, lo que llegue antes.</span>
+      <span class="en">Until the launch is complete or until you ask to be removed, whichever comes first.</span>
+    </p>
+
+    <h2><span class="es">Tus derechos</span><span class="en">Your rights</span></h2>
+    <p>
+      <span class="es">Puedes pedir acceso, corrección o borrado de tu email en cualquier momento escribiendo a <a href="mailto:companytrainlab@gmail.com">companytrainlab@gmail.com</a>. Se atiende sin vueltas: pides el borrado y se borra.</span>
+      <span class="en">You can request access, correction or deletion of your email at any time by writing to <a href="mailto:companytrainlab@gmail.com">companytrainlab@gmail.com</a>. No hoops: you ask for deletion and it gets deleted.</span>
+    </p>
+
+    <p style="margin-top: 40px;"><a href="index.html"><span class="es">← Volver a TrainLab</span><span class="en">← Back to TrainLab</span></a></p>
+  </div>
+  <script>
+    function setLang(l) {
+      document.body.className = "lang-" + l;
+      document.documentElement.lang = l;
+      try { localStorage.setItem("tl-lang", l); } catch (e) {}
+    }
+    (function () {
+      var g = null; try { g = localStorage.getItem("tl-lang"); } catch (e) {}
+      setLang(g === "en" ? "en" : "es");
+    })();
+  </script>
+</body>
+</html>
