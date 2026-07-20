@@ -39,7 +39,7 @@
       { "@type": "Question", "name": "¿Cuándo sale TrainLab?", "acceptedAnswer": { "@type": "Answer", "text": "Fitness está en beta cerrada, madurando con un grupo pequeño antes de llegar a la App Store. La lista de espera es la puerta: en cuanto se abren plazas, avisamos por orden de llegada." } },
       { "@type": "Question", "name": "¿Funciona en Android?", "acceptedAnswer": { "@type": "Answer", "text": "Todavía no: TrainLab llega primero a iPhone. Si tienes Android, apúntate a la lista de espera y dínoslo en el formulario: ese dato decide cuándo damos el salto." } },
       { "@type": "Question", "name": "¿Qué pasa con mis datos y los de mis atletas?", "acceptedAnswer": { "@type": "Answer", "text": "Viven en servidores de la Unión Europea, protegidos con seguridad a nivel de fila. La web no usa cookies ni rastreadores, y el borrado se pide por email y se hace." } },
-      { "@type": "Question", "name": "¿Cuánto cuesta TrainLab?", "acceptedAnswer": { "@type": "Answer", "text": "Los precios están en proceso mientras la app sigue en desarrollo. Los de partida: Fitness por tramos según los atletas que gestionas, de 2,99 a 9,99 euros al mes, con 14 días de prueba y unos 2 meses gratis en el plan anual." } },
+      { "@type": "Question", "name": "¿Cuánto cuesta TrainLab?", "acceptedAnswer": { "@type": "Answer", "text": "Los precios están en proceso mientras la app sigue en desarrollo. Los de partida: Fitness por tramos según los atletas que gestionas, de 4,99 a 21,99 euros al mes, con 14 días de prueba y unos 2 meses gratis en el plan anual. La suscripción de Control cuesta 2,99 euros al mes. El hardware y los próximos productos (Force, Signal) están en desarrollo, con precio por definir." } },
       { "@type": "Question", "name": "¿Necesito comprar algún aparato?", "acceptedAnswer": { "@type": "Answer", "text": "No. Fitness es un producto completo solo con la app. El sensor de Velocity, la pulsera de Control y el dinamómetro de Force son el salto profesional opcional." } },
       { "@type": "Question", "name": "¿Cómo entro en la beta?", "acceptedAnswer": { "@type": "Answer", "text": "Apuntándote a la lista de espera. Las plazas son limitadas a propósito para cuidar de verdad a los primeros entrenadores." } },
       { "@type": "Question", "name": "¿Sirve para mi deporte?", "acceptedAnswer": { "@type": "Answer", "text": "TrainLab es multideporte: fuerza, resistencia e híbrido, cada uno con sus métricas propias." } },
@@ -278,7 +278,9 @@
       color: var(--viz-force); background: color-mix(in srgb, var(--orange) 13%, transparent);
       padding: 5px 12px; border-radius: 999px;
     }
-    .planes { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin-top: 40px; }
+    .planes { display: grid; grid-template-columns: repeat(auto-fit, minmax(158px, 1fr)); gap: 14px; margin-top: 40px; }
+    .plan .nombre-atleta { color: var(--azul-pulso); }
+    .otro .pendiente { font-size: 13.5px; font-weight: 700; color: var(--viz-force); white-space: nowrap; }
     .plan { background: var(--card); border: 1px solid var(--sep); border-radius: 16px; padding: 22px 20px; }
     .plan .nombre { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--fitness); }
     .plan .precio { font-size: 34px; font-weight: 900; font-variant-numeric: tabular-nums; letter-spacing: -0.5px; margin-top: 8px; }
@@ -987,24 +989,34 @@
 
       <div class="planes">
         <div class="plan">
+          <div class="nombre nombre-atleta">Atleta</div>
+          <div class="precio">4,99 €<small>/<span class="es">mes</span><span class="en">mo</span></small></div>
+          <div class="det"><span class="es">Para ti · autoentreno</span><span class="en">For you · self-training</span></div>
+        </div>
+        <div class="plan">
           <div class="nombre">Solo</div>
-          <div class="precio">2,99 €<small>/<span class="es">mes</span><span class="en">mo</span></small></div>
-          <div class="det"><span class="es">1 atleta</span><span class="en">1 athlete</span></div>
+          <div class="precio">4,99 €<small>/<span class="es">mes</span><span class="en">mo</span></small></div>
+          <div class="det"><span class="es">1 cliente</span><span class="en">1 client</span></div>
         </div>
         <div class="plan">
           <div class="nombre">Coach</div>
-          <div class="precio">5,99 €<small>/<span class="es">mes</span><span class="en">mo</span></small></div>
+          <div class="precio">9,99 €<small>/<span class="es">mes</span><span class="en">mo</span></small></div>
           <div class="det"><span class="es">Hasta 5 atletas</span><span class="en">Up to 5 athletes</span></div>
         </div>
         <div class="plan">
           <div class="nombre">Pro</div>
-          <div class="precio">7,99 €<small>/<span class="es">mes</span><span class="en">mo</span></small></div>
+          <div class="precio">12,99 €<small>/<span class="es">mes</span><span class="en">mo</span></small></div>
           <div class="det"><span class="es">Hasta 10 atletas</span><span class="en">Up to 10 athletes</span></div>
         </div>
         <div class="plan">
           <div class="nombre">Club</div>
-          <div class="precio">9,99 €<small>/<span class="es">mes</span><span class="en">mo</span></small></div>
-          <div class="det"><span class="es">Más de 10 atletas</span><span class="en">More than 10 athletes</span></div>
+          <div class="precio">16,99 €<small>/<span class="es">mes</span><span class="en">mo</span></small></div>
+          <div class="det"><span class="es">Hasta 20 atletas</span><span class="en">Up to 20 athletes</span></div>
+        </div>
+        <div class="plan">
+          <div class="nombre">Studio</div>
+          <div class="precio">21,99 €<small>/<span class="es">mes</span><span class="en">mo</span></small></div>
+          <div class="det"><span class="es">Más de 20 · o a medida</span><span class="en">More than 20 · or custom</span></div>
         </div>
       </div>
 
@@ -1014,20 +1026,15 @@
           <div class="cuanto">2,99 €/<span class="es">mes</span><span class="en">mo</span></div>
           <div class="det"><span class="es">Con tu propio reloj o pulsera, los datos llegan por Apple Salud.</span><span class="en">With your own watch or band, data arrives via Apple Health.</span></div>
         </div>
-        <div class="otro control">
-          <div class="que"><span class="dot"></span><span class="es">Pulsera TrainLab Control</span><span class="en">TrainLab Control band</span></div>
-          <div class="cuanto">69 €</div>
-          <div class="det"><span class="es">Con la suscripción de Control incluida para siempre.</span><span class="en">With the Control subscription included forever.</span></div>
-        </div>
-        <div class="otro velocity">
-          <div class="que"><span class="dot"></span><span class="es">Sensor TrainLab Velocity</span><span class="en">TrainLab Velocity sensor</span></div>
-          <div class="cuanto"><span class="es">unos 99 €</span><span class="en">about €99</span></div>
-          <div class="det"><span class="es">Con la app incluida, sin suscripción.</span><span class="en">With the app included, no subscription.</span></div>
-        </div>
         <div class="otro centros">
           <div class="que"><span class="dot"></span><span class="es">Centros y clubes</span><span class="en">Centers and clubs</span></div>
-          <div class="cuanto"><span class="es">desde 19,99 €/mes</span><span class="en">from €19.99/mo</span></div>
-          <div class="det"><span class="es">Según el tamaño de la plantilla de entrenadores.</span><span class="en">Based on the size of the coaching staff.</span></div>
+          <div class="cuanto">12,99 €/<span class="es">entrenador/mes</span><span class="en">coach/mo</span></div>
+          <div class="det"><span class="es">Por asiento, con el panel del centro incluido y atletas sin tope por entrenador.</span><span class="en">Per seat, with the center panel included and unlimited athletes per coach.</span></div>
+        </div>
+        <div class="otro">
+          <div class="que"><span class="dot" style="background: var(--gray);"></span><span class="es">Hardware y próximos productos</span><span class="en">Hardware and upcoming products</span></div>
+          <div class="cuanto"><span class="pendiente"><span class="es">En desarrollo</span><span class="en">In development</span></span></div>
+          <div class="det"><span class="es">El sensor de Velocity, la pulsera de Control, Force y Signal están en desarrollo. Anunciaremos su precio cuando estén listos.</span><span class="en">The Velocity sensor, the Control band, Force and Signal are in development. We will announce their price when they are ready.</span></div>
         </div>
       </div>
     </div>
@@ -1076,8 +1083,8 @@
         <details class="faq">
           <summary><span class="es">¿Cuánto cuesta de verdad?</span><span class="en">What does it really cost?</span></summary>
           <div class="resp">
-            <span class="es">Los precios están todavía en proceso, porque la app sigue en desarrollo. Los de partida: Fitness por tramos según los atletas que gestionas, de 2,99 a 9,99 euros al mes, con 14 días de prueba y unos 2 meses gratis si pagas el año. Antes del lanzamiento les daremos la última vuelta.</span>
-            <span class="en">Prices are still in progress, because the app is still in development. The starting point: Fitness is tiered by the athletes you manage, from €2.99 to €9.99 a month, with a 14 day trial and about 2 months free on the yearly plan. We will give them a final pass before launch.</span>
+            <span class="es">Los precios están todavía en proceso, porque la app sigue en desarrollo. Los de partida: Fitness por tramos según los atletas que gestionas, de 4,99 a 21,99 euros al mes, con 14 días de prueba y unos 2 meses gratis si pagas el año. El hardware (sensor de Velocity, pulsera de Control) y Force y Signal están en desarrollo, con precio por definir.</span>
+            <span class="en">Prices are still in progress, because the app is still in development. The starting point: Fitness is tiered by the athletes you manage, from €4.99 to €21.99 a month, with a 14 day trial and about 2 months free on the yearly plan. The hardware (Velocity sensor, Control band) and Force and Signal are in development, with prices to be defined.</span>
           </div>
         </details>
         <details class="faq">
