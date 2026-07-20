@@ -243,8 +243,16 @@
     .refs { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 40px; }
     .ref { background: var(--card); border: 1px solid var(--sep); border-radius: 16px; padding: 20px; }
     .ref h3 { font-size: 16px; font-weight: 800; }
+    .ref { display: flex; flex-direction: column; }
     .ref .autor { font-size: 12px; font-weight: 700; color: var(--azul-pulso); margin-top: 2px; }
     .ref p { font-size: 13.5px; color: var(--ink2); margin-top: 8px; }
+    .ref .p-cuerpo { flex: 1; }
+    .ref-links { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-top: 12px; }
+    .doi-link { font-size: 12.5px; font-weight: 700; color: var(--gray); text-decoration: none; }
+    .doi-link:hover { color: var(--azul-pulso); }
+    .doi-link .flecha { font-weight: 400; }
+    .calc-link { font-size: 13px; font-weight: 700; color: var(--azul-pulso); text-decoration: none; }
+    .calc-link:hover { text-decoration: underline; }
     .honesta {
       margin-top: 26px; border-left: 4px solid var(--azul-pulso); background: var(--card);
       border-radius: 0 16px 16px 0; padding: 20px 24px; font-size: 16px; color: var(--ink);
@@ -867,34 +875,52 @@
       <div class="refs">
         <div class="ref">
           <h3><span class="es">Carga sRPE</span><span class="en">sRPE load</span></h3>
-          <div class="autor">Foster, 2001</div>
-          <p><span class="es">La carga interna de cada sesión, cuantificada en unidades arbitrarias a partir del esfuerzo percibido.</span><span class="en">The internal load of each session, quantified in arbitrary units from perceived exertion.</span></p>
+          <div class="autor">Foster y col., 2001</div>
+          <p class="p-cuerpo"><span class="es">La carga interna de cada sesión, cuantificada en unidades arbitrarias a partir del esfuerzo percibido.</span><span class="en">The internal load of each session, quantified in arbitrary units from perceived exertion.</span></p>
+          <div class="ref-links">
+            <a class="doi-link" href="https://doi.org/10.1519/1533-4287(2001)015%3C0109:ANATME%3E2.0.CO;2" target="_blank" rel="noopener"><span class="es">Ver estudio</span><span class="en">Read the study</span> <span class="flecha">↗</span></a>
+          </div>
         </div>
         <div class="ref">
           <h3>ACWR</h3>
-          <div class="autor">Hulin · Gabbett</div>
-          <p><span class="es">El ratio de carga aguda frente a crónica que anticipa el riesgo de lesión antes de que aparezca.</span><span class="en">The acute to chronic workload ratio that anticipates injury risk before it shows up.</span></p>
-          <p style="margin-top: 8px; font-size: 13px; font-weight: 700;"><a href="acwr.html"><span class="es">Prueba la calculadora gratuita</span><span class="en">Try the free calculator</span></a></p>
+          <div class="autor">Hulin, Gabbett y col., 2016</div>
+          <p class="p-cuerpo"><span class="es">El ratio de carga aguda frente a crónica que anticipa el riesgo de lesión antes de que aparezca.</span><span class="en">The acute to chronic workload ratio that anticipates injury risk before it shows up.</span></p>
+          <div class="ref-links">
+            <a class="calc-link" href="acwr.html"><span class="es">Calculadora gratuita</span><span class="en">Free calculator</span></a>
+            <a class="doi-link" href="https://doi.org/10.1136/bjsports-2015-094817" target="_blank" rel="noopener"><span class="es">Ver estudio</span><span class="en">Read the study</span> <span class="flecha">↗</span></a>
+          </div>
         </div>
         <div class="ref">
           <h3><span class="es">Entrenamiento por velocidad</span><span class="en">Velocity based training</span></h3>
-          <div class="autor">González-Badillo</div>
-          <p><span class="es">La velocidad de la barra como medida objetiva del esfuerzo real, en lugar del porcentaje teórico.</span><span class="en">Bar velocity as the objective measure of real effort, instead of a theoretical percentage.</span></p>
+          <div class="autor">González-Badillo, Sánchez-Medina, 2010</div>
+          <p class="p-cuerpo"><span class="es">La velocidad de la barra como medida objetiva del esfuerzo real, en lugar del porcentaje teórico.</span><span class="en">Bar velocity as the objective measure of real effort, instead of a theoretical percentage.</span></p>
+          <div class="ref-links">
+            <a class="doi-link" href="https://doi.org/10.1055/s-0030-1248333" target="_blank" rel="noopener"><span class="es">Ver estudio</span><span class="en">Read the study</span> <span class="flecha">↗</span></a>
+          </div>
         </div>
         <div class="ref">
           <h3><span class="es">Perfil fuerza-velocidad</span><span class="en">Force velocity profile</span></h3>
-          <div class="autor">Samozino · Morin</div>
-          <p><span class="es">El desequilibrio entre fuerza y velocidad de cada atleta, que orienta hacia dónde entrenar.</span><span class="en">Each athlete's imbalance between force and velocity, which guides what to train next.</span></p>
+          <div class="autor">Samozino, Morin y col., 2008</div>
+          <p class="p-cuerpo"><span class="es">El desequilibrio entre fuerza y velocidad de cada atleta, que orienta hacia dónde entrenar.</span><span class="en">Each athlete's imbalance between force and velocity, which guides what to train next.</span></p>
+          <div class="ref-links">
+            <a class="doi-link" href="https://doi.org/10.1016/j.jbiomech.2008.07.028" target="_blank" rel="noopener"><span class="es">Ver estudio</span><span class="en">Read the study</span> <span class="flecha">↗</span></a>
+          </div>
         </div>
         <div class="ref">
           <h3><span class="es">Salto por vídeo</span><span class="en">Video jump testing</span></h3>
-          <div class="autor">Balsalobre-Fernández</div>
-          <p><span class="es">La altura del salto medida con la cámara del móvil, validada científicamente frente a plataformas.</span><span class="en">Jump height measured with the phone camera, scientifically validated against force platforms.</span></p>
+          <div class="autor">Balsalobre-Fernández y col., 2015</div>
+          <p class="p-cuerpo"><span class="es">La altura del salto medida con la cámara del móvil, validada científicamente frente a plataformas.</span><span class="en">Jump height measured with the phone camera, scientifically validated against force platforms.</span></p>
+          <div class="ref-links">
+            <a class="doi-link" href="https://doi.org/10.1080/02640414.2014.996184" target="_blank" rel="noopener"><span class="es">Ver estudio</span><span class="en">Read the study</span> <span class="flecha">↗</span></a>
+          </div>
         </div>
         <div class="ref">
           <h3><span class="es">Vuelta al deporte</span><span class="en">Return to sport</span></h3>
           <div class="autor"><span class="es">Consenso de Berna, 2016</span><span class="en">Bern consensus, 2016</span></div>
-          <p><span class="es">Los criterios internacionales que guían la readaptación de lesiones paso a paso.</span><span class="en">The international criteria that guide return to sport step by step.</span></p>
+          <p class="p-cuerpo"><span class="es">Los criterios internacionales que guían la readaptación de lesiones paso a paso.</span><span class="en">The international criteria that guide return to sport step by step.</span></p>
+          <div class="ref-links">
+            <a class="doi-link" href="https://doi.org/10.1136/bjsports-2016-096278" target="_blank" rel="noopener"><span class="es">Ver estudio</span><span class="en">Read the study</span> <span class="flecha">↗</span></a>
+          </div>
         </div>
       </div>
       <div class="honesta">
