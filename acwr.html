@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de ACWR gratis · carga aguda:crónica · TrainLab</title>
+  <meta name="description" content="Calcula el ACWR (ratio de carga aguda:crónica) y la carga sRPE de tus sesiones, gratis y sin registro. Con las zonas de riesgo y la ciencia detrás de cada número." />
+  <link rel="canonical" href="https://companytrainlab.github.io/acwr.html" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta name="theme-color" content="#141A28" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="TrainLab" />
+  <meta property="og:title" content="Calculadora de ACWR gratis · TrainLab" />
+  <meta property="og:description" content="El ratio de carga aguda:crónica y la carga sRPE de tus sesiones, calculados gratis y sin registro. Con las zonas de riesgo claras." />
+  <meta property="og:url" content="https://companytrainlab.github.io/acwr.html" />
+  <meta property="og:image" content="https://companytrainlab.github.io/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #F2F2F7; --card: #FFFFFF; --card-alt: #F6F7F9; --sep: #E5E5EA;
+      --ink: #1C1C1E; --ink2: #3A3A3C; --gray: #6E6E73;
+      --green: #34C759; --orange: #FF9500; --red: #FF3B30; --teal: #30B0C7;
+      --accent-bg: #EAF3FF;
+      --azul-noche: #141A28; --azul-pulso: #2E7DF6;
+      /* tinta de estado con contraste sobre tarjeta clara */
+      --ok-ink: #1F8A43; --aviso-ink: #C25E00; --riesgo-ink: #D70015; --bajo-ink: #0E7A8D;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0E1117; --card: #181F2E; --card-alt: #212A3B; --sep: #2B3344;
+        --ink: #EAEEF6; --ink2: #AEB7C8; --gray: #79839A;
+        --green: #30D158; --orange: #FF9F0A; --red: #FF453A; --teal: #40C8E0;
+        --accent-bg: #16233E;
+        --ok-ink: #30D158; --aviso-ink: #FF9F0A; --riesgo-ink: #FF453A; --bajo-ink: #40C8E0;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    [hidden] { display: none !important; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+      background: var(--bg); color: var(--ink); line-height: 1.55; -webkit-font-smoothing: antialiased;
+    }
+    body.lang-es .en { display: none; } body.lang-en .es { display: none; }
+    .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      background: color-mix(in srgb, var(--bg) 84%, transparent);
+      -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--sep);
+    }
+    .topbar .wrap { display: flex; align-items: center; gap: 16px; height: 62px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 800; color: var(--ink); text-decoration: none; }
+    .brand .train { color: var(--gray); } .brand .lab { color: var(--azul-pulso); }
+    .logo { width: 34px; height: 34px; border-radius: 9px; display: block; }
+    .langs { display: flex; gap: 6px; margin-left: auto; }
+    .langs button { background: transparent; border: 1px solid var(--sep); color: var(--gray); border-radius: 8px; padding: 5px 10px; font-size: 12.5px; font-weight: 700; cursor: pointer; }
+    body.lang-es #b-es, body.lang-en #b-en { background: var(--azul-pulso); border-color: var(--azul-pulso); color: #fff; }
+    .top-cta { background: var(--azul-pulso); color: #fff; text-decoration: none; font-size: 13.5px; font-weight: 700; padding: 9px 16px; border-radius: 10px; white-space: nowrap; }
+    @media (max-width: 420px) { .top-cta { display: none; } }
+
+    header.cab { padding: 56px 0 8px; }
+    .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--azul-pulso); margin-bottom: 12px; }
+    h1 { font-size: clamp(28px, 5vw, 40px); font-weight: 800; letter-spacing: -0.6px; line-height: 1.12; }
+    .lead { font-size: clamp(15px, 2vw, 17px); color: var(--ink2); margin-top: 14px; max-width: 680px; }
+
+    section { padding: 36px 0; }
+    .tarjeta { background: var(--card); border: 1px solid var(--sep); border-radius: 20px; padding: 28px 24px; }
+    .tarjeta h2 { font-size: 19px; font-weight: 800; }
+    .tarjeta .sub { font-size: 13.5px; color: var(--gray); margin-top: 4px; }
+
+    label { display: block; font-size: 12.5px; font-weight: 700; color: var(--ink2); margin-bottom: 6px; }
+    input[type="number"], select {
+      width: 100%; font: inherit; font-size: 16px; color: var(--ink);
+      background: var(--card-alt); border: 1px solid var(--sep); border-radius: 12px; padding: 12px 14px;
+      font-variant-numeric: tabular-nums;
+    }
+    input:focus, select:focus { outline: 2px solid var(--azul-pulso); outline-offset: 1px; border-color: transparent; }
+
+    /* Sesión: RPE × minutos */
+    .fila-sesion { display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; margin-top: 20px; }
+    @media (max-width: 560px) { .fila-sesion { grid-template-columns: 1fr; } }
+    .res-sesion { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--sep); display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    .res-sesion .dato { font-size: 44px; font-weight: 900; letter-spacing: -0.5px; font-variant-numeric: tabular-nums; line-height: 1; }
+    .res-sesion .unidad { font-size: 14px; color: var(--gray); font-weight: 600; }
+
+    /* ACWR: 4 semanas */
+    .semanas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px; }
+    @media (max-width: 640px) { .semanas { grid-template-columns: repeat(2, 1fr); } }
+    .resultado { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--sep); display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; }
+    @media (max-width: 640px) { .resultado { grid-template-columns: 1fr; } }
+    .dato-acwr { font-size: 72px; font-weight: 900; letter-spacing: -1.5px; font-variant-numeric: tabular-nums; line-height: 1; }
+    .zona-chip { display: inline-flex; align-items: center; gap: 7px; margin-top: 10px; font-size: 13.5px; font-weight: 700; padding: 6px 13px; border-radius: 999px; }
+    .zona-chip::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
+    .interpreta { font-size: 14.5px; color: var(--ink2); max-width: 460px; }
+    .detalle { font-size: 12.5px; color: var(--gray); margin-top: 8px; font-variant-numeric: tabular-nums; }
+    .mini-barras { display: flex; align-items: flex-end; gap: 8px; height: 64px; margin-top: 14px; max-width: 240px; }
+    .mini-barras i { flex: 1; background: color-mix(in srgb, var(--azul-pulso) 40%, transparent); border-radius: 4px 4px 2px 2px; min-height: 4px; }
+    .mini-barras i.actual { background: var(--azul-pulso); }
+    .vacio { font-size: 14.5px; color: var(--gray); }
+
+    /* zonas */
+    .z-optima { color: var(--ok-ink); background: color-mix(in srgb, var(--green) 13%, transparent); }
+    .z-baja   { color: var(--bajo-ink); background: color-mix(in srgb, var(--teal) 13%, transparent); }
+    .z-aviso  { color: var(--aviso-ink); background: color-mix(in srgb, var(--orange) 13%, transparent); }
+    .z-riesgo { color: var(--riesgo-ink); background: color-mix(in srgb, var(--red) 13%, transparent); }
+
+    /* método */
+    .metodo { font-size: 14px; color: var(--ink2); }
+    .metodo h2 { font-size: 17px; font-weight: 800; color: var(--ink); margin-bottom: 10px; }
+    .metodo p { margin-top: 8px; max-width: 720px; }
+    .metodo .refs { font-size: 12.5px; color: var(--gray); margin-top: 12px; }
+
+    /* puente a la lista */
+    .puente { background: var(--azul-noche); border-radius: 20px; padding: 32px 28px; color: #F4F7FB; display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; }
+    @media (max-width: 680px) { .puente { grid-template-columns: 1fr; } }
+    .puente h2 { font-size: clamp(19px, 3vw, 24px); font-weight: 800; letter-spacing: -0.3px; }
+    .puente p { font-size: 14px; color: #9AA6BC; margin-top: 8px; max-width: 520px; }
+    .btn { display: inline-block; background: var(--azul-pulso); color: #fff; text-decoration: none; font-size: 15px; font-weight: 700; padding: 13px 24px; border-radius: 12px; box-shadow: 0 6px 22px rgba(46,125,246,.35); white-space: nowrap; }
+
+    footer { padding: 36px 0 56px; font-size: 13px; color: var(--gray); }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+    footer a { color: var(--gray); }
+  </style>
+</head>
+<body class="lang-es">
+
+  <div class="topbar">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <svg class="logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#232C40"/><stop offset="1" stop-color="#0B0E16"/></linearGradient></defs>
+          <rect width="120" height="120" rx="28" fill="url(#g)"/>
+          <rect x="18" y="38" width="36" height="9" rx="2" fill="#F4F7FB"/><rect x="31" y="38" width="9" height="44" rx="2" fill="#F4F7FB"/>
+          <rect x="80" y="38" width="9" height="44" rx="2" fill="#F4F7FB"/><rect x="80" y="73" width="24" height="9" rx="2" fill="#F4F7FB"/>
+          <path d="M10 62 H38 l6 -18 l9 34 l7 -24 l5 12 H110" fill="none" stroke="#2E7DF6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span><span class="train">Train</span><span class="lab">Lab</span></span>
+      </a>
+      <div class="langs">
+        <button id="b-es" onclick="setLang('es')" aria-label="Español">ES</button>
+        <button id="b-en" onclick="setLang('en')" aria-label="English">EN</button>
+      </div>
+      <a class="top-cta" href="index.html#lista"><span class="es">Lista de espera</span><span class="en">Waitlist</span></a>
+    </div>
+  </div>
+
+  <header class="cab">
+    <div class="wrap">
+      <p class="eyebrow"><span class="es">Herramienta gratuita · sin registro</span><span class="en">Free tool · no signup</span></p>
+      <h1>
+        <span class="es">Calculadora de ACWR y carga sRPE.</span>
+        <span class="en">ACWR and sRPE load calculator.</span>
+      </h1>
+      <p class="lead">
+        <span class="es">El ratio de carga aguda:crónica compara lo que has entrenado esta semana con lo que venías entrenando el último mes. Es una de las señales más útiles para ver venir el riesgo de lesión. Aquí lo calculas en diez segundos, con las zonas claras.</span>
+        <span class="en">The acute:chronic workload ratio compares what you trained this week against what you had been training over the last month. It is one of the most useful signals to see injury risk coming. Calculate it here in ten seconds, with clear zones.</span>
+      </p>
+    </div>
+  </header>
+
+  <!-- Paso 1: la carga de una sesión -->
+  <section>
+    <div class="wrap">
+      <div class="tarjeta">
+        <h2><span class="es">Paso 1 · La carga de una sesión</span><span class="en">Step 1 · One session's load</span></h2>
+        <p class="sub"><span class="es">Método sRPE (Foster): el esfuerzo percibido de la sesión por su duración.</span><span class="en">sRPE method (Foster): the session's perceived exertion times its duration.</span></p>
+        <div class="fila-sesion">
+          <div>
+            <label for="rpe"><span class="es">Esfuerzo percibido (RPE 1 a 10)</span><span class="en">Perceived exertion (RPE 1 to 10)</span></label>
+            <select id="rpe">
+              <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+              <option value="4">4</option><option value="5">5</option><option value="6" selected>6</option>
+              <option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+            </select>
+          </div>
+          <div>
+            <label for="minutos"><span class="es">Duración (minutos)</span><span class="en">Duration (minutes)</span></label>
+            <input type="number" id="minutos" min="1" max="600" inputmode="numeric" placeholder="60" />
+          </div>
+        </div>
+        <div class="res-sesion" id="res-sesion" hidden>
+          <span class="dato" id="carga-sesion">360</span>
+          <span class="unidad"><span class="es">UA · unidades arbitrarias de carga</span><span class="en">AU · arbitrary load units</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Paso 2: el ACWR -->
+  <section style="padding-top: 0;">
+    <div class="wrap">
+      <div class="tarjeta">
+        <h2><span class="es">Paso 2 · Tu ACWR</span><span class="en">Step 2 · Your ACWR</span></h2>
+        <p class="sub"><span class="es">Suma la carga de todas las sesiones de cada semana (en UA) y escribe las cuatro últimas.</span><span class="en">Add up every session's load for each week (in AU) and enter the last four.</span></p>
+        <div class="semanas">
+          <div>
+            <label for="s1"><span class="es">Hace 3 semanas</span><span class="en">3 weeks ago</span></label>
+            <input type="number" id="s1" min="0" max="99999" inputmode="numeric" placeholder="2800" />
+          </div>
+          <div>
+            <label for="s2"><span class="es">Hace 2 semanas</span><span class="en">2 weeks ago</span></label>
+            <input type="number" id="s2" min="0" max="99999" inputmode="numeric" placeholder="3000" />
+          </div>
+          <div>
+            <label for="s3"><span class="es">Semana pasada</span><span class="en">Last week</span></label>
+            <input type="number" id="s3" min="0" max="99999" inputmode="numeric" placeholder="3100" />
+          </div>
+          <div>
+            <label for="s4"><span class="es">Esta semana</span><span class="en">This week</span></label>
+            <input type="number" id="s4" min="0" max="99999" inputmode="numeric" placeholder="3400" />
+          </div>
+        </div>
+
+        <div class="resultado">
+          <div>
+            <p class="vacio" id="acwr-vacio"><span class="es">Rellena las cuatro semanas y el número sale solo.</span><span class="en">Fill in the four weeks and the number appears on its own.</span></p>
+            <div id="acwr-res" hidden>
+              <div class="dato-acwr" id="acwr-num">1,12</div>
+              <span class="zona-chip" id="acwr-chip"></span>
+              <div class="mini-barras" id="acwr-barras" aria-hidden="true"><i></i><i></i><i></i><i class="actual"></i></div>
+            </div>
+          </div>
+          <div id="acwr-texto" hidden>
+            <p class="interpreta" id="acwr-interpreta"></p>
+            <p class="detalle" id="acwr-detalle"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- El método, con su ciencia y su honestidad -->
+  <section style="padding-top: 0;">
+    <div class="wrap">
+      <div class="tarjeta metodo">
+        <h2><span class="es">Cómo se calcula y cómo leerlo</span><span class="en">How it is calculated and how to read it</span></h2>
+        <p>
+          <span class="es">La carga de una sesión es el esfuerzo percibido (RPE, escala de 1 a 10) multiplicado por los minutos: el método sRPE de Foster. La carga aguda es la de esta semana; la crónica, la media de las últimas cuatro. El ACWR es la aguda dividida por la crónica.</span>
+          <span class="en">A session's load is perceived exertion (RPE, 1 to 10 scale) times minutes: Foster's sRPE method. Acute load is this week's; chronic load is the average of the last four. ACWR is acute divided by chronic.</span>
+        </p>
+        <p>
+          <span class="es">Las zonas orientativas: por debajo de 0,8 la carga baja (desentrenamiento); entre 0,8 y 1,3 la zona óptima; entre 1,3 y 1,5, atención; por encima de 1,5, la subida brusca que se asocia con más riesgo de lesión.</span>
+          <span class="en">The reference zones: below 0.8, load is dropping (detraining); 0.8 to 1.3 is the optimal zone; 1.3 to 1.5, caution; above 1.5, the sharp spike associated with higher injury risk.</span>
+        </p>
+        <p>
+          <span class="es">Y la letra honesta: el ACWR es una brújula, no un oráculo. Es una señal entre varias (el sueño, la recuperación y el contexto del atleta también cuentan) y en la literatura se sigue debatiendo su valor predictivo exacto. Úsalo para conversar con el entrenamiento, no para sustituir el criterio.</span>
+          <span class="en">And the honest print: ACWR is a compass, not an oracle. It is one signal among several (sleep, recovery and the athlete's context also count) and its exact predictive value is still debated in the literature. Use it to have a conversation with training, not to replace judgment.</span>
+        </p>
+        <p class="refs">
+          <span class="es">Referencias: Foster y col., 2001 (sRPE) · Hulin, Gabbett y col. (ratio agudo:crónico y zonas) · Gabbett, 2016 (la paradoja del entrenamiento y la lesión).</span>
+          <span class="en">References: Foster et al., 2001 (sRPE) · Hulin, Gabbett et al. (acute:chronic ratio and zones) · Gabbett, 2016 (the training injury prevention paradox).</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- El puente -->
+  <section style="padding-top: 0;">
+    <div class="wrap">
+      <div class="puente">
+        <div>
+          <h2><span class="es">¿Y si esto se calculara solo?</span><span class="en">What if this calculated itself?</span></h2>
+          <p><span class="es">TrainLab Fitness lleva el sRPE, el ACWR y la monotonía de cada atleta al día, sesión a sesión y con semáforos, sin hojas de cálculo. Está en beta con plazas limitadas.</span><span class="en">TrainLab Fitness keeps every athlete's sRPE, ACWR and monotony up to date, session by session with traffic lights, no spreadsheets. It is in beta with limited spots.</span></p>
+        </div>
+        <a class="btn" href="index.html#lista"><span class="es">Únete a la lista de espera</span><span class="en">Join the waitlist</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="anio">2026</span> TrainLab</span>
+      <a href="index.html"><span class="es">La web de TrainLab</span><span class="en">The TrainLab website</span></a>
+      <a href="privacidad.html"><span class="es">Privacidad</span><span class="en">Privacy</span></a>
+    </div>
+  </footer>
+
+  <script>
+    // ---- Idioma (compartido con la portada vía tl-lang) ----
+    var TITULOS = {
+      es: "Calculadora de ACWR gratis · carga aguda:crónica · TrainLab",
+      en: "Free ACWR calculator · acute:chronic workload · TrainLab"
+    };
+    function setLang(l) {
+      document.body.className = "lang-" + l;
+      document.documentElement.lang = l;
+      document.title = TITULOS[l];
+      try { localStorage.setItem("tl-lang", l); } catch (e) {}
+      calculaSesion(); calculaACWR(); // los textos del resultado cambian de idioma
+    }
+
+    // ---- Paso 1: sRPE ----
+    function calculaSesion() {
+      var min = parseFloat(document.getElementById("minutos").value);
+      var caja = document.getElementById("res-sesion");
+      if (!isFinite(min) || min <= 0) { caja.hidden = true; return; }
+      var rpe = parseInt(document.getElementById("rpe").value, 10);
+      document.getElementById("carga-sesion").textContent = fmt(Math.round(rpe * min));
+      caja.hidden = false;
+    }
+
+    // ---- Paso 2: ACWR ----
+    var ZONAS = {
+      baja:   { clase: "z-baja",   es: "Carga baja",   en: "Low load" },
+      optima: { clase: "z-optima", es: "Zona óptima",  en: "Optimal zone" },
+      aviso:  { clase: "z-aviso",  es: "Atención",     en: "Caution" },
+      riesgo: { clase: "z-riesgo", es: "Riesgo alto",  en: "High risk" }
+    };
+    var INTERPRETA = {
+      baja: {
+        es: "Estás entrenando bastante menos que tu media del último mes. Si es descarga planificada, perfecto; si no, la forma se pierde y el regreso brusco es su propio riesgo.",
+        en: "You are training quite a bit less than your last month's average. If it is a planned deload, perfect; if not, fitness fades and a sharp return carries its own risk."
+      },
+      optima: {
+        es: "La carga de esta semana está en proporción sana con lo que venías haciendo. Es la zona donde se progresa con el riesgo bajo control.",
+        en: "This week's load is in healthy proportion to what you had been doing. This is the zone where you progress with risk under control."
+      },
+      aviso: {
+        es: "La carga ha subido más deprisa de lo que tu base sostiene. No es una alarma, es un aviso: vigila la recuperación y piensa si el salto es deliberado.",
+        en: "Load has climbed faster than your base supports. Not an alarm, a warning: watch recovery and ask yourself if the jump is deliberate."
+      },
+      riesgo: {
+        es: "Subida brusca: esta semana carga mucho más de lo que tu último mes ha preparado. Es el patrón que la literatura asocia con más lesiones. Toca recortar o asumirlo con los ojos abiertos.",
+        en: "Sharp spike: this week loads far more than your last month has prepared you for. This is the pattern the literature associates with more injuries. Trim it back, or accept it with eyes open."
+      }
+    };
+
+    function fmt(n) {
+      var l = document.body.className === "lang-en" ? "en-GB" : "es-ES";
+      return n.toLocaleString(l);
+    }
+
+    function calculaACWR() {
+      var v = ["s1", "s2", "s3", "s4"].map(function (id) {
+        return parseFloat(document.getElementById(id).value);
+      });
+      var res = document.getElementById("acwr-res");
+      var texto = document.getElementById("acwr-texto");
+      var vacio = document.getElementById("acwr-vacio");
+      if (v.some(function (x) { return !isFinite(x) || x < 0; }) || v[0] + v[1] + v[2] + v[3] <= 0) {
+        res.hidden = true; texto.hidden = true; vacio.hidden = false; return;
+      }
+      var l = document.body.className === "lang-en" ? "en" : "es";
+      var aguda = v[3];
+      var cronica = (v[0] + v[1] + v[2] + v[3]) / 4;
+      var acwr = aguda / cronica;
+      var zona = acwr < 0.8 ? "baja" : acwr <= 1.3 ? "optima" : acwr <= 1.5 ? "aviso" : "riesgo";
+
+      document.getElementById("acwr-num").textContent =
+        acwr.toLocaleString(l === "en" ? "en-GB" : "es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      var chip = document.getElementById("acwr-chip");
+      chip.className = "zona-chip " + ZONAS[zona].clase;
+      chip.textContent = ZONAS[zona][l];
+      document.getElementById("acwr-interpreta").textContent = INTERPRETA[zona][l];
+      document.getElementById("acwr-detalle").textContent =
+        (l === "en" ? "Acute load " : "Carga aguda ") + fmt(Math.round(aguda)) +
+        (l === "en" ? " AU · chronic load " : " UA · carga crónica ") + fmt(Math.round(cronica)) +
+        (l === "en" ? " AU" : " UA");
+
+      var barras = document.getElementById("acwr-barras").children;
+      var tope = Math.max.apply(null, v);
+      for (var i = 0; i < 4; i++) {
+        barras[i].style.height = Math.max(6, Math.round(v[i] / tope * 100)) + "%";
+      }
+      vacio.hidden = true; res.hidden = false; texto.hidden = false;
+    }
+
+    ["rpe", "minutos"].forEach(function (id) {
+      document.getElementById(id).addEventListener("input", calculaSesion);
+    });
+    ["s1", "s2", "s3", "s4"].forEach(function (id) {
+      document.getElementById(id).addEventListener("input", calculaACWR);
+    });
+
+    (function () {
+      var g = null; try { g = localStorage.getItem("tl-lang"); } catch (e) {}
+      setLang(g === "en" ? "en" : ((navigator.language || "es").toLowerCase().indexOf("es") === 0 || g === "es" ? "es" : "en"));
+      document.getElementById("anio").textContent = String(new Date().getFullYear());
+    })();
+  </script>
+</body>
+</html>
