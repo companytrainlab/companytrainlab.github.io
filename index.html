@@ -313,14 +313,20 @@
     }
     @media (max-width: 760px) { .centros-band { grid-template-columns: 1fr; gap: 24px; } }
     .centros-band h2 { font-size: clamp(22px, 3vw, 28px); }
-    .centros-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--azul-pulso); margin-bottom: 12px; }
+    .centros-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--fitness); margin-bottom: 12px; }
+    .tag-fitness {
+      display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 800;
+      color: var(--fitness); background: var(--tint-green); padding: 5px 11px; border-radius: 999px; margin-bottom: 12px;
+    }
+    .tag-fitness::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--fitness); }
     .centros-band p.intro { font-size: 15px; color: var(--ink2); margin-top: 10px; }
+    .centros-band p.intro b { color: var(--ink); }
     .centros-lista { list-style: none; margin-top: 18px; display: grid; gap: 11px; }
     .centros-lista li { position: relative; padding-left: 26px; font-size: 14.5px; color: var(--ink2); line-height: 1.5; }
     .centros-lista li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--fitness); font-weight: 800; }
     .centros-lista li b { color: var(--ink); }
-    .centros-precio { background: var(--accent-bg); border: 1px solid var(--sep); border-radius: 16px; padding: 22px 22px 20px; }
-    .cp-label { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gray); }
+    .centros-precio { background: var(--tint-green); border: 1px solid var(--sep); border-radius: 16px; padding: 22px 22px 20px; }
+    .cp-label { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ok-ink, var(--fitness)); }
     .cp-dato { font-size: 34px; font-weight: 900; font-variant-numeric: tabular-nums; letter-spacing: -0.5px; margin-top: 6px; }
     .cp-dato small { font-size: 14px; font-weight: 600; color: var(--gray); letter-spacing: 0; }
     .cp-ejemplos { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--sep); display: grid; gap: 9px; }
@@ -1065,28 +1071,19 @@
           <div class="cuanto">2,99 €/<span class="es">mes</span><span class="en">mo</span></div>
           <div class="det"><span class="es">Con tu propio reloj o pulsera, los datos llegan por Apple Salud.</span><span class="en">With your own watch or band, data arrives via Apple Health.</span></div>
         </div>
-        <div class="otro centros">
-          <div class="que"><span class="dot"></span><span class="es">Centros y clubes</span><span class="en">Centers and clubs</span></div>
-          <div class="cuanto">12,99 €/<span class="es">entrenador/mes</span><span class="en">coach/mo</span></div>
-          <div class="det"><span class="es">Por asiento, con el panel del centro incluido y atletas sin tope por entrenador.</span><span class="en">Per seat, with the center panel included and unlimited athletes per coach.</span></div>
-        </div>
         <div class="otro">
           <div class="que"><span class="dot" style="background: var(--gray);"></span><span class="es">Hardware y próximos productos</span><span class="en">Hardware and upcoming products</span></div>
           <div class="cuanto"><span class="pendiente"><span class="es">En desarrollo</span><span class="en">In development</span></span></div>
           <div class="det"><span class="es">El sensor de Velocity, la pulsera de Control, Force y Signal están en desarrollo. Anunciaremos su precio cuando estén listos.</span><span class="en">The Velocity sensor, the Control band, Force and Signal are in development. We will announce their price when they are ready.</span></div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ============ Centros ============ -->
-  <section id="centros" style="padding-top: 0;">
-    <div class="wrap">
-      <div class="centros-band">
+      <!-- Centros y clubes: otro modelo dentro de Fitness -->
+      <div class="centros-band" id="centros">
         <div class="centros-info">
-          <p class="centros-eyebrow"><span class="es">Para centros y clubes</span><span class="en">For centers and clubs</span></p>
+          <span class="tag-fitness"><span class="es">Dentro de TrainLab Fitness</span><span class="en">Inside TrainLab Fitness</span></span>
           <h2><span class="es">Un gimnasio, muchos entrenadores, una sola cuenta.</span><span class="en">One gym, many coaches, one single account.</span></h2>
-          <p class="intro"><span class="es">Es el plan para gimnasios y clubes con varios entrenadores. El centro agrupa a toda su plantilla bajo una cuenta, ve el trabajo de cada entrenador desde un panel propio y paga una sola factura, mientras cada entrenador conserva su cuenta y sus atletas.</span><span class="en">It is the plan for gyms and clubs with several coaches. The center groups its whole staff under one account, sees each coach's work from a dedicated panel and pays a single invoice, while every coach keeps their own account and athletes.</span></p>
+          <p class="intro"><span class="es">Centros y clubes no es otra app: es la misma <b>TrainLab Fitness</b>, con otro modelo pensado para un equipo de entrenadores. El centro agrupa a toda su plantilla bajo una cuenta, ve el trabajo de cada entrenador desde un panel propio y paga una sola factura, mientras cada entrenador conserva su cuenta y sus atletas.</span><span class="en">Centers and clubs is not another app: it is the same <b>TrainLab Fitness</b>, with a different model built for a team of coaches. The center groups its whole staff under one account, sees each coach's work from a dedicated panel and pays a single invoice, while every coach keeps their own account and athletes.</span></p>
           <ul class="centros-lista">
             <li><span class="es"><b>Panel del centro incluido:</b> la actividad y la calidad del servicio de toda la plantilla, en un vistazo.</span><span class="en"><b>Center panel included:</b> the activity and service quality of the whole staff, at a glance.</span></li>
             <li><span class="es"><b>Atletas sin tope por entrenador:</b> cada uno gestiona todos los que necesite.</span><span class="en"><b>Unlimited athletes per coach:</b> each one manages as many as they need.</span></li>
