@@ -208,6 +208,18 @@
     .prod.force    { --acc: var(--force); }
     .prod.signal   { --acc: var(--signal); --acc-ink: var(--signal-ink); }
 
+    /* Botón "ver en detalle" bajo cada app → su página con vídeo y ficha */
+    .ver-detalle {
+      display: inline-flex; align-items: center; gap: 8px; margin-top: 20px;
+      font-size: 14px; font-weight: 700; text-decoration: none;
+      color: var(--vd, var(--azul-pulso));
+      border: 1.5px solid color-mix(in srgb, var(--vd, var(--azul-pulso)) 45%, transparent);
+      padding: 10px 18px; border-radius: 11px; background: transparent; cursor: pointer;
+    }
+    .ver-detalle:hover { background: color-mix(in srgb, var(--vd, var(--azul-pulso)) 10%, transparent); }
+    .ver-detalle .flecha { transition: transform .15s; }
+    .ver-detalle:hover .flecha { transform: translateX(3px); }
+
     .integrada {
       margin-top: 26px; background: var(--accent-bg); border: 1px solid var(--sep);
       border-radius: 16px; padding: 20px 22px; font-size: 15px; color: var(--ink2);
@@ -712,6 +724,11 @@
           </figcaption>
         </figure>
       </div>
+      <div style="text-align:center; margin-top: 28px;">
+        <a class="ver-detalle" style="--vd: var(--viz-fitness);" href="fitness.html" target="_blank" rel="noopener">
+          <span class="es">Ver Fitness: vídeo y detalles</span><span class="en">See Fitness: video and details</span> <span class="flecha">→</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -730,6 +747,9 @@
                 <li><span class="es">Perfil fuerza-velocidad y control del esfuerzo serie a serie.</span><span class="en">Force velocity profile and set by set effort control.</span></li>
                 <li><span class="es">Conectado con Fitness: el dato entra solo en el expediente del atleta.</span><span class="en">Connected to Fitness: the data flows straight into the athlete record.</span></li>
               </ul>
+              <a class="ver-detalle" style="--vd: var(--viz-velocity);" href="velocity.html" target="_blank" rel="noopener">
+                <span class="es">Ver Velocity: vídeo y detalles</span><span class="en">See Velocity: video and details</span> <span class="flecha">→</span>
+              </a>
             </div>
             <figure class="viz-fig viz-card">
               <div class="viz-tit"><span class="es">Una serie al 75 %: la velocidad de cada repetición</span><span class="en">One set at 75%: the velocity of every rep</span></div>
@@ -777,6 +797,9 @@
                 <li><span class="es">Sueño, frecuencia cardiaca y recuperación en un feedback directo.</span><span class="en">Sleep, heart rate and recovery in direct feedback.</span></li>
                 <li><span class="es">La pulsera incluye la suscripción de Control para siempre.</span><span class="en">The band includes the Control subscription forever.</span></li>
               </ul>
+              <a class="ver-detalle" style="--vd: var(--viz-control);" href="control.html" target="_blank" rel="noopener">
+                <span class="es">Ver Control: vídeo y detalles</span><span class="en">See Control: video and details</span> <span class="flecha">→</span>
+              </a>
             </div>
             <figure class="viz-fig viz-card">
               <div class="p-lbl"><span class="es">Recuperación · hoy</span><span class="en">Recovery · today</span></div>
@@ -819,6 +842,9 @@
                 <li><span class="es">Asimetrías entre lados, medidas y seguidas en el tiempo.</span><span class="en">Side to side asymmetries, measured and tracked over time.</span></li>
                 <li><span class="es">Pensado junto a los criterios internacionales de vuelta al deporte.</span><span class="en">Built around international return to sport criteria.</span></li>
               </ul>
+              <a class="ver-detalle" style="--vd: var(--viz-force);" href="force.html" target="_blank" rel="noopener">
+                <span class="es">Ver Force: vídeo y detalles</span><span class="en">See Force: video and details</span> <span class="flecha">→</span>
+              </a>
             </div>
             <figure class="viz-fig viz-card">
               <div class="viz-tit"><span class="es">Una readaptación: la simetría entre piernas, test a test</span><span class="en">One rehab: side to side symmetry, test by test</span></div>
@@ -861,6 +887,9 @@
           <div class="fila-cols">
             <div>
               <p><span class="es">La electromiografía enseña qué músculo trabaja de verdad en cada ejercicio. Signal es el quinto miembro de la familia y completa la foto del atleta: lo que planificas, lo que mueves, cómo te recuperas, cuánta fuerza tienes y qué músculo la produce.</span><span class="en">Electromyography shows which muscle is really working in each exercise. Signal is the fifth member of the family and completes the athlete picture: what you plan, what you move, how you recover, how much strength you have and which muscle produces it.</span></p>
+              <a class="ver-detalle" style="--vd: var(--viz-signal);" href="signal.html" target="_blank" rel="noopener">
+                <span class="es">Ver Signal: vídeo y detalles</span><span class="en">See Signal: video and details</span> <span class="flecha">→</span>
+              </a>
             </div>
             <figure class="viz-fig viz-card">
               <div class="viz-tit"><span class="es">Lo que ve Signal: la activación de un músculo</span><span class="en">What Signal sees: one muscle's activation</span></div>

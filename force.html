@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrainLab Force · La fuerza que se puede medir.</title>
+  <meta name="description" content="La fuerza isométrica y las asimetrías son la base de la readaptación de lesiones. Force es un dinamómetro de tracción asequible cuyo resultado cae en el mismo expediente que usan el entrenador y el readaptador." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://companytrainlab.github.io/force.html" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta name="theme-color" content="#141A28" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="TrainLab" />
+  <meta property="og:title" content="TrainLab Force · La fuerza que se puede medir." />
+  <meta property="og:description" content="La fuerza isométrica y las asimetrías son la base de la readaptación de lesiones. Force es un dinamómetro de tracción asequible cuyo resultado cae en el mismo expediente que usan el entrenador y el readaptador." />
+  <meta property="og:image" content="https://companytrainlab.github.io/og.png" />
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #F2F2F7; --card: #FFFFFF; --card-alt: #F6F7F9; --sep: #E5E5EA;
+      --ink: #1C1C1E; --ink2: #3A3A3C; --gray: #6E6E73;
+      --azul-noche: #141A28; --azul-pulso: #2E7DF6;
+      --acc: #FF9500; --acc-ink: #C25E00;
+      --hbg: #141A28; --hcard: #1A2233; --hline: #2A3346; --hink: #F4F7FB; --hmuted: #9AA6BC;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0E1117; --card: #181F2E; --card-alt: #212A3B; --sep: #2B3344;
+        --ink: #EAEEF6; --ink2: #AEB7C8; --gray: #79839A;
+        --acc-ink: #FF9500;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    [hidden] { display: none !important; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    body.lang-es .en { display: none; } body.lang-en .es { display: none; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+    a { color: var(--azul-pulso); }
+
+    .topbar { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 84%, transparent); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid var(--sep); }
+    .topbar .wrap { display: flex; align-items: center; gap: 16px; height: 62px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 800; color: var(--ink); text-decoration: none; }
+    .brand .train { color: var(--gray); } .brand .lab { color: var(--azul-pulso); }
+    .logo { width: 34px; height: 34px; border-radius: 9px; display: block; }
+    .langs { display: flex; gap: 6px; margin-left: auto; }
+    .langs button { background: transparent; border: 1px solid var(--sep); color: var(--gray); border-radius: 8px; padding: 5px 10px; font-size: 12.5px; font-weight: 700; cursor: pointer; }
+    body.lang-es #b-es, body.lang-en #b-en { background: var(--azul-pulso); border-color: var(--azul-pulso); color: #fff; }
+    .top-cta { background: var(--azul-pulso); color: #fff; text-decoration: none; font-size: 13.5px; font-weight: 700; padding: 9px 16px; border-radius: 10px; white-space: nowrap; }
+    @media (max-width: 460px) { .top-cta { display: none; } }
+
+    .volver { display: inline-flex; align-items: center; gap: 6px; margin-top: 26px; font-size: 13.5px; font-weight: 600; color: var(--gray); text-decoration: none; }
+    .volver:hover { color: var(--azul-pulso); }
+
+    header.hero { padding: 20px 0 8px; }
+    .apellido { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--acc-ink); background: color-mix(in srgb, var(--acc) 14%, transparent); padding: 5px 12px; border-radius: 999px; margin: 18px 0 16px; }
+    .estado-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--acc); }
+    h1 { font-size: clamp(30px, 6vw, 50px); font-weight: 800; letter-spacing: -0.8px; line-height: 1.08; }
+    h1 .tl { color: var(--gray); font-weight: 700; }
+    .claim { font-size: clamp(19px, 3vw, 26px); font-weight: 800; color: var(--acc-ink); margin-top: 16px; letter-spacing: -0.3px; }
+    .sub { font-size: clamp(15px, 2vw, 17.5px); color: var(--ink2); margin-top: 14px; max-width: 680px; }
+    .estado-linea { font-size: 13px; font-weight: 600; color: var(--gray); margin-top: 14px; }
+
+    /* Vídeo */
+    .video-sec { padding: 32px 0 8px; }
+    .video-frame { position: relative; aspect-ratio: 16/9; border-radius: 18px; overflow: hidden; border: 1px solid var(--hline); background: radial-gradient(120% 120% at 50% 0%, #1A2233 0%, #0B0E16 100%); box-shadow: 0 24px 60px rgba(0,0,0,.28); display: grid; place-items: center; }
+    .video-ph { text-align: center; color: var(--hmuted); }
+    .play { width: 74px; height: 74px; border-radius: 50%; background: var(--acc); display: grid; place-items: center; margin: 0 auto 16px; box-shadow: 0 10px 30px color-mix(in srgb, var(--acc) 45%, transparent); }
+    .play svg { width: 30px; height: 30px; margin-left: 4px; }
+    .video-ph .t { font-size: 15px; font-weight: 700; color: var(--hink); }
+    .video-ph .s { font-size: 13px; margin-top: 4px; }
+    .video-cap { font-size: 13px; color: var(--gray); margin-top: 12px; text-align: center; }
+
+    section.bloque { padding: 34px 0; }
+    .kicker { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--acc-ink); margin-bottom: 12px; }
+    h2 { font-size: clamp(23px, 4vw, 32px); font-weight: 800; letter-spacing: -0.4px; line-height: 1.15; }
+    .promesa { font-size: clamp(16px, 2.2vw, 19px); color: var(--ink2); margin-top: 16px; max-width: 720px; line-height: 1.6; }
+
+    .benefs { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 8px; }
+    .benef { background: var(--card); border: 1px solid var(--sep); border-radius: 16px; padding: 20px; border-top: 3px solid var(--acc); }
+    .benef h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
+    .benef p { font-size: 13.5px; color: var(--ink2); }
+
+    .paraquien { background: var(--card); border: 1px solid var(--sep); border-radius: 16px; padding: 22px 24px; margin-top: 8px; font-size: 15.5px; color: var(--ink); }
+    .paraquien b { color: var(--acc-ink); }
+
+    .cierre { background: var(--hbg); border-radius: 20px; padding: 36px 30px; margin-top: 8px; text-align: center; color: var(--hink); }
+    .precio-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--hmuted); }
+    .precio { font-size: clamp(34px, 6vw, 46px); font-weight: 900; letter-spacing: -1px; font-variant-numeric: tabular-nums; margin-top: 4px; }
+    .precio-nota { font-size: 13.5px; color: var(--hmuted); margin-top: 10px; }
+    .cta { display: inline-block; margin-top: 22px; background: var(--acc); color: #0B0E16; text-decoration: none; font-size: 16px; font-weight: 800; padding: 14px 30px; border-radius: 12px; }
+    .cta:hover { filter: brightness(1.05); }
+    .cta-sub { font-size: 12.5px; color: var(--hmuted); margin-top: 12px; }
+
+    footer { padding: 34px 0 56px; font-size: 13px; color: var(--gray); border-top: 1px solid var(--sep); margin-top: 34px; }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+    footer a { color: var(--gray); }
+  </style>
+</head>
+<body class="lang-es">
+
+  <div class="topbar">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <svg class="logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#232C40"/><stop offset="1" stop-color="#0B0E16"/></linearGradient></defs>
+          <rect width="120" height="120" rx="28" fill="url(#lg)"/>
+          <rect x="18" y="38" width="36" height="9" rx="2" fill="#F4F7FB"/><rect x="31" y="38" width="9" height="44" rx="2" fill="#F4F7FB"/>
+          <rect x="80" y="38" width="9" height="44" rx="2" fill="#F4F7FB"/><rect x="80" y="73" width="24" height="9" rx="2" fill="#F4F7FB"/>
+          <path d="M10 62 H38 l6 -18 l9 34 l7 -24 l5 12 H110" fill="none" stroke="#2E7DF6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span><span class="train">Train</span><span class="lab">Lab</span></span>
+      </a>
+      <div class="langs">
+        <button id="b-es" onclick="setLang('es')" aria-label="Español">ES</button>
+        <button id="b-en" onclick="setLang('en')" aria-label="English">EN</button>
+      </div>
+      <a class="top-cta" href="index.html#lista"><span class="es">Lista de espera</span><span class="en">Waitlist</span></a>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <a class="volver" href="index.html#ecosistema">← <span class="es">Volver al ecosistema</span><span class="en">Back to the ecosystem</span></a>
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="apellido"><span class="estado-dot"></span>TrainLab Force</span>
+      <h1><span class="tl">TrainLab</span> Force</h1>
+      <p class="claim"><span class="es">La fuerza que se puede medir.</span><span class="en">Strength you can measure.</span></p>
+      <p class="sub"><span class="es">La fuerza isométrica y las asimetrías son la base de la readaptación de lesiones. Force es un dinamómetro de tracción asequible cuyo resultado cae en el mismo expediente que usan el entrenador y el readaptador.</span><span class="en">Isometric strength and asymmetries are the foundation of return to sport. Force is an affordable pulling dynamometer whose results land in the same record the coach and the rehab professional already use.</span></p>
+      <p class="estado-linea"><span class="es">En desarrollo</span><span class="en">In development</span></p>
+    </div>
+  </header>
+
+  <section class="video-sec">
+    <div class="wrap">
+      <div class="video-frame">
+        <!-- Cuando tengas el vídeo, sustituye este bloque .video-ph por el iframe:
+             <iframe src="https://www.youtube.com/embed/TU_ID" style="position:absolute;inset:0;width:100%;height:100%;border:0" allowfullscreen loading="lazy"></iframe> -->
+        <div class="video-ph">
+          <div class="play"><svg viewBox="0 0 24 24" fill="#0B0E16" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="t"><span class="es">Vídeo explicativo</span><span class="en">Explainer video</span></div>
+          <div class="s"><span class="es">Próximamente</span><span class="en">Coming soon</span></div>
+        </div>
+      </div>
+      <p class="video-cap"><span class="es">Un recorrido por TrainLab Force, en cuanto lo grabemos.</span><span class="en">A walkthrough of TrainLab Force, as soon as we film it.</span></p>
+    </div>
+  </section>
+
+  <section class="bloque">
+    <div class="wrap">
+      <p class="kicker"><span class="es">Qué te aporta</span><span class="en">What it gives you</span></p>
+      <h2><span class="es">La fuerza que se puede medir.</span><span class="en">Strength you can measure.</span></h2>
+      <p class="promesa"><span class="es">Dar el alta de una lesión por sensación es jugársela. Force convierte esa decisión en un número: cuánta fuerza produce cada pierna y cuánto le falta a la lesionada para alcanzar a la sana. El readaptador decide con criterio, el atleta vuelve con seguridad y todo queda registrado junto al resto de su historia.</span><span class="en">Clearing an injury by feel is a gamble. Force turns that decision into a number: how much force each leg produces and how far the injured one is from matching the healthy one. The rehab professional decides with criteria, the athlete returns safely, and it is all logged alongside the rest of their story.</span></p>
+    </div>
+  </section>
+
+  <section class="bloque" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="benefs">
+        <div class="benef">
+          <h3><span class="es">Tests isométricos claros</span><span class="en">Clear isometric tests</span></h3>
+          <p><span class="es">Mide la fuerza máxima con criterios de progresión que se entienden, sin montar un laboratorio.</span><span class="en">Measure maximal strength with progression criteria that make sense, without building a lab.</span></p>
+        </div>
+        <div class="benef">
+          <h3><span class="es">Asimetrías entre lados</span><span class="en">Side-to-side asymmetries</span></h3>
+          <p><span class="es">Descubre el desequilibrio que provoca lesiones, medido y seguido en el tiempo.</span><span class="en">Uncover the imbalance that causes injuries, measured and tracked over time.</span></p>
+        </div>
+        <div class="benef">
+          <h3><span class="es">Vuelta al deporte con criterio</span><span class="en">Return to sport with criteria</span></h3>
+          <p><span class="es">Pensado junto a los criterios internacionales: el alta se decide con datos, no con prisa.</span><span class="en">Built around international criteria: clearance is decided with data, not in a hurry.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="paraquien"><span class="es">Para fisioterapeutas, readaptadores y entrenadores que se toman en serio la vuelta al deporte.</span><span class="en">For physiotherapists, rehab specialists and coaches who take return to sport seriously.</span></div>
+    </div>
+  </section>
+
+  <section class="bloque" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="cierre">
+        
+        <div class="precio"><span class="es">En desarrollo</span><span class="en">In development</span></div>
+        <div class="precio-nota"><span class="es">Estamos construyendo el hardware. Anunciaremos su precio cuando esté listo.</span><span class="en">We are building the hardware. We will announce its price when it is ready.</span></div>
+        <a class="cta" href="index.html#lista"><span class="es">Únete a la lista de espera</span><span class="en">Join the waitlist</span></a>
+        <div class="cta-sub"><span class="es">Sé de los primeros en probarlo.</span><span class="en">Be among the first to try it.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="anio">2026</span> TrainLab</span>
+      <a href="index.html"><span class="es">La web de TrainLab</span><span class="en">The TrainLab website</span></a>
+      <a href="privacidad.html"><span class="es">Privacidad</span><span class="en">Privacy</span></a>
+    </div>
+  </footer>
+
+  <script>
+    function setLang(l) {
+      document.body.className = "lang-" + l;
+      document.documentElement.lang = l;
+      try { localStorage.setItem("tl-lang", l); } catch (e) {}
+    }
+    (function () {
+      var g = null; try { g = localStorage.getItem("tl-lang"); } catch (e) {}
+      setLang(g === "en" ? "en" : ((navigator.language || "es").toLowerCase().indexOf("es") === 0 || g === "es" ? "es" : (g ? "en" : "es")));
+      document.getElementById("anio").textContent = String(new Date().getFullYear());
+    })();
+  </script>
+</body>
+</html>
