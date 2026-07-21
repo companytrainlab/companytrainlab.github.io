@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TrainLab: entrena con datos, no con sensaciones</title>
   <meta name="description" content="TrainLab es el ecosistema de entrenamiento con ciencia publicada detrás de cada número: gestión, carga, velocidad, recuperación y fuerza para entrenadores, centros y atletas." />
+  <!-- En desarrollo: fuera de los buscadores hasta el lanzamiento. Quitar esta línea (y volver robots.txt a Allow) para hacerla pública. -->
+  <meta name="robots" content="noindex, nofollow" />
   <link rel="canonical" href="https://companytrainlab.github.io/" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -238,6 +240,26 @@
     .fila.force    { --acc: var(--force); }
     .fila.signal   { --acc: var(--signal); --acc-ink: var(--signal-ink); }
 
+    /* --- Roadmap: en qué estamos --- */
+    #roadmap .sec-eyebrow { color: var(--azul-pulso); }
+    .road-nota {
+      display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--ink2);
+      background: var(--card); border: 1px solid var(--sep); border-radius: 999px; padding: 7px 15px;
+    }
+    .road-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+    @media (max-width: 820px) { .road-cols { grid-template-columns: 1fr; } }
+    .road-col { background: var(--card); border: 1px solid var(--sep); border-radius: 16px; padding: 22px 20px; border-top: 3px solid var(--rc, var(--sep)); }
+    .road-col .cab { display: flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 800; }
+    .road-col .cab .punto { width: 10px; height: 10px; border-radius: 50%; background: var(--rc); flex-shrink: 0; }
+    .road-col .fase { font-size: 11.5px; font-weight: 700; color: var(--gray); margin: 2px 0 0 19px; }
+    .road-col ul { list-style: none; margin-top: 16px; display: grid; gap: 12px; }
+    .road-col li { font-size: 13.5px; color: var(--ink2); line-height: 1.5; padding-left: 19px; position: relative; }
+    .road-col li::before { content: ""; position: absolute; left: 0; top: 7px; width: 7px; height: 7px; border-radius: 50%; background: var(--rc); opacity: .55; }
+    .road-col li b { color: var(--ink); font-weight: 700; }
+    .road-hecho    { --rc: var(--fitness); }
+    .road-marcha   { --rc: var(--azul-pulso); }
+    .road-siguiente{ --rc: var(--gray); }
+
     /* --- Ciencia --- */
     #ciencia .sec-eyebrow { color: var(--azul-pulso); }
     .refs { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 40px; }
@@ -333,6 +355,8 @@
     .cp-ejemplos .fila { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 13.5px; color: var(--ink2); }
     .cp-ejemplos .fila b { font-size: 14.5px; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
     .centros-precio .btn { display: block; text-align: center; margin-top: 18px; }
+    /* CTA de centros en verde de Fitness (es un modelo dentro de Fitness) */
+    .centros-precio .btn.primary { background: var(--fitness); box-shadow: 0 6px 22px rgba(52,199,89,.32); }
     .cp-nota { font-size: 12px; color: var(--gray); margin-top: 12px; text-align: center; }
 
     /* --- FAQ --- */
@@ -885,6 +909,55 @@
               </figcaption>
             </figure>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Roadmap: en qué estamos ============ -->
+  <section id="roadmap">
+    <div class="wrap">
+      <p class="sec-eyebrow"><span class="es">En qué estamos</span><span class="en">Where we are</span></p>
+      <h2>
+        <span class="es">Un proyecto en desarrollo, a la vista.</span>
+        <span class="en">A project in development, out in the open.</span>
+      </h2>
+      <p class="lead">
+        <span class="es">TrainLab se está construyendo. No hay producto final todavía: esto es lo que ya funciona, lo que estamos haciendo ahora y lo que viene. Sin fechas que no podamos cumplir.</span>
+        <span class="en">TrainLab is being built. There is no final product yet: this is what already works, what we are doing now and what comes next. With no dates we cannot keep.</span>
+      </p>
+
+      <div class="road-cols">
+        <div class="road-col road-hecho">
+          <div class="cab"><span class="punto"></span><span class="es">La base</span><span class="en">The foundation</span></div>
+          <div class="fase"><span class="es">Hecho</span><span class="en">Done</span></div>
+          <ul>
+            <li><span class="es">Las <b>cinco apps</b> del ecosistema, construidas y funcionando.</span><span class="en">The ecosystem's <b>five apps</b>, built and working.</span></li>
+            <li><span class="es">La <b>ciencia implementada</b>: carga (sRPE, ACWR), velocidad, salto y perfil fuerza-velocidad.</span><span class="en"><b>The science implemented</b>: load (sRPE, ACWR), velocity, jump and force-velocity profile.</span></li>
+            <li><span class="es">Una <b>cuenta y una nube</b> compartidas por toda la familia.</span><span class="en">One <b>account and cloud</b> shared across the whole family.</span></li>
+            <li><span class="es">Fitness, en <b>beta cerrada</b>.</span><span class="en">Fitness, in <b>closed beta</b>.</span></li>
+            <li><span class="es">Esta web y la lista de espera.</span><span class="en">This website and the waitlist.</span></li>
+          </ul>
+        </div>
+        <div class="road-col road-marcha">
+          <div class="cab"><span class="punto"></span><span class="es">Ahora mismo</span><span class="en">Right now</span></div>
+          <div class="fase"><span class="es">En marcha</span><span class="en">In progress</span></div>
+          <ul>
+            <li><span class="es">Puliendo <b>Fitness</b> con el primer grupo de la beta.</span><span class="en">Polishing <b>Fitness</b> with the first beta group.</span></li>
+            <li><span class="es">Llevando las apps a <b>Android</b> (ya compilan).</span><span class="en">Bringing the apps to <b>Android</b> (they already build).</span></li>
+            <li><span class="es"><b>Velocity</b>: a la espera del sensor para calibrarlo.</span><span class="en"><b>Velocity</b>: awaiting the sensor to calibrate it.</span></li>
+            <li><span class="es"><b>Control</b>: validando la pulsera física.</span><span class="en"><b>Control</b>: validating the physical band.</span></li>
+          </ul>
+        </div>
+        <div class="road-col road-siguiente">
+          <div class="cab"><span class="punto"></span><span class="es">Lo que viene</span><span class="en">What's next</span></div>
+          <div class="fase"><span class="es">Después</span><span class="en">Next</span></div>
+          <ul>
+            <li><span class="es">Abrir más <b>plazas de la beta</b>.</span><span class="en">Open more <b>beta spots</b>.</span></li>
+            <li><span class="es">Publicar en la <b>App Store</b>.</span><span class="en">Publish on the <b>App Store</b>.</span></li>
+            <li><span class="es"><b>Force</b> y <b>Signal</b>: montar y calibrar su hardware.</span><span class="en"><b>Force</b> and <b>Signal</b>: build and calibrate their hardware.</span></li>
+            <li><span class="es">Un <b>paquete</b> que una las suscripciones del ecosistema.</span><span class="en">A <b>bundle</b> tying the ecosystem subscriptions together.</span></li>
+          </ul>
         </div>
       </div>
     </div>

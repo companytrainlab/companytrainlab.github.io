@@ -1,7 +1,6 @@
+# TrainLab está en desarrollo (trabajo previo al lanzamiento). Hasta que
+# la web sea pública, se pide a los buscadores que no la rastreen.
+# Para hacerla pública: volver a "Allow: /", restaurar la línea Sitemap
+# y quitar los <meta name="robots" content="noindex"> de las páginas.
 User-agent: *
-Allow: /
-# El landing de las cajas es transaccional (necesita el código de una
-# unidad física): sin código enseña un error, así que mejor no indexarlo.
-Disallow: /caja/
-
-Sitemap: https://companytrainlab.github.io/sitemap.xml
+Disallow: /
