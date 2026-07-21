@@ -279,8 +279,16 @@
       padding: 5px 12px; border-radius: 999px;
     }
     .planes { display: grid; grid-template-columns: repeat(auto-fit, minmax(158px, 1fr)); gap: 14px; margin-top: 40px; }
-    .plan .nombre-atleta { color: var(--azul-pulso); }
+    .plan.destacado { border-color: var(--azul-pulso); box-shadow: 0 0 0 1px var(--azul-pulso) inset; }
+    .plan .nombre-personal { color: var(--azul-pulso); }
     .otro .pendiente { font-size: 13.5px; font-weight: 700; color: var(--viz-force); white-space: nowrap; }
+    /* Bloque explicativo del modelo de precio */
+    .como-funciona { background: var(--accent-bg); border: 1px solid var(--sep); border-radius: 16px; padding: 22px 24px; margin-top: 16px; }
+    .como-funciona h3 { font-size: 15px; font-weight: 800; margin-bottom: 4px; }
+    .cf-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 26px; margin-top: 14px; }
+    @media (max-width: 560px) { .cf-grid { grid-template-columns: 1fr; } }
+    .cf-item { font-size: 13.5px; color: var(--ink2); line-height: 1.5; }
+    .cf-item b { color: var(--ink); }
     .plan { background: var(--card); border: 1px solid var(--sep); border-radius: 16px; padding: 22px 20px; }
     .plan .nombre { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--fitness); }
     .plan .precio { font-size: 34px; font-weight: 900; font-variant-numeric: tabular-nums; letter-spacing: -0.5px; margin-top: 8px; }
@@ -983,20 +991,15 @@
         <span class="en">Prices in progress · to be tuned before launch</span>
       </span>
       <p class="lead">
-        <span class="es">La suscripción de Fitness crece contigo: pagas según los atletas que gestionas, con 14 días de prueba y unos 2 meses gratis en el plan anual. La app sigue en desarrollo y estos son los precios de partida, no los definitivos.</span>
-        <span class="en">The Fitness subscription grows with you: you pay for the athletes you manage, with a 14 day trial and about 2 months free on the yearly plan. The app is still in development and these are starting prices, not final ones.</span>
+        <span class="es">La suscripción de Fitness crece contigo: eliges el plan por el número de atletas que gestionas y subes de tramo solo cuando lo necesitas. La app sigue en desarrollo, así que estos son precios de partida, no los definitivos.</span>
+        <span class="en">The Fitness subscription grows with you: you pick your plan by the number of athletes you manage and move up a tier only when you need to. The app is still in development, so these are starting prices, not final ones.</span>
       </p>
 
       <div class="planes">
-        <div class="plan">
-          <div class="nombre nombre-atleta">Atleta</div>
+        <div class="plan destacado">
+          <div class="nombre nombre-personal">Personal</div>
           <div class="precio">4,99 €<small>/<span class="es">mes</span><span class="en">mo</span></small></div>
-          <div class="det"><span class="es">Para ti · autoentreno</span><span class="en">For you · self-training</span></div>
-        </div>
-        <div class="plan">
-          <div class="nombre">Solo</div>
-          <div class="precio">4,99 €<small>/<span class="es">mes</span><span class="en">mo</span></small></div>
-          <div class="det"><span class="es">1 cliente</span><span class="en">1 client</span></div>
+          <div class="det"><span class="es">1 atleta: tú o tu primer cliente</span><span class="en">1 athlete: you or your first client</span></div>
         </div>
         <div class="plan">
           <div class="nombre">Coach</div>
@@ -1017,6 +1020,28 @@
           <div class="nombre">Studio</div>
           <div class="precio">21,99 €<small>/<span class="es">mes</span><span class="en">mo</span></small></div>
           <div class="det"><span class="es">Más de 20 · o a medida</span><span class="en">More than 20 · or custom</span></div>
+        </div>
+      </div>
+
+      <div class="como-funciona">
+        <h3><span class="es">Cómo funciona el precio</span><span class="en">How the price works</span></h3>
+        <div class="cf-grid">
+          <div class="cf-item">
+            <span class="es"><b>Pagas por atletas.</b> Un atleta es cada persona a la que sigues en la app: tú mismo o cada uno de tus clientes. Empiezas en Personal y subes de tramo solo cuando sumas atletas, con la misma cuenta.</span>
+            <span class="en"><b>You pay by athletes.</b> An athlete is each person you follow in the app: yourself or each of your clients. You start on Personal and move up a tier only as you add athletes, keeping the same account.</span>
+          </div>
+          <div class="cf-item">
+            <span class="es"><b>Todo incluido en todos los planes.</b> Entre tramos solo cambia cuántos atletas puedes llevar: la ciencia, los informes y las funciones son las mismas en todos.</span>
+            <span class="en"><b>Everything included in every plan.</b> The only thing that changes between tiers is how many athletes you can manage: the science, the reports and the features are the same across all of them.</span>
+          </div>
+          <div class="cf-item">
+            <span class="es"><b>14 días de prueba gratis.</b> Para probarlo con calma antes de pagar. No hay plan gratuito permanente.</span>
+            <span class="en"><b>14 day free trial.</b> To try it calmly before paying. There is no permanent free tier.</span>
+          </div>
+          <div class="cf-item">
+            <span class="es"><b>Al mes o al año.</b> En el plan anual, unos dos meses salen gratis frente a pagar mes a mes.</span>
+            <span class="en"><b>Monthly or yearly.</b> On the yearly plan, about two months come free compared with paying month by month.</span>
+          </div>
         </div>
       </div>
 
