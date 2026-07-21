@@ -309,11 +309,25 @@
     /* --- Centros --- */
     .centros-band {
       background: var(--card); border: 1px solid var(--sep); border-radius: 20px;
-      padding: 36px 32px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;
+      padding: 34px 32px; display: grid; grid-template-columns: 1.25fr 0.9fr; gap: 30px; align-items: start;
     }
-    @media (max-width: 720px) { .centros-band { grid-template-columns: 1fr; } }
+    @media (max-width: 760px) { .centros-band { grid-template-columns: 1fr; gap: 24px; } }
     .centros-band h2 { font-size: clamp(22px, 3vw, 28px); }
-    .centros-band p { font-size: 15px; color: var(--ink2); margin-top: 10px; max-width: 620px; }
+    .centros-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--azul-pulso); margin-bottom: 12px; }
+    .centros-band p.intro { font-size: 15px; color: var(--ink2); margin-top: 10px; }
+    .centros-lista { list-style: none; margin-top: 18px; display: grid; gap: 11px; }
+    .centros-lista li { position: relative; padding-left: 26px; font-size: 14.5px; color: var(--ink2); line-height: 1.5; }
+    .centros-lista li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--fitness); font-weight: 800; }
+    .centros-lista li b { color: var(--ink); }
+    .centros-precio { background: var(--accent-bg); border: 1px solid var(--sep); border-radius: 16px; padding: 22px 22px 20px; }
+    .cp-label { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gray); }
+    .cp-dato { font-size: 34px; font-weight: 900; font-variant-numeric: tabular-nums; letter-spacing: -0.5px; margin-top: 6px; }
+    .cp-dato small { font-size: 14px; font-weight: 600; color: var(--gray); letter-spacing: 0; }
+    .cp-ejemplos { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--sep); display: grid; gap: 9px; }
+    .cp-ejemplos .fila { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 13.5px; color: var(--ink2); }
+    .cp-ejemplos .fila b { font-size: 14.5px; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .centros-precio .btn { display: block; text-align: center; margin-top: 18px; }
+    .cp-nota { font-size: 12px; color: var(--gray); margin-top: 12px; text-align: center; }
 
     /* --- FAQ --- */
     .faqs { margin-top: 36px; border: 1px solid var(--sep); border-radius: 16px; overflow: hidden; }
@@ -1069,11 +1083,28 @@
   <section id="centros" style="padding-top: 0;">
     <div class="wrap">
       <div class="centros-band">
-        <div>
-          <h2><span class="es">¿Llevas un centro o un club?</span><span class="en">Running a center or a club?</span></h2>
-          <p><span class="es">Un panel propio para agrupar a tus entrenadores, supervisar la calidad del servicio y reducir el riesgo de lesión de la plantilla. Cada entrenador conserva su cuenta y el centro paga una sola factura.</span><span class="en">A dedicated panel to group your coaches, supervise service quality and reduce squad injury risk. Each coach keeps their account and the center pays a single invoice.</span></p>
+        <div class="centros-info">
+          <p class="centros-eyebrow"><span class="es">Para centros y clubes</span><span class="en">For centers and clubs</span></p>
+          <h2><span class="es">Un gimnasio, muchos entrenadores, una sola cuenta.</span><span class="en">One gym, many coaches, one single account.</span></h2>
+          <p class="intro"><span class="es">Es el plan para gimnasios y clubes con varios entrenadores. El centro agrupa a toda su plantilla bajo una cuenta, ve el trabajo de cada entrenador desde un panel propio y paga una sola factura, mientras cada entrenador conserva su cuenta y sus atletas.</span><span class="en">It is the plan for gyms and clubs with several coaches. The center groups its whole staff under one account, sees each coach's work from a dedicated panel and pays a single invoice, while every coach keeps their own account and athletes.</span></p>
+          <ul class="centros-lista">
+            <li><span class="es"><b>Panel del centro incluido:</b> la actividad y la calidad del servicio de toda la plantilla, en un vistazo.</span><span class="en"><b>Center panel included:</b> the activity and service quality of the whole staff, at a glance.</span></li>
+            <li><span class="es"><b>Atletas sin tope por entrenador:</b> cada uno gestiona todos los que necesite.</span><span class="en"><b>Unlimited athletes per coach:</b> each one manages as many as they need.</span></li>
+            <li><span class="es"><b>Una sola factura:</b> el centro paga por sus entrenadores y cada uno conserva su cuenta.</span><span class="en"><b>One single invoice:</b> the center pays for its coaches and each keeps their own account.</span></li>
+            <li><span class="es"><b>Pensado para la dirección:</b> supervisar la calidad y reducir el riesgo de lesión de la plantilla.</span><span class="en"><b>Built for management:</b> supervise quality and reduce the squad's injury risk.</span></li>
+          </ul>
         </div>
-        <a class="btn primary" href="mailto:hola@trainlabfitness.es?subject=TrainLab%20para%20centros"><span class="es">Escríbenos</span><span class="en">Write to us</span></a>
+        <div class="centros-precio">
+          <div class="cp-label"><span class="es">Precio por asiento</span><span class="en">Price per seat</span></div>
+          <div class="cp-dato">12,99 €<small>/<span class="es">entrenador · mes</span><span class="en">coach · mo</span></small></div>
+          <div class="cp-ejemplos">
+            <div class="fila"><span><span class="es">2 entrenadores</span><span class="en">2 coaches</span></span><b>25,98 €<span class="es">/mes</span><span class="en">/mo</span></b></div>
+            <div class="fila"><span><span class="es">5 entrenadores</span><span class="en">5 coaches</span></span><b>64,95 €<span class="es">/mes</span><span class="en">/mo</span></b></div>
+            <div class="fila"><span><span class="es">Más de 10</span><span class="en">More than 10</span></span><b><span class="es">a medida</span><span class="en">custom</span></b></div>
+          </div>
+          <a class="btn primary" href="mailto:hola@trainlabfitness.es?subject=TrainLab%20para%20centros"><span class="es">Hablemos de tu centro</span><span class="en">Let's talk about your center</span></a>
+          <p class="cp-nota"><span class="es">Precio de partida, en proceso como el resto.</span><span class="en">Starting price, in progress like the rest.</span></p>
+        </div>
       </div>
     </div>
   </section>
