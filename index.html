@@ -258,6 +258,26 @@
     .fila.force    { --acc: var(--force); }
     .fila.signal   { --acc: var(--signal); --acc-ink: var(--signal-ink); }
 
+    /* --- Por qué TrainLab: comparativa --- */
+    #porque .sec-eyebrow { color: var(--azul-pulso); }
+    .comparativa { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; align-items: stretch; }
+    @media (max-width: 720px) { .comparativa { grid-template-columns: 1fr; } }
+    .comp-col { border-radius: 18px; padding: 26px 24px; border: 1px solid var(--sep); }
+    .comp-antes { background: var(--card-alt); }
+    .comp-despues { background: var(--azul-noche); border-color: var(--hline); color: var(--hink); position: relative; overflow: hidden; }
+    .comp-cab { font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 18px; }
+    .comp-antes .comp-cab { color: var(--gray); }
+    .comp-despues .comp-cab { color: #9AA6BC; }
+    .comp-col ul { list-style: none; display: grid; gap: 14px; }
+    .comp-col li { position: relative; padding-left: 30px; font-size: 14.5px; line-height: 1.5; }
+    .comp-antes li { color: var(--ink2); }
+    .comp-despues li { color: #DFE5EF; }
+    .comp-col li::before { position: absolute; left: 0; top: -1px; font-size: 16px; font-weight: 800; }
+    .comp-antes li::before { content: "✕"; color: var(--red); }
+    .comp-despues li::before { content: "✓"; color: #30D158; }
+    .comp-despues li b { color: #fff; }
+    .comp-cierre { margin-top: 26px; border-left: 4px solid var(--azul-pulso); background: var(--card); border-radius: 0 16px 16px 0; padding: 20px 24px; font-size: 16px; color: var(--ink); font-weight: 600; }
+
     /* --- Roadmap: en qué estamos --- */
     #roadmap .sec-eyebrow { color: var(--azul-pulso); }
     .road-nota {
@@ -1081,6 +1101,47 @@
           </a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ Por qué TrainLab ============ -->
+  <section id="porque">
+    <div class="wrap">
+      <p class="sec-eyebrow"><span class="es">Por qué TrainLab</span><span class="en">Why TrainLab</span></p>
+      <h2>
+        <span class="es">Lo que hoy son cinco herramientas, en una sola familia.</span>
+        <span class="en">What today takes five tools, in a single family.</span>
+      </h2>
+      <p class="lead">
+        <span class="es">Para tener lo que ofrece TrainLab, hoy hay que juntar cinco productos distintos: caros, casi todos en inglés y que no se hablan entre sí. Esa es la diferencia.</span>
+        <span class="en">To get what TrainLab offers, today you have to piece together five separate products: expensive, mostly in English and not talking to each other. That is the difference.</span>
+      </p>
+      <div class="comparativa">
+        <div class="comp-col comp-antes">
+          <div class="comp-cab"><span class="es">Hoy, sin TrainLab</span><span class="en">Today, without TrainLab</span></div>
+          <ul>
+            <li><span class="es">Una app de gestión, cara y pensada en inglés.</span><span class="en">A management app, expensive and built in English.</span></li>
+            <li><span class="es">Un sensor de velocidad de varios cientos de euros.</span><span class="en">A velocity sensor costing several hundred euros.</span></li>
+            <li><span class="es">Otra pulsera de recuperación, con su propia suscripción.</span><span class="en">Another recovery band, with its own subscription.</span></li>
+            <li><span class="es">Un dinamómetro clínico caro para medir la fuerza.</span><span class="en">An expensive clinical dynamometer to measure strength.</span></li>
+            <li><span class="es">Cinco apps que no se hablan: los datos, sueltos.</span><span class="en">Five apps that do not talk to each other: scattered data.</span></li>
+          </ul>
+        </div>
+        <div class="comp-col comp-despues">
+          <div class="comp-cab"><span class="es">Con TrainLab</span><span class="en">With TrainLab</span></div>
+          <ul>
+            <li><span class="es">Una <b>familia de cinco productos</b> que encajan.</span><span class="en">A <b>family of five products</b> that fit together.</span></li>
+            <li><span class="es">Una <b>sola cuenta</b> y un <b>solo expediente</b> del atleta.</span><span class="en">One <b>single account</b> and one <b>single record</b> for the athlete.</span></li>
+            <li><span class="es"><b>Precio europeo</b>, sin los cientos de euros de siempre.</span><span class="en"><b>European pricing</b>, without the usual hundreds of euros.</span></li>
+            <li><span class="es">En <b>español</b> (y en inglés), pensado para tu mercado.</span><span class="en">In <b>Spanish</b> (and English), built for your market.</span></li>
+            <li><span class="es">La carga, la velocidad, la recuperación y la fuerza, <b>conectadas</b>.</span><span class="en">Load, velocity, recovery and strength, <b>connected</b>.</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="comp-cierre">
+        <span class="es">Ninguno de los grandes lo hace: cada uno vive anclado en su categoría. El foso de TrainLab no es una función, es el conjunto.</span>
+        <span class="en">None of the big players does this: each stays anchored in its own category. TrainLab's moat is not a feature, it is the whole.</span>
+      </p>
     </div>
   </section>
 
