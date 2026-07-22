@@ -219,6 +219,12 @@
     .ver-detalle:hover { background: color-mix(in srgb, var(--vd, var(--azul-pulso)) 10%, transparent); }
     .ver-detalle .flecha { transition: transform .15s; }
     .ver-detalle:hover .flecha { transform: translateX(3px); }
+    /* Tarjetas de beneficio de cada producto (nivel Fitness) */
+    .feats-prod { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 14px; margin-top: 26px; }
+    .feat-prod { background: var(--card); border: 1px solid var(--sep); border-radius: 14px; padding: 18px; border-top: 3px solid var(--acc); }
+    .feat-prod h4 { font-size: 15px; font-weight: 800; margin-bottom: 5px; }
+    .feat-prod p { font-size: 13px; color: var(--ink2); }
+    .fila .ver-detalle { margin-top: 24px; }
 
     .integrada {
       margin-top: 26px; background: var(--accent-bg); border: 1px solid var(--sep);
@@ -741,15 +747,7 @@
           <h3><span class="tl">TrainLab</span> Velocity <span class="estado"><span class="es">App lista · sensor encargado</span><span class="en">App ready · sensor ordered</span></span></h3>
           <div class="fila-cols">
             <div>
-              <p><span class="es">La velocidad de la barra es la medida objetiva del esfuerzo real. Velocity la trae a tu gimnasio con un sensor propio y una metodología clara, sin pagar los cientos de euros de los sensores de siempre.</span><span class="en">Bar velocity is the objective measure of real effort. Velocity brings it to your gym with its own sensor and a clear methodology, without paying the hundreds of euros of the usual sensors.</span></p>
-              <ul>
-                <li><span class="es">Sensor en la barra con la app incluida, sin suscripción.</span><span class="en">Bar sensor with the app included, no subscription.</span></li>
-                <li><span class="es">Perfil fuerza-velocidad y control del esfuerzo serie a serie.</span><span class="en">Force velocity profile and set by set effort control.</span></li>
-                <li><span class="es">Conectado con Fitness: el dato entra solo en el expediente del atleta.</span><span class="en">Connected to Fitness: the data flows straight into the athlete record.</span></li>
-              </ul>
-              <a class="ver-detalle" style="--vd: var(--viz-velocity);" href="velocity.html" target="_blank" rel="noopener">
-                <span class="es">Ver Velocity: vídeo y detalles</span><span class="en">See Velocity: video and details</span> <span class="flecha">→</span>
-              </a>
+              <p><span class="es">La velocidad de la barra es la medida objetiva del esfuerzo real. Velocity la trae a tu gimnasio con un sensor propio y una metodología clara, sin pagar los cientos de euros de los sensores de siempre. Entrenar por porcentajes es usar el peso de un buen día en un mal día; la velocidad te dice, en el momento, cuánto cuesta de verdad cada repetición.</span><span class="en">Bar velocity is the objective measure of real effort. Velocity brings it to your gym with its own sensor and a clear methodology, without paying the hundreds of euros of the usual sensors. Training by percentages means using a good day's weight on a bad day; velocity tells you, in the moment, how much each rep truly costs.</span></p>
             </div>
             <figure class="viz-fig viz-card">
               <div class="viz-tit"><span class="es">Una serie al 75 %: la velocidad de cada repetición</span><span class="en">One set at 75%: the velocity of every rep</span></div>
@@ -782,6 +780,27 @@
               </figcaption>
             </figure>
           </div>
+          <div class="feats-prod">
+            <div class="feat-prod">
+              <h4><span class="es">Corta la serie a tiempo</span><span class="en">Cut the set in time</span></h4>
+              <p><span class="es">Cuando la velocidad cae el porcentaje marcado, la serie ya cumplió. Entrenas la calidad, no la fatiga inútil.</span><span class="en">When velocity drops the set target, the set is done. You train quality, not useless fatigue.</span></p>
+            </div>
+            <div class="feat-prod">
+              <h4><span class="es">Perfil fuerza-velocidad</span><span class="en">Force-velocity profile</span></h4>
+              <p><span class="es">Descubre si a tu atleta le falta fuerza o velocidad, y entrena justo lo que necesita.</span><span class="en">Find out whether your athlete lacks force or velocity, and train exactly what they need.</span></p>
+            </div>
+            <div class="feat-prod">
+              <h4><span class="es">Elite sin precio de elite</span><span class="en">Elite without the elite price</span></h4>
+              <p><span class="es">Un sensor asequible con la app incluida y sin suscripción, frente a los cientos de euros de siempre.</span><span class="en">An affordable sensor, app included, no subscription, versus the usual hundreds of euros.</span></p>
+            </div>
+            <div class="feat-prod">
+              <h4><span class="es">Todo entra solo en Fitness</span><span class="en">It all flows into Fitness</span></h4>
+              <p><span class="es">Cada repetición cae en el expediente del atleta. Sin copiar datos a mano.</span><span class="en">Every rep lands in the athlete's record. No copying data by hand.</span></p>
+            </div>
+          </div>
+          <a class="ver-detalle" style="--vd: var(--viz-velocity);" href="velocity.html" target="_blank" rel="noopener">
+            <span class="es">Ver Velocity: vídeo y detalles</span><span class="en">See Velocity: video and details</span> <span class="flecha">→</span>
+          </a>
         </div>
       </div>
 
@@ -791,15 +810,7 @@
           <h3><span class="tl">TrainLab</span> Control <span class="estado"><span class="es">Pulsera en validación</span><span class="en">Band in validation</span></span></h3>
           <div class="fila-cols">
             <div>
-              <p><span class="es">Las pulseras de recuperación miran el descanso de forma aislada. Control lo cruza con la carga real que planifica el entrenador, y le cuenta a los dos cómo llega el atleta a la sesión de hoy.</span><span class="en">Recovery wearables look at rest in isolation. Control crosses it with the real load the coach plans, and tells both how the athlete arrives at today's session.</span></p>
-              <ul>
-                <li><span class="es">Con la pulsera TrainLab o con tu propio reloj vía Apple Salud.</span><span class="en">With the TrainLab band or your own watch via Apple Health.</span></li>
-                <li><span class="es">Sueño, frecuencia cardiaca y recuperación en un feedback directo.</span><span class="en">Sleep, heart rate and recovery in direct feedback.</span></li>
-                <li><span class="es">La pulsera incluye la suscripción de Control para siempre.</span><span class="en">The band includes the Control subscription forever.</span></li>
-              </ul>
-              <a class="ver-detalle" style="--vd: var(--viz-control);" href="control.html" target="_blank" rel="noopener">
-                <span class="es">Ver Control: vídeo y detalles</span><span class="en">See Control: video and details</span> <span class="flecha">→</span>
-              </a>
+              <p><span class="es">Las pulseras de recuperación miran el descanso de forma aislada. Control lo cruza con la carga real que planifica el entrenador, y le cuenta a los dos cómo llega el atleta a la sesión de hoy. De nada sirve saber que has dormido mal si nadie ajusta tu entrenamiento por ello: Control conecta las dos cosas.</span><span class="en">Recovery wearables look at rest in isolation. Control crosses it with the real load the coach plans, and tells both how the athlete arrives at today's session. Knowing you slept badly is useless if no one adjusts your training for it: Control connects the two.</span></p>
             </div>
             <figure class="viz-fig viz-card">
               <div class="p-lbl"><span class="es">Recuperación · hoy</span><span class="en">Recovery · today</span></div>
@@ -827,6 +838,27 @@
               </figcaption>
             </figure>
           </div>
+          <div class="feats-prod">
+            <div class="feat-prod">
+              <h4><span class="es">Tu reloj o la pulsera</span><span class="en">Your watch or the band</span></h4>
+              <p><span class="es">Con tu reloj, los datos llegan por Apple Salud. Con la pulsera TrainLab, la suscripción va incluida para siempre.</span><span class="en">With your watch, data arrives via Apple Health. With the TrainLab band, the subscription is included forever.</span></p>
+            </div>
+            <div class="feat-prod">
+              <h4><span class="es">Recuperación cruzada con la carga</span><span class="en">Recovery crossed with load</span></h4>
+              <p><span class="es">No mira el descanso aislado: lo cruza con lo que de verdad has entrenado esta semana.</span><span class="en">It does not look at rest in isolation: it crosses it with what you actually trained this week.</span></p>
+            </div>
+            <div class="feat-prod">
+              <h4><span class="es">Un número que se entiende</span><span class="en">A number you understand</span></h4>
+              <p><span class="es">Sueño, frecuencia cardiaca y variabilidad en un feedback claro, sin necesidad de ser médico.</span><span class="en">Sleep, heart rate and variability in clear feedback, no need to be a doctor.</span></p>
+            </div>
+            <div class="feat-prod">
+              <h4><span class="es">Conectado con tu entrenador</span><span class="en">Connected to your coach</span></h4>
+              <p><span class="es">Ve cómo te recuperas junto a lo que te ha mandado, y ajusta antes de que te pases de frenada.</span><span class="en">They see how you recover next to what they prescribed, and adjust before you overreach.</span></p>
+            </div>
+          </div>
+          <a class="ver-detalle" style="--vd: var(--viz-control);" href="control.html" target="_blank" rel="noopener">
+            <span class="es">Ver Control: vídeo y detalles</span><span class="en">See Control: video and details</span> <span class="flecha">→</span>
+          </a>
         </div>
       </div>
 
@@ -836,15 +868,7 @@
           <h3><span class="tl">TrainLab</span> Force <span class="estado"><span class="es">En desarrollo</span><span class="en">In development</span></span></h3>
           <div class="fila-cols">
             <div>
-              <p><span class="es">La fuerza isométrica y las asimetrías son la base de la readaptación de lesiones. Force es un dinamómetro de tracción asequible cuyo resultado cae en el mismo expediente que usan el entrenador y el readaptador.</span><span class="en">Isometric strength and asymmetries are the foundation of return to sport. Force is an affordable pulling dynamometer whose results land in the same record the coach and the rehab professional already use.</span></p>
-              <ul>
-                <li><span class="es">Tests isométricos con criterios claros de progresión.</span><span class="en">Isometric tests with clear progression criteria.</span></li>
-                <li><span class="es">Asimetrías entre lados, medidas y seguidas en el tiempo.</span><span class="en">Side to side asymmetries, measured and tracked over time.</span></li>
-                <li><span class="es">Pensado junto a los criterios internacionales de vuelta al deporte.</span><span class="en">Built around international return to sport criteria.</span></li>
-              </ul>
-              <a class="ver-detalle" style="--vd: var(--viz-force);" href="force.html" target="_blank" rel="noopener">
-                <span class="es">Ver Force: vídeo y detalles</span><span class="en">See Force: video and details</span> <span class="flecha">→</span>
-              </a>
+              <p><span class="es">La fuerza isométrica y las asimetrías son la base de la readaptación de lesiones. Force es un dinamómetro de tracción asequible cuyo resultado cae en el mismo expediente que usan el entrenador y el readaptador. Dar el alta por sensación es jugársela; Force convierte esa decisión en un número.</span><span class="en">Isometric strength and asymmetries are the foundation of return to sport. Force is an affordable pulling dynamometer whose results land in the same record the coach and the rehab professional already use. Clearing an injury by feel is a gamble; Force turns that decision into a number.</span></p>
             </div>
             <figure class="viz-fig viz-card">
               <div class="viz-tit"><span class="es">Una readaptación: la simetría entre piernas, test a test</span><span class="en">One rehab: side to side symmetry, test by test</span></div>
@@ -877,6 +901,27 @@
               </figcaption>
             </figure>
           </div>
+          <div class="feats-prod">
+            <div class="feat-prod">
+              <h4><span class="es">Tests isométricos claros</span><span class="en">Clear isometric tests</span></h4>
+              <p><span class="es">Fuerza máxima con criterios de progresión que se entienden, sin montar un laboratorio.</span><span class="en">Maximal strength with progression criteria that make sense, without building a lab.</span></p>
+            </div>
+            <div class="feat-prod">
+              <h4><span class="es">Asimetrías entre lados</span><span class="en">Side-to-side asymmetries</span></h4>
+              <p><span class="es">El desequilibrio que provoca lesiones, medido y seguido test a test.</span><span class="en">The imbalance that causes injuries, measured and tracked test by test.</span></p>
+            </div>
+            <div class="feat-prod">
+              <h4><span class="es">Vuelta al deporte con criterio</span><span class="en">Return to sport with criteria</span></h4>
+              <p><span class="es">Pensado junto a los criterios internacionales: el alta se decide con datos, no con prisa.</span><span class="en">Built around international criteria: clearance is decided with data, not in a hurry.</span></p>
+            </div>
+            <div class="feat-prod">
+              <h4><span class="es">En el expediente del atleta</span><span class="en">In the athlete's record</span></h4>
+              <p><span class="es">El dato de fuerza vive junto a la carga, la velocidad y la recuperación del atleta.</span><span class="en">The strength data lives next to the athlete's load, velocity and recovery.</span></p>
+            </div>
+          </div>
+          <a class="ver-detalle" style="--vd: var(--viz-force);" href="force.html" target="_blank" rel="noopener">
+            <span class="es">Ver Force: vídeo y detalles</span><span class="en">See Force: video and details</span> <span class="flecha">→</span>
+          </a>
         </div>
       </div>
 
@@ -886,10 +931,7 @@
           <h3><span class="tl">TrainLab</span> Signal <span class="estado"><span class="es">En diseño</span><span class="en">In design</span></span></h3>
           <div class="fila-cols">
             <div>
-              <p><span class="es">La electromiografía enseña qué músculo trabaja de verdad en cada ejercicio. Signal es el quinto miembro de la familia y completa la foto del atleta: lo que planificas, lo que mueves, cómo te recuperas, cuánta fuerza tienes y qué músculo la produce.</span><span class="en">Electromyography shows which muscle is really working in each exercise. Signal is the fifth member of the family and completes the athlete picture: what you plan, what you move, how you recover, how much strength you have and which muscle produces it.</span></p>
-              <a class="ver-detalle" style="--vd: var(--viz-signal);" href="signal.html" target="_blank" rel="noopener">
-                <span class="es">Ver Signal: vídeo y detalles</span><span class="en">See Signal: video and details</span> <span class="flecha">→</span>
-              </a>
+              <p><span class="es">La electromiografía enseña qué músculo trabaja de verdad en cada ejercicio. Signal es el quinto miembro de la familia y completa la foto del atleta: lo que planificas, lo que mueves, cómo te recuperas, cuánta fuerza tienes y qué músculo la produce. Puedes hacer el ejercicio perfecto y activar el músculo equivocado; Signal te lo enseña.</span><span class="en">Electromyography shows which muscle is really working in each exercise. Signal is the fifth member of the family and completes the athlete picture: what you plan, what you move, how you recover, how much strength you have and which muscle produces it. You can do the perfect exercise and fire the wrong muscle; Signal shows you.</span></p>
             </div>
             <figure class="viz-fig viz-card">
               <div class="viz-tit"><span class="es">Lo que ve Signal: la activación de un músculo</span><span class="en">What Signal sees: one muscle's activation</span></div>
@@ -938,6 +980,27 @@
               </figcaption>
             </figure>
           </div>
+          <div class="feats-prod">
+            <div class="feat-prod">
+              <h4><span class="es">Activación por músculo</span><span class="en">Activation by muscle</span></h4>
+              <p><span class="es">Ve en directo cuánto trabaja cada músculo en cada repetición.</span><span class="en">See live how much each muscle works in each rep.</span></p>
+            </div>
+            <div class="feat-prod">
+              <h4><span class="es">Compara lados y ejercicios</span><span class="en">Compare sides and exercises</span></h4>
+              <p><span class="es">Qué variante activa mejor lo que buscas, y qué lado se queda atrás.</span><span class="en">Which variation best activates your target, and which side lags behind.</span></p>
+            </div>
+            <div class="feat-prod">
+              <h4><span class="es">La técnica deja de ser opinión</span><span class="en">Technique stops being opinion</span></h4>
+              <p><span class="es">Comprueba si estás entrenando el músculo que crees.</span><span class="en">Check whether you are training the muscle you think you are.</span></p>
+            </div>
+            <div class="feat-prod">
+              <h4><span class="es">Cierra la foto del atleta</span><span class="en">Completes the athlete picture</span></h4>
+              <p><span class="es">La última señal, junto a la carga, la velocidad, la recuperación y la fuerza.</span><span class="en">The last signal, alongside load, velocity, recovery and strength.</span></p>
+            </div>
+          </div>
+          <a class="ver-detalle" style="--vd: var(--viz-signal);" href="signal.html" target="_blank" rel="noopener">
+            <span class="es">Ver Signal: vídeo y detalles</span><span class="en">See Signal: video and details</span> <span class="flecha">→</span>
+          </a>
         </div>
       </div>
     </div>
