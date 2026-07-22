@@ -74,7 +74,26 @@
     section.bloque { padding: 34px 0; }
     .kicker { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--acc-ink); margin-bottom: 12px; }
     h2 { font-size: clamp(23px, 4vw, 32px); font-weight: 800; letter-spacing: -0.4px; line-height: 1.15; }
-    .promesa { font-size: clamp(16px, 2.2vw, 19px); color: var(--ink2); margin-top: 16px; max-width: 720px; line-height: 1.6; }
+    .promesa { font-size: clamp(16px, 2.2vw, 19px); color: var(--ink2); margin-top: 16px; max-width: 620px; line-height: 1.6; }
+
+    /* La app por dentro: promesa + maqueta de móvil */
+    .aporta-cols { display: grid; grid-template-columns: 1fr auto; gap: 34px; align-items: start; margin-top: 8px; }
+    @media (max-width: 780px) { .aporta-cols { grid-template-columns: 1fr; } .phone-fig { justify-self: center; } }
+    figure.phone-fig { margin: 0; }
+    figure.phone-fig figcaption { font-size: 12px; color: var(--gray); margin-top: 10px; text-align: center; }
+    .phone { width: 264px; background: var(--bg); border: 1px solid var(--sep); border-radius: 34px; padding: 14px 12px 16px; box-shadow: 0 18px 44px rgba(0,0,0,.16); }
+    .phone .isla { width: 78px; height: 20px; background: var(--azul-noche); border-radius: 12px; margin: 0 auto 12px; }
+    .phone .p-tit { font-size: 17px; font-weight: 800; padding: 0 4px; }
+    .p-card { background: var(--card); border: 1px solid var(--sep); border-radius: 14px; padding: 12px; margin-top: 8px; }
+    .p-lbl { font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--gray); }
+    .p-dato { font-size: 38px; font-weight: 900; font-variant-numeric: tabular-nums; letter-spacing: -0.5px; line-height: 1.15; }
+    .p-chip { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: color-mix(in srgb, var(--acc) 15%, transparent); color: var(--acc-ink); }
+    .p-fila { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ink2); }
+    .p-sec { font-size: 13.5px; font-weight: 800; color: var(--ink); }
+    .p-mini { font-size: 11.5px; color: var(--gray); }
+    .mini-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--sep); }
+    .mini-stats .v { font-size: 16px; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .mini-stats .k { font-size: 10.5px; color: var(--gray); margin-top: 1px; }
 
     .benefs { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 8px; }
     .benef { background: var(--card); border: 1px solid var(--sep); border-radius: 16px; padding: 20px; border-top: 3px solid var(--acc); }
@@ -152,7 +171,30 @@
     <div class="wrap">
       <p class="kicker"><span class="es">Qué te aporta</span><span class="en">What it gives you</span></p>
       <h2><span class="es">La fuerza que se puede medir.</span><span class="en">Strength you can measure.</span></h2>
-      <p class="promesa"><span class="es">Dar el alta de una lesión por sensación es jugársela. Force convierte esa decisión en un número: cuánta fuerza produce cada pierna y cuánto le falta a la lesionada para alcanzar a la sana. El readaptador decide con criterio, el atleta vuelve con seguridad y todo queda registrado junto al resto de su historia.</span><span class="en">Clearing an injury by feel is a gamble. Force turns that decision into a number: how much force each leg produces and how far the injured one is from matching the healthy one. The rehab professional decides with criteria, the athlete returns safely, and it is all logged alongside the rest of their story.</span></p>
+      <div class="aporta-cols">
+        <p class="promesa"><span class="es">Dar el alta de una lesión por sensación es jugársela. Force convierte esa decisión en un número: cuánta fuerza produce cada pierna y cuánto le falta a la lesionada para alcanzar a la sana. El readaptador decide con criterio, el atleta vuelve con seguridad y todo queda registrado junto al resto de su historia.</span><span class="en">Clearing an injury by feel is a gamble. Force turns that decision into a number: how much force each leg produces and how far the injured one is from matching the healthy one. The rehab professional decides with criteria, the athlete returns safely, and it is all logged alongside the rest of their story.</span></p>
+        <figure class="phone-fig">
+          <div class="phone" role="img" aria-label="Pantalla de la app TrainLab Force, recreada">
+            <div class="isla"></div>
+            <div class="p-tit"><span class="es">Test · Isquios</span><span class="en">Test · Hamstrings</span></div>
+            <div class="p-card">
+              <div class="p-lbl"><span class="es">Simetría (LSI)</span><span class="en">Symmetry (LSI)</span></div>
+              <div style="display:flex; align-items:center; gap:10px;">
+                <div class="p-dato">95 <span style="font-size:18px; color: var(--gray); font-weight:700;">%</span></div>
+                <span class="p-chip"><span class="es">Apto para el alta</span><span class="en">Cleared to return</span></span>
+              </div>
+            </div>
+            <div class="p-card">
+              <div class="mini-stats">
+                <div><div class="v">412 <small>N</small></div><div class="k"><span class="es">Pierna izq.</span><span class="en">Left leg</span></div></div>
+                <div><div class="v">434 <small>N</small></div><div class="k"><span class="es">Pierna der.</span><span class="en">Right leg</span></div></div>
+                <div><div class="v">90 <small>%</small></div><div class="k"><span class="es">Criterio</span><span class="en">Criterion</span></div></div>
+              </div>
+            </div>
+          </div>
+          <figcaption><span class="es">La pantalla de la app, recreada.</span><span class="en">The app screen, recreated.</span></figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 

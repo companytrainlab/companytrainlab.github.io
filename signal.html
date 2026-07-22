@@ -74,7 +74,26 @@
     section.bloque { padding: 34px 0; }
     .kicker { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--acc-ink); margin-bottom: 12px; }
     h2 { font-size: clamp(23px, 4vw, 32px); font-weight: 800; letter-spacing: -0.4px; line-height: 1.15; }
-    .promesa { font-size: clamp(16px, 2.2vw, 19px); color: var(--ink2); margin-top: 16px; max-width: 720px; line-height: 1.6; }
+    .promesa { font-size: clamp(16px, 2.2vw, 19px); color: var(--ink2); margin-top: 16px; max-width: 620px; line-height: 1.6; }
+
+    /* La app por dentro: promesa + maqueta de móvil */
+    .aporta-cols { display: grid; grid-template-columns: 1fr auto; gap: 34px; align-items: start; margin-top: 8px; }
+    @media (max-width: 780px) { .aporta-cols { grid-template-columns: 1fr; } .phone-fig { justify-self: center; } }
+    figure.phone-fig { margin: 0; }
+    figure.phone-fig figcaption { font-size: 12px; color: var(--gray); margin-top: 10px; text-align: center; }
+    .phone { width: 264px; background: var(--bg); border: 1px solid var(--sep); border-radius: 34px; padding: 14px 12px 16px; box-shadow: 0 18px 44px rgba(0,0,0,.16); }
+    .phone .isla { width: 78px; height: 20px; background: var(--azul-noche); border-radius: 12px; margin: 0 auto 12px; }
+    .phone .p-tit { font-size: 17px; font-weight: 800; padding: 0 4px; }
+    .p-card { background: var(--card); border: 1px solid var(--sep); border-radius: 14px; padding: 12px; margin-top: 8px; }
+    .p-lbl { font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--gray); }
+    .p-dato { font-size: 38px; font-weight: 900; font-variant-numeric: tabular-nums; letter-spacing: -0.5px; line-height: 1.15; }
+    .p-chip { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: color-mix(in srgb, var(--acc) 15%, transparent); color: var(--acc-ink); }
+    .p-fila { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ink2); }
+    .p-sec { font-size: 13.5px; font-weight: 800; color: var(--ink); }
+    .p-mini { font-size: 11.5px; color: var(--gray); }
+    .mini-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--sep); }
+    .mini-stats .v { font-size: 16px; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .mini-stats .k { font-size: 10.5px; color: var(--gray); margin-top: 1px; }
 
     .benefs { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 8px; }
     .benef { background: var(--card); border: 1px solid var(--sep); border-radius: 16px; padding: 20px; border-top: 3px solid var(--acc); }
@@ -152,7 +171,30 @@
     <div class="wrap">
       <p class="kicker"><span class="es">Qué te aporta</span><span class="en">What it gives you</span></p>
       <h2><span class="es">Ve qué músculo trabaja de verdad.</span><span class="en">See which muscle really works.</span></h2>
-      <p class="promesa"><span class="es">Puedes hacer el ejercicio perfecto y activar el músculo equivocado. Signal te enseña la activación real, músculo a músculo, para saber si estás entrenando lo que crees. Es la última pieza que cierra la foto del atleta: lo que planificas, lo que mueves, cómo te recuperas, cuánta fuerza tienes y qué músculo la produce.</span><span class="en">You can do the perfect exercise and fire the wrong muscle. Signal shows you the real activation, muscle by muscle, so you know whether you are training what you think. It is the final piece that completes the athlete picture: what you plan, what you move, how you recover, how much strength you have and which muscle produces it.</span></p>
+      <div class="aporta-cols">
+        <p class="promesa"><span class="es">Puedes hacer el ejercicio perfecto y activar el músculo equivocado. Signal te enseña la activación real, músculo a músculo, para saber si estás entrenando lo que crees. Es la última pieza que cierra la foto del atleta: lo que planificas, lo que mueves, cómo te recuperas, cuánta fuerza tienes y qué músculo la produce.</span><span class="en">You can do the perfect exercise and fire the wrong muscle. Signal shows you the real activation, muscle by muscle, so you know whether you are training what you think. It is the final piece that completes the athlete picture: what you plan, what you move, how you recover, how much strength you have and which muscle produces it.</span></p>
+        <figure class="phone-fig">
+          <div class="phone" role="img" aria-label="Pantalla de la app TrainLab Signal, recreada">
+            <div class="isla"></div>
+            <div class="p-tit"><span class="es">Activación · Sentadilla</span><span class="en">Activation · Squat</span></div>
+            <div class="p-card">
+              <div class="p-lbl"><span class="es">Pico de activación</span><span class="en">Activation peak</span></div>
+              <div style="display:flex; align-items:center; gap:10px;">
+                <div class="p-dato">78 <span style="font-size:18px; color: var(--gray); font-weight:700;">%</span></div>
+                <span class="p-chip"><span class="es">Glúteo mayor</span><span class="en">Gluteus maximus</span></span>
+              </div>
+            </div>
+            <div class="p-card">
+              <div class="mini-stats">
+                <div><div class="v">74 <small>%</small></div><div class="k"><span class="es">Lado izq.</span><span class="en">Left side</span></div></div>
+                <div><div class="v">78 <small>%</small></div><div class="k"><span class="es">Lado der.</span><span class="en">Right side</span></div></div>
+                <div><div class="v">95 <small>%</small></div><div class="k"><span class="es">Simetría</span><span class="en">Symmetry</span></div></div>
+              </div>
+            </div>
+          </div>
+          <figcaption><span class="es">La pantalla de la app, recreada.</span><span class="en">The app screen, recreated.</span></figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 

@@ -74,7 +74,26 @@
     section.bloque { padding: 34px 0; }
     .kicker { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--acc-ink); margin-bottom: 12px; }
     h2 { font-size: clamp(23px, 4vw, 32px); font-weight: 800; letter-spacing: -0.4px; line-height: 1.15; }
-    .promesa { font-size: clamp(16px, 2.2vw, 19px); color: var(--ink2); margin-top: 16px; max-width: 720px; line-height: 1.6; }
+    .promesa { font-size: clamp(16px, 2.2vw, 19px); color: var(--ink2); margin-top: 16px; max-width: 620px; line-height: 1.6; }
+
+    /* La app por dentro: promesa + maqueta de móvil */
+    .aporta-cols { display: grid; grid-template-columns: 1fr auto; gap: 34px; align-items: start; margin-top: 8px; }
+    @media (max-width: 780px) { .aporta-cols { grid-template-columns: 1fr; } .phone-fig { justify-self: center; } }
+    figure.phone-fig { margin: 0; }
+    figure.phone-fig figcaption { font-size: 12px; color: var(--gray); margin-top: 10px; text-align: center; }
+    .phone { width: 264px; background: var(--bg); border: 1px solid var(--sep); border-radius: 34px; padding: 14px 12px 16px; box-shadow: 0 18px 44px rgba(0,0,0,.16); }
+    .phone .isla { width: 78px; height: 20px; background: var(--azul-noche); border-radius: 12px; margin: 0 auto 12px; }
+    .phone .p-tit { font-size: 17px; font-weight: 800; padding: 0 4px; }
+    .p-card { background: var(--card); border: 1px solid var(--sep); border-radius: 14px; padding: 12px; margin-top: 8px; }
+    .p-lbl { font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--gray); }
+    .p-dato { font-size: 38px; font-weight: 900; font-variant-numeric: tabular-nums; letter-spacing: -0.5px; line-height: 1.15; }
+    .p-chip { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: color-mix(in srgb, var(--acc) 15%, transparent); color: var(--acc-ink); }
+    .p-fila { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ink2); }
+    .p-sec { font-size: 13.5px; font-weight: 800; color: var(--ink); }
+    .p-mini { font-size: 11.5px; color: var(--gray); }
+    .mini-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--sep); }
+    .mini-stats .v { font-size: 16px; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .mini-stats .k { font-size: 10.5px; color: var(--gray); margin-top: 1px; }
 
     .benefs { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 8px; }
     .benef { background: var(--card); border: 1px solid var(--sep); border-radius: 16px; padding: 20px; border-top: 3px solid var(--acc); }
@@ -152,7 +171,28 @@
     <div class="wrap">
       <p class="kicker"><span class="es">Qué te aporta</span><span class="en">What it gives you</span></p>
       <h2><span class="es">La velocidad no miente.</span><span class="en">Velocity does not lie.</span></h2>
-      <p class="promesa"><span class="es">Entrenar por porcentajes es entrenar con el peso de un buen día en un mal día. La velocidad de cada repetición te dice, en el momento, cuánto esfuerzo real está costando la serie y cuándo parar. Velocity pone esa herramienta de elite al alcance de cualquier entrenador, integrada en el expediente del atleta que ya usas.</span><span class="en">Training by percentages means training with a good day's weight on a bad day. The velocity of each rep tells you, in the moment, how much real effort the set is costing and when to stop. Velocity puts that elite tool within reach of any coach, built into the athlete record you already use.</span></p>
+      <div class="aporta-cols">
+        <p class="promesa"><span class="es">Entrenar por porcentajes es entrenar con el peso de un buen día en un mal día. La velocidad de cada repetición te dice, en el momento, cuánto esfuerzo real está costando la serie y cuándo parar. Velocity pone esa herramienta de elite al alcance de cualquier entrenador, integrada en el expediente del atleta que ya usas.</span><span class="en">Training by percentages means training with a good day's weight on a bad day. The velocity of each rep tells you, in the moment, how much real effort the set is costing and when to stop. Velocity puts that elite tool within reach of any coach, built into the athlete record you already use.</span></p>
+        <figure class="phone-fig">
+          <div class="phone" role="img" aria-label="Pantalla de la app TrainLab Velocity, recreada">
+            <div class="isla"></div>
+            <div class="p-tit"><span class="es">Serie · Sentadilla</span><span class="en">Set · Squat</span></div>
+            <div class="p-card">
+              <div class="p-lbl"><span class="es">Velocidad media</span><span class="en">Average velocity</span></div>
+              <div class="p-dato">0,74<span style="font-size:16px; color: var(--gray); font-weight:600;"> m/s</span></div>
+              <span class="p-chip"><span class="es">6 reps válidas</span><span class="en">6 valid reps</span></span>
+            </div>
+            <div class="p-card">
+              <div class="mini-stats">
+                <div><div class="v">0,82</div><div class="k"><span class="es">Mejor rep</span><span class="en">Best rep</span></div></div>
+                <div><div class="v">−20 %</div><div class="k"><span class="es">Pérdida</span><span class="en">Loss</span></div></div>
+                <div><div class="v">0,80</div><div class="k"><span class="es">Objetivo</span><span class="en">Target</span></div></div>
+              </div>
+            </div>
+          </div>
+          <figcaption><span class="es">La pantalla de la app, recreada.</span><span class="en">The app screen, recreated.</span></figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 

@@ -74,7 +74,26 @@
     section.bloque { padding: 34px 0; }
     .kicker { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--acc-ink); margin-bottom: 12px; }
     h2 { font-size: clamp(23px, 4vw, 32px); font-weight: 800; letter-spacing: -0.4px; line-height: 1.15; }
-    .promesa { font-size: clamp(16px, 2.2vw, 19px); color: var(--ink2); margin-top: 16px; max-width: 720px; line-height: 1.6; }
+    .promesa { font-size: clamp(16px, 2.2vw, 19px); color: var(--ink2); margin-top: 16px; max-width: 620px; line-height: 1.6; }
+
+    /* La app por dentro: promesa + maqueta de móvil */
+    .aporta-cols { display: grid; grid-template-columns: 1fr auto; gap: 34px; align-items: start; margin-top: 8px; }
+    @media (max-width: 780px) { .aporta-cols { grid-template-columns: 1fr; } .phone-fig { justify-self: center; } }
+    figure.phone-fig { margin: 0; }
+    figure.phone-fig figcaption { font-size: 12px; color: var(--gray); margin-top: 10px; text-align: center; }
+    .phone { width: 264px; background: var(--bg); border: 1px solid var(--sep); border-radius: 34px; padding: 14px 12px 16px; box-shadow: 0 18px 44px rgba(0,0,0,.16); }
+    .phone .isla { width: 78px; height: 20px; background: var(--azul-noche); border-radius: 12px; margin: 0 auto 12px; }
+    .phone .p-tit { font-size: 17px; font-weight: 800; padding: 0 4px; }
+    .p-card { background: var(--card); border: 1px solid var(--sep); border-radius: 14px; padding: 12px; margin-top: 8px; }
+    .p-lbl { font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--gray); }
+    .p-dato { font-size: 38px; font-weight: 900; font-variant-numeric: tabular-nums; letter-spacing: -0.5px; line-height: 1.15; }
+    .p-chip { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: color-mix(in srgb, var(--acc) 15%, transparent); color: var(--acc-ink); }
+    .p-fila { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ink2); }
+    .p-sec { font-size: 13.5px; font-weight: 800; color: var(--ink); }
+    .p-mini { font-size: 11.5px; color: var(--gray); }
+    .mini-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--sep); }
+    .mini-stats .v { font-size: 16px; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .mini-stats .k { font-size: 10.5px; color: var(--gray); margin-top: 1px; }
 
     .benefs { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 8px; }
     .benef { background: var(--card); border: 1px solid var(--sep); border-radius: 16px; padding: 20px; border-top: 3px solid var(--acc); }
@@ -152,7 +171,29 @@
     <div class="wrap">
       <p class="kicker"><span class="es">Qué te aporta</span><span class="en">What it gives you</span></p>
       <h2><span class="es">Tu entrenador científico, en el bolsillo.</span><span class="en">Your scientific coach, in your pocket.</span></h2>
-      <p class="promesa"><span class="es">Un entrenador se gana la confianza cuando sus decisiones tienen fundamento. Fitness te da ese fundamento sin que tengas que calcularlo: mide la carga de cada atleta, te avisa antes de que el riesgo de lesión aparezca y convierte tu trabajo en informes que puedes entregar. El atleta ve un servicio profesional; tú ganas horas cada semana.</span><span class="en">A coach earns trust when their decisions are grounded. Fitness gives you that grounding without doing the math: it measures each athlete's load, warns you before injury risk shows up, and turns your work into reports you can hand over. The athlete sees a professional service; you win back hours every week.</span></p>
+      <div class="aporta-cols">
+        <p class="promesa"><span class="es">Un entrenador se gana la confianza cuando sus decisiones tienen fundamento. Fitness te da ese fundamento sin que tengas que calcularlo: mide la carga de cada atleta, te avisa antes de que el riesgo de lesión aparezca y convierte tu trabajo en informes que puedes entregar. El atleta ve un servicio profesional; tú ganas horas cada semana.</span><span class="en">A coach earns trust when their decisions are grounded. Fitness gives you that grounding without doing the math: it measures each athlete's load, warns you before injury risk shows up, and turns your work into reports you can hand over. The athlete sees a professional service; you win back hours every week.</span></p>
+        <figure class="phone-fig">
+          <div class="phone" role="img" aria-label="Pantalla de la app TrainLab Fitness, recreada">
+            <div class="isla"></div>
+            <div class="p-tit"><span class="es">Hoy</span><span class="en">Today</span></div>
+            <div class="p-card">
+              <div class="p-lbl"><span class="es">Disponibilidad</span><span class="en">Readiness</span></div>
+              <div style="display:flex; align-items:center; gap:10px;">
+                <div class="p-dato">92</div>
+                <span class="p-chip"><span class="es">Listo</span><span class="en">Ready</span></span>
+              </div>
+            </div>
+            <div class="p-card">
+              <div class="p-sec"><span class="es">Tu próxima sesión</span><span class="en">Your next session</span></div>
+              <div class="p-mini" style="margin-top:2px;"><span class="es">Fuerza · Bloque 3 · Semana 2</span><span class="en">Strength · Block 3 · Week 2</span></div>
+              <div class="p-fila" style="margin-top:8px;"><span><span class="es">Sentadilla</span><span class="en">Back squat</span></span><b>5×3 · RPE 8</b></div>
+              <div class="p-fila" style="margin-top:4px;"><span><span class="es">Press banca</span><span class="en">Bench press</span></span><b>4×5 · RPE 7</b></div>
+            </div>
+          </div>
+          <figcaption><span class="es">La pantalla de la app, recreada.</span><span class="en">The app screen, recreated.</span></figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
