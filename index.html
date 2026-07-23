@@ -406,6 +406,24 @@
     .coach .estado { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; white-space: nowrap; }
     .coach .estado::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
     .panel-cap { font-size: 12px; color: var(--gray); margin-top: 12px; text-align: center; }
+    /* Panel mejorado: pestañas, KPIs, gráfica y aviso (pinta de Análisis) */
+    .panel .tabs { display: flex; gap: 20px; padding: 0 16px; border-bottom: 1px solid var(--sep); }
+    .panel .tabs span { font-size: 12.5px; font-weight: 700; color: var(--gray); padding: 11px 0; border-bottom: 2px solid transparent; }
+    .panel .tabs span.on { color: var(--ink); border-bottom-color: var(--fitness); }
+    .panel-sub { font-size: 11.5px; font-weight: 600; color: var(--gray); margin-top: 16px; }
+    .panel-bars { display: flex; align-items: flex-end; gap: 6px; height: 84px; margin-top: 10px; }
+    .panel-bars i { flex: 1; background: color-mix(in srgb, var(--fitness) 38%, transparent); border-radius: 3px 3px 1px 1px; min-height: 5px; }
+    .panel-bars i.aviso { background: var(--viz-force); }
+    .panel-alert { display: flex; align-items: center; gap: 9px; margin-top: 14px; padding: 11px 12px; border-radius: 10px; background: color-mix(in srgb, var(--orange) 13%, transparent); font-size: 12.5px; color: var(--ink); }
+    .panel-alert b { color: var(--viz-force); }
+    .panel-alert .ico { width: 18px; height: 18px; flex-shrink: 0; }
+    /* Columna derecha de la sección de centros: valor + CTA */
+    .centros-cta { align-self: center; }
+    .centros-cta h3 { font-size: clamp(19px, 2.4vw, 23px); font-weight: 800; letter-spacing: -0.3px; }
+    .centros-cta p { font-size: 15px; color: var(--ink2); margin-top: 12px; }
+    .centros-cta .btn { margin-top: 20px; }
+    .centros-cta .btn.primary { background: var(--fitness); box-shadow: 0 6px 22px rgba(52,199,89,.30); }
+    .centros-cta .nota { font-size: 12.5px; color: var(--gray); margin-top: 12px; }
     .centros-lista { list-style: none; margin-top: 18px; display: grid; gap: 11px; }
     .centros-lista li { position: relative; padding-left: 26px; font-size: 14.5px; color: var(--ink2); line-height: 1.5; }
     .centros-lista li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--fitness); font-weight: 800; }
@@ -825,47 +843,39 @@
 
       <div class="showcase-centros">
         <figure class="viz-fig" style="margin:0;">
-          <div class="panel" role="img" aria-label="Panel de gestión del centro en TrainLab Fitness, recreado">
+          <div class="panel" role="img" aria-label="Panel de análisis del centro en TrainLab Fitness, recreado">
             <div class="top">
               <i style="background: var(--red);"></i><i style="background: var(--orange);"></i><i style="background: var(--green);"></i>
               <span class="t"><span class="es">Panel del centro · Club Atlas</span><span class="en">Center panel · Atlas Club</span></span>
             </div>
+            <div class="tabs">
+              <span><span class="es">Resumen</span><span class="en">Overview</span></span>
+              <span class="on"><span class="es">Análisis</span><span class="en">Analysis</span></span>
+              <span><span class="es">Entrenadores</span><span class="en">Coaches</span></span>
+            </div>
             <div class="cuerpo">
               <div class="panel-stats">
-                <div class="panel-stat"><div class="v">5</div><div class="k"><span class="es">Entrenadores</span><span class="en">Coaches</span></div></div>
-                <div class="panel-stat"><div class="v">68</div><div class="k"><span class="es">Atletas</span><span class="en">Athletes</span></div></div>
-                <div class="panel-stat"><div class="v" style="color: var(--viz-force);">2</div><div class="k"><span class="es">Avisos de carga</span><span class="en">Load alerts</span></div></div>
+                <div class="panel-stat"><div class="v">68</div><div class="k"><span class="es">Atletas activos</span><span class="en">Active athletes</span></div></div>
+                <div class="panel-stat"><div class="v" style="color: var(--viz-fitness);">94 %</div><div class="k"><span class="es">Al día</span><span class="en">Up to date</span></div></div>
+                <div class="panel-stat"><div class="v" style="color: var(--viz-force);">2</div><div class="k"><span class="es">En riesgo</span><span class="en">At risk</span></div></div>
               </div>
-              <div class="coach">
-                <div><div class="n">Marta G.</div><div class="m"><span class="es">14 atletas</span><span class="en">14 athletes</span></div></div>
-                <span class="estado" style="color: var(--viz-fitness);"><span class="es">Al día</span><span class="en">Up to date</span></span>
+              <div class="panel-sub"><span class="es">Carga media del centro · últimas 8 semanas</span><span class="en">Average center load · last 8 weeks</span></div>
+              <div class="panel-bars" aria-hidden="true">
+                <i style="height:46%"></i><i style="height:56%"></i><i style="height:52%"></i><i style="height:64%"></i><i style="height:58%"></i><i class="aviso" style="height:82%"></i><i style="height:66%"></i><i style="height:60%"></i>
               </div>
-              <div class="coach">
-                <div><div class="n">Javier R.</div><div class="m"><span class="es">12 atletas</span><span class="en">12 athletes</span></div></div>
-                <span class="estado" style="color: var(--viz-force);"><span class="es">2 en carga alta</span><span class="en">2 in high load</span></span>
-              </div>
-              <div class="coach">
-                <div><div class="n">Lucía P.</div><div class="m"><span class="es">9 atletas</span><span class="en">9 athletes</span></div></div>
-                <span class="estado" style="color: var(--viz-fitness);"><span class="es">Al día</span><span class="en">Up to date</span></span>
-              </div>
-              <div class="coach">
-                <div><div class="n">Diego M.</div><div class="m"><span class="es">11 atletas</span><span class="en">11 athletes</span></div></div>
-                <span class="estado" style="color: var(--viz-fitness);"><span class="es">Al día</span><span class="en">Up to date</span></span>
+              <div class="panel-alert">
+                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="var(--viz-force)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                <span><span class="es"><b>2 atletas en carga alta</b> · revisa a Javier R.</span><span class="en"><b>2 athletes in high load</b> · check Javier R.</span></span>
               </div>
             </div>
           </div>
-          <figcaption class="panel-cap"><span class="es">El panel del centro, recreado.</span><span class="en">The center panel, recreated.</span></figcaption>
+          <figcaption class="panel-cap"><span class="es">El panel de análisis del centro, recreado.</span><span class="en">The center's analysis panel, recreated.</span></figcaption>
         </figure>
-        <div class="centros-precio">
-          <div class="cp-label"><span class="es">Precio por asiento</span><span class="en">Price per seat</span></div>
-          <div class="cp-dato">12,99 €<small>/<span class="es">entrenador · mes</span><span class="en">coach · mo</span></small></div>
-          <div class="cp-ejemplos">
-            <div class="fila"><span><span class="es">2 entrenadores</span><span class="en">2 coaches</span></span><b>25,98 €<span class="es">/mes</span><span class="en">/mo</span></b></div>
-            <div class="fila"><span><span class="es">5 entrenadores</span><span class="en">5 coaches</span></span><b>64,95 €<span class="es">/mes</span><span class="en">/mo</span></b></div>
-            <div class="fila"><span><span class="es">Más de 10</span><span class="en">More than 10</span></span><b><span class="es">a medida</span><span class="en">custom</span></b></div>
-          </div>
+        <div class="centros-cta">
+          <h3><span class="es">Pensado para quien dirige.</span><span class="en">Built for whoever runs the place.</span></h3>
+          <p><span class="es">Ve la salud de todo tu centro de un vistazo, actúa antes de que aparezcan las lesiones y mantén el nivel del servicio. Cada entrenador conserva su cuenta; tú tienes la foto completa.</span><span class="en">See the health of your whole center at a glance, act before injuries appear and keep the service level. Each coach keeps their account; you get the full picture.</span></p>
           <a class="btn primary" href="mailto:hola@trainlabfitness.es?subject=TrainLab%20para%20centros"><span class="es">Hablemos de tu centro</span><span class="en">Let's talk about your center</span></a>
-          <p class="cp-nota"><span class="es">Cada entrenador conserva su cuenta. Precio de partida, en proceso.</span><span class="en">Each coach keeps their account. Starting price, in progress.</span></p>
+          <p class="nota"><span class="es">El precio por asiento, en la sección de precios.</span><span class="en">Per-seat pricing in the pricing section.</span></p>
         </div>
       </div>
     </div>
@@ -1487,6 +1497,11 @@
           <div class="que"><span class="dot"></span><span class="es">Control, suscripción</span><span class="en">Control, subscription</span></div>
           <div class="cuanto">2,99 €/<span class="es">mes</span><span class="en">mo</span></div>
           <div class="det"><span class="es">Con tu propio reloj o pulsera, los datos llegan por Apple Salud.</span><span class="en">With your own watch or band, data arrives via Apple Health.</span></div>
+        </div>
+        <div class="otro">
+          <div class="que"><span class="dot" style="background: var(--fitness);"></span><span class="es">Centros y clubes</span><span class="en">Centers and clubs</span></div>
+          <div class="cuanto">12,99 €/<span class="es">entrenador/mes</span><span class="en">coach/mo</span></div>
+          <div class="det"><span class="es">Por asiento, con el panel del centro incluido y atletas sin tope. Ver la sección de centros más arriba.</span><span class="en">Per seat, with the center panel included and no athlete cap. See the centers section above.</span></div>
         </div>
         <div class="otro">
           <div class="que"><span class="dot" style="background: var(--gray);"></span><span class="es">Hardware y próximos productos</span><span class="en">Hardware and upcoming products</span></div>
