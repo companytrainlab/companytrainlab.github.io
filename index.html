@@ -245,6 +245,14 @@
       border-radius: 16px; padding: 20px 22px; font-size: 15px; color: var(--ink2);
     }
     .integrada b { color: var(--ink); }
+    /* Ecosistema: Force y Signal "en camino" (discretos) */
+    .en-camino { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 18px; }
+    .en-camino .ec-label { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--gray); }
+    .ec-prod { display: inline-flex; align-items: center; gap: 9px; font-size: 13.5px; color: var(--ink2); text-decoration: none; background: var(--card); border: 1px solid var(--sep); border-radius: 999px; padding: 8px 15px; }
+    .ec-prod:hover { border-color: var(--gray); }
+    .ec-prod .dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .ec-prod b { color: var(--ink); font-weight: 800; }
+    .ec-prod .est { color: var(--gray); }
 
     /* --- Fitness --- */
     #fitness .sec-eyebrow { color: var(--fitness); }
@@ -598,8 +606,8 @@
           <span class="en">Coach with <span class="accent">data</span>, not guesswork.</span>
         </h1>
         <p class="sub">
-          <span class="es">TrainLab une planificación, control científico de la carga, velocidad, recuperación y fuerza en una familia de productos que comparten una misma cuenta. Para entrenadores, centros deportivos y atletas.</span>
-          <span class="en">TrainLab brings planning, scientific load management, velocity, recovery and strength together in a family of products that share one account. For coaches, training centers and athletes.</span>
+          <span class="es">TrainLab une la planificación, el control científico de la carga, la velocidad y la recuperación en una familia de productos que comparten una misma cuenta. Para entrenadores, centros deportivos y atletas.</span>
+          <span class="en">TrainLab brings planning, scientific load management, velocity and recovery together in a family of products that share one account. For coaches, training centers and athletes.</span>
         </p>
         <div class="cta-row">
           <a class="btn primary" href="#lista"><span class="es">Únete a la lista de espera</span><span class="en">Join the waitlist</span></a>
@@ -640,8 +648,8 @@
         <span class="en">Complete on their own. Unbeatable together.</span>
       </h2>
       <p class="lead">
-        <span class="es">Como un iPhone y un Mac: cada producto funciona solo, pero juntos crean un flujo de trabajo que ninguno tiene por separado. Cinco productos, una cuenta y una sola foto del atleta construida desde todos los ángulos.</span>
-        <span class="en">Like an iPhone and a Mac: each product stands on its own, but together they create a workflow none of them has alone. Five products, one account, and a single picture of the athlete built from every angle.</span>
+        <span class="es">Como un iPhone y un Mac: cada producto funciona solo, pero juntos crean un flujo de trabajo que ninguno tiene por separado. Tres productos que ya funcionan, una cuenta y una sola foto del atleta, con dos piezas más en camino.</span>
+        <span class="en">Like an iPhone and a Mac: each product stands on its own, but together they create a workflow none of them has alone. Three products already working, one account and a single picture of the athlete, with two more pieces on the way.</span>
       </p>
 
       <div class="prods">
@@ -663,18 +671,12 @@
           <p><span class="es">La recuperación del atleta cruzada con su carga real de entrenamiento. Con la pulsera TrainLab o con tu propio reloj.</span><span class="en">Athlete recovery crossed with their real training load. With the TrainLab band or your own watch.</span></p>
           <span class="estado"><span class="es">Pulsera en validación</span><span class="en">Band in validation</span></span>
         </div>
-        <div class="prod force">
-          <span class="apellido">Force</span>
-          <h3><span class="tl">TrainLab</span> Force</h3>
-          <p><span class="es">Dinamómetro de tracción para fuerza isométrica, asimetrías y readaptación de lesiones.</span><span class="en">Pulling dynamometer for isometric strength, asymmetries and return to sport.</span></p>
-          <span class="estado"><span class="es">En desarrollo</span><span class="en">In development</span></span>
-        </div>
-        <div class="prod signal">
-          <span class="apellido">Signal</span>
-          <h3><span class="tl">TrainLab</span> Signal</h3>
-          <p><span class="es">Electromiografía para ver qué músculo trabaja de verdad en cada ejercicio.</span><span class="en">Electromyography to see which muscle is really working in each exercise.</span></p>
-          <span class="estado"><span class="es">En diseño</span><span class="en">In design</span></span>
-        </div>
+      </div>
+
+      <div class="en-camino">
+        <span class="ec-label"><span class="es">En camino</span><span class="en">On the way</span></span>
+        <a class="ec-prod" href="#futuros"><span class="dot" style="background: var(--force);"></span><b>Force</b><span class="es">· fuerza y readaptación</span><span class="en">· strength & rehab</span> <span class="est"><span class="es">· en desarrollo</span><span class="en">· in development</span></span></a>
+        <a class="ec-prod" href="#futuros"><span class="dot" style="background: var(--signal);"></span><b>Signal</b><span class="es">· electromiografía</span><span class="en">· electromyography</span> <span class="est"><span class="es">· en diseño</span><span class="en">· in design</span></span></a>
       </div>
 
       <div class="integrada">
@@ -1051,32 +1053,33 @@
           </a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ Próximos proyectos: Force y Signal ============ -->
+  <section id="futuros">
+    <div class="wrap">
+      <p class="sec-eyebrow" style="color: var(--azul-pulso);"><span class="es">Próximos proyectos</span><span class="en">Upcoming projects</span></p>
+      <h2>
+        <span class="es">La familia sigue creciendo.</span>
+        <span class="en">The family keeps growing.</span>
+      </h2>
+      <p class="lead">
+        <span class="es">Más allá de los tres productos que ya funcionan, TrainLab prepara dos piezas que completarán la foto del atleta. Están en desarrollo: esto es lo que serán.</span>
+        <span class="en">Beyond the three products already working, TrainLab is preparing two pieces that will complete the athlete picture. They are in development: this is what they will be.</span>
+      </p>
 
       <div class="fila force" id="force">
         <div class="banda"></div>
         <div>
           <h3><span class="tl">TrainLab</span> Force <span class="estado"><span class="es">En desarrollo</span><span class="en">In development</span></span></h3>
           <p><span class="es">La fuerza isométrica y las asimetrías son la base de la readaptación de lesiones. Force es un dinamómetro de tracción asequible cuyo resultado cae en el mismo expediente que usan el entrenador y el readaptador. Dar el alta por sensación es jugársela; Force convierte esa decisión en un número.</span><span class="en">Isometric strength and asymmetries are the foundation of return to sport. Force is an affordable pulling dynamometer whose results land in the same record the coach and the rehab professional already use. Clearing an injury by feel is a gamble; Force turns that decision into a number.</span></p>
-          <div class="feats-prod">
-            <div class="feat-prod">
-              <h4><span class="es">Tests isométricos claros</span><span class="en">Clear isometric tests</span></h4>
-              <p><span class="es">Fuerza máxima con criterios de progresión que se entienden, sin montar un laboratorio.</span><span class="en">Maximal strength with progression criteria that make sense, without building a lab.</span></p>
-            </div>
-            <div class="feat-prod">
-              <h4><span class="es">Asimetrías entre lados</span><span class="en">Side-to-side asymmetries</span></h4>
-              <p><span class="es">El desequilibrio que provoca lesiones, medido y seguido test a test.</span><span class="en">The imbalance that causes injuries, measured and tracked test by test.</span></p>
-            </div>
-            <div class="feat-prod">
-              <h4><span class="es">Vuelta al deporte con criterio</span><span class="en">Return to sport with criteria</span></h4>
-              <p><span class="es">Pensado junto a los criterios internacionales: el alta se decide con datos, no con prisa.</span><span class="en">Built around international criteria: clearance is decided with data, not in a hurry.</span></p>
-            </div>
-            <div class="feat-prod">
-              <h4><span class="es">En el expediente del atleta</span><span class="en">In the athlete's record</span></h4>
-              <p><span class="es">El dato de fuerza vive junto a la carga, la velocidad y la recuperación del atleta.</span><span class="en">The strength data lives next to the athlete's load, velocity and recovery.</span></p>
-            </div>
-          </div>
-          <div class="showcase">
-            <figure class="viz-fig viz-card">
+          <ul>
+            <li><span class="es">Tests isométricos con criterios claros de progresión.</span><span class="en">Isometric tests with clear progression criteria.</span></li>
+            <li><span class="es">Asimetrías entre lados, medidas y seguidas en el tiempo.</span><span class="en">Side to side asymmetries, measured and tracked over time.</span></li>
+            <li><span class="es">Pensado junto a los criterios internacionales de vuelta al deporte, e integrado en el expediente del atleta.</span><span class="en">Built around international return to sport criteria, and integrated into the athlete record.</span></li>
+          </ul>
+          <figure class="viz-fig viz-card" style="max-width: 620px; margin: 22px auto 0;">
               <div class="viz-tit"><span class="es">Una readaptación: la simetría entre piernas, test a test</span><span class="en">One rehab: side to side symmetry, test by test</span></div>
               <div class="viz-sub"><span class="es">LSI, pierna lesionada frente a sana · criterio de vuelta al 90 % · datos de ejemplo</span><span class="en">LSI, injured vs healthy leg · return criterion at 90% · sample data</span></div>
               <svg class="viz" viewBox="0 0 360 176" role="img" aria-label="Índice de simetría subiendo del 72 al 95 por ciento en ocho tests, con el criterio del 90 por ciento marcado">
@@ -1106,32 +1109,6 @@
                 <span class="en">Return to sport stops being a feeling: the injured leg reaches the criterion and clearance is decided with a number.</span>
               </figcaption>
             </figure>
-            <figure class="phone-fig">
-              <div class="phone" role="img" aria-label="Pantalla de un test isométrico en TrainLab Force, recreada">
-                <div class="isla"></div>
-                <div class="p-tit"><span class="es">Test · Isquios</span><span class="en">Test · Hamstrings</span></div>
-                <div class="p-card">
-                  <div class="p-lbl"><span class="es">Simetría (LSI)</span><span class="en">Symmetry (LSI)</span></div>
-                  <div class="p-dato">95 <span style="font-size:18px; color: var(--gray); font-weight:700;">%</span></div>
-                  <span class="p-chip" style="background: color-mix(in srgb, var(--viz-force) 15%, transparent); color: var(--viz-force);"><span class="es">Apto para el alta</span><span class="en">Cleared to return</span></span>
-                </div>
-                <div class="p-card">
-                  <div class="mini-stats">
-                    <div><div class="v">412 <small>N</small></div><div class="k"><span class="es">Pierna izq.</span><span class="en">Left leg</span></div></div>
-                    <div><div class="v">434 <small>N</small></div><div class="k"><span class="es">Pierna der.</span><span class="en">Right leg</span></div></div>
-                    <div><div class="v">90 <small>%</small></div><div class="k"><span class="es">Criterio</span><span class="en">Criterion</span></div></div>
-                  </div>
-                </div>
-              </div>
-              <figcaption style="text-align:center;">
-                <span class="es">La pantalla de un test, recreada.</span>
-                <span class="en">A test screen, recreated.</span>
-              </figcaption>
-            </figure>
-          </div>
-          <a class="ver-detalle" style="--vd: var(--viz-force);" href="force.html" target="_blank" rel="noopener">
-            <span class="es">Ver Force: vídeo y detalles</span><span class="en">See Force: video and details</span> <span class="flecha">→</span>
-          </a>
         </div>
       </div>
 
@@ -1140,26 +1117,12 @@
         <div>
           <h3><span class="tl">TrainLab</span> Signal <span class="estado"><span class="es">En diseño</span><span class="en">In design</span></span></h3>
           <p><span class="es">La electromiografía enseña qué músculo trabaja de verdad en cada ejercicio. Signal es el quinto miembro de la familia y completa la foto del atleta: lo que planificas, lo que mueves, cómo te recuperas, cuánta fuerza tienes y qué músculo la produce. Puedes hacer el ejercicio perfecto y activar el músculo equivocado; Signal te lo enseña.</span><span class="en">Electromyography shows which muscle is really working in each exercise. Signal is the fifth member of the family and completes the athlete picture: what you plan, what you move, how you recover, how much strength you have and which muscle produces it. You can do the perfect exercise and fire the wrong muscle; Signal shows you.</span></p>
-          <div class="feats-prod">
-            <div class="feat-prod">
-              <h4><span class="es">Activación por músculo</span><span class="en">Activation by muscle</span></h4>
-              <p><span class="es">Ve en directo cuánto trabaja cada músculo en cada repetición.</span><span class="en">See live how much each muscle works in each rep.</span></p>
-            </div>
-            <div class="feat-prod">
-              <h4><span class="es">Compara lados y ejercicios</span><span class="en">Compare sides and exercises</span></h4>
-              <p><span class="es">Qué variante activa mejor lo que buscas, y qué lado se queda atrás.</span><span class="en">Which variation best activates your target, and which side lags behind.</span></p>
-            </div>
-            <div class="feat-prod">
-              <h4><span class="es">La técnica deja de ser opinión</span><span class="en">Technique stops being opinion</span></h4>
-              <p><span class="es">Comprueba si estás entrenando el músculo que crees.</span><span class="en">Check whether you are training the muscle you think you are.</span></p>
-            </div>
-            <div class="feat-prod">
-              <h4><span class="es">Cierra la foto del atleta</span><span class="en">Completes the athlete picture</span></h4>
-              <p><span class="es">La última señal, junto a la carga, la velocidad, la recuperación y la fuerza.</span><span class="en">The last signal, alongside load, velocity, recovery and strength.</span></p>
-            </div>
-          </div>
-          <div class="showcase">
-            <figure class="viz-fig viz-card">
+          <ul>
+            <li><span class="es">Activación por músculo: verás qué músculo trabaja de verdad en cada repetición.</span><span class="en">Activation by muscle: you will see which muscle really works in each rep.</span></li>
+            <li><span class="es">Compara lados y ejercicios para afinar la técnica de verdad.</span><span class="en">Compare sides and exercises to truly refine technique.</span></li>
+            <li><span class="es">La última señal que faltaba, junto a la carga, la velocidad, la recuperación y la fuerza.</span><span class="en">The last missing signal, alongside load, velocity, recovery and strength.</span></li>
+          </ul>
+          <figure class="viz-fig viz-card" style="max-width: 620px; margin: 22px auto 0;">
               <div class="viz-tit"><span class="es">Lo que ve Signal: la activación de un músculo</span><span class="en">What Signal sees: one muscle's activation</span></div>
               <div class="viz-sub"><span class="es">Electromiografía de superficie durante una sentadilla · concepto, producto en diseño</span><span class="en">Surface electromyography during a squat · concept, product in design</span></div>
               <svg class="viz" viewBox="0 0 360 176" role="img" aria-label="Señal de electromiografía de una repetición con el pico de activación marcado">
@@ -1205,32 +1168,6 @@
                 <span class="en">The muscle that should be working, working: activation is seen, compared between sides and tracked over time.</span>
               </figcaption>
             </figure>
-            <figure class="phone-fig">
-              <div class="phone" role="img" aria-label="Pantalla de activación muscular en TrainLab Signal, recreada">
-                <div class="isla"></div>
-                <div class="p-tit"><span class="es">Activación · Sentadilla</span><span class="en">Activation · Squat</span></div>
-                <div class="p-card">
-                  <div class="p-lbl"><span class="es">Pico de activación</span><span class="en">Activation peak</span></div>
-                  <div class="p-dato">78 <span style="font-size:18px; color: var(--gray); font-weight:700;">%</span></div>
-                  <span class="p-chip" style="background: color-mix(in srgb, var(--viz-signal) 16%, transparent); color: var(--viz-signal);"><span class="es">Glúteo mayor</span><span class="en">Gluteus maximus</span></span>
-                </div>
-                <div class="p-card">
-                  <div class="mini-stats">
-                    <div><div class="v">74 <small>%</small></div><div class="k"><span class="es">Lado izq.</span><span class="en">Left side</span></div></div>
-                    <div><div class="v">78 <small>%</small></div><div class="k"><span class="es">Lado der.</span><span class="en">Right side</span></div></div>
-                    <div><div class="v">95 <small>%</small></div><div class="k"><span class="es">Simetría</span><span class="en">Symmetry</span></div></div>
-                  </div>
-                </div>
-              </div>
-              <figcaption style="text-align:center;">
-                <span class="es">La pantalla de activación, recreada (concepto).</span>
-                <span class="en">The activation screen, recreated (concept).</span>
-              </figcaption>
-            </figure>
-          </div>
-          <a class="ver-detalle" style="--vd: var(--viz-signal);" href="signal.html" target="_blank" rel="noopener">
-            <span class="es">Ver Signal: vídeo y detalles</span><span class="en">See Signal: video and details</span> <span class="flecha">→</span>
-          </a>
         </div>
       </div>
     </div>
@@ -1241,12 +1178,12 @@
     <div class="wrap">
       <p class="sec-eyebrow"><span class="es">Por qué TrainLab</span><span class="en">Why TrainLab</span></p>
       <h2>
-        <span class="es">Lo que hoy son cinco herramientas, en una sola familia.</span>
-        <span class="en">What today takes five tools, in a single family.</span>
+        <span class="es">Lo que hoy son tres apps distintas, en una sola familia.</span>
+        <span class="en">What today takes three separate apps, in a single family.</span>
       </h2>
       <p class="lead">
-        <span class="es">Para tener lo que ofrece TrainLab, hoy hay que juntar cinco productos distintos: caros, casi todos en inglés y que no se hablan entre sí. Esa es la diferencia.</span>
-        <span class="en">To get what TrainLab offers, today you have to piece together five separate products: expensive, mostly in English and not talking to each other. That is the difference.</span>
+        <span class="es">Para tener lo que ofrece TrainLab, hoy hay que juntar varias apps distintas: caras, casi todas en inglés y que no se hablan entre sí. Esa es la diferencia.</span>
+        <span class="en">To get what TrainLab offers, today you have to piece together several separate apps: expensive, mostly in English and not talking to each other. That is the difference.</span>
       </p>
       <div class="comparativa">
         <div class="comp-col comp-antes">
@@ -1255,24 +1192,23 @@
             <li><span class="es">Una app de gestión, cara y pensada en inglés.</span><span class="en">A management app, expensive and built in English.</span></li>
             <li><span class="es">Un sensor de velocidad de varios cientos de euros.</span><span class="en">A velocity sensor costing several hundred euros.</span></li>
             <li><span class="es">Otra pulsera de recuperación, con su propia suscripción.</span><span class="en">Another recovery band, with its own subscription.</span></li>
-            <li><span class="es">Un dinamómetro clínico caro para medir la fuerza.</span><span class="en">An expensive clinical dynamometer to measure strength.</span></li>
-            <li><span class="es">Cinco apps que no se hablan: los datos, sueltos.</span><span class="en">Five apps that do not talk to each other: scattered data.</span></li>
+            <li><span class="es">Apps que no se hablan entre sí: los datos, sueltos.</span><span class="en">Apps that do not talk to each other: scattered data.</span></li>
           </ul>
         </div>
         <div class="comp-col comp-despues">
           <div class="comp-cab"><span class="es">Con TrainLab</span><span class="en">With TrainLab</span></div>
           <ul>
-            <li><span class="es">Una <b>familia de cinco productos</b> que encajan.</span><span class="en">A <b>family of five products</b> that fit together.</span></li>
+            <li><span class="es">Una <b>familia de productos</b> que encajan y crecen juntos.</span><span class="en">A <b>family of products</b> that fit together and grow as one.</span></li>
             <li><span class="es">Una <b>sola cuenta</b> y un <b>solo expediente</b> del atleta.</span><span class="en">One <b>single account</b> and one <b>single record</b> for the athlete.</span></li>
             <li><span class="es"><b>Precio europeo</b>, sin los cientos de euros de siempre.</span><span class="en"><b>European pricing</b>, without the usual hundreds of euros.</span></li>
             <li><span class="es">En <b>español</b> (y en inglés), pensado para tu mercado.</span><span class="en">In <b>Spanish</b> (and English), built for your market.</span></li>
-            <li><span class="es">La carga, la velocidad, la recuperación y la fuerza, <b>conectadas</b>.</span><span class="en">Load, velocity, recovery and strength, <b>connected</b>.</span></li>
+            <li><span class="es">La carga, la velocidad y la recuperación, <b>conectadas</b>.</span><span class="en">Load, velocity and recovery, <b>connected</b>.</span></li>
           </ul>
         </div>
       </div>
       <p class="comp-cierre">
-        <span class="es">Con TrainLab dejas de pagar, aprender y hacer malabares con cinco herramientas distintas: todo tu atleta vive en un solo sitio, hecho para ti.</span>
-        <span class="en">With TrainLab you stop paying for, learning and juggling five different tools: your whole athlete lives in one place, built for you.</span>
+        <span class="es">Con TrainLab dejas de pagar, aprender y hacer malabares con varias apps distintas: todo tu atleta vive en un solo sitio, hecho para ti.</span>
+        <span class="en">With TrainLab you stop paying for, learning and juggling several different apps: your whole athlete lives in one place, built for you.</span>
       </p>
     </div>
   </section>
@@ -1295,7 +1231,7 @@
           <div class="cab"><span class="punto"></span><span class="es">La base</span><span class="en">The foundation</span></div>
           <div class="fase"><span class="es">Hecho</span><span class="en">Done</span></div>
           <ul>
-            <li><span class="es">Las <b>cinco apps</b> del ecosistema, construidas y funcionando.</span><span class="en">The ecosystem's <b>five apps</b>, built and working.</span></li>
+            <li><span class="es"><b>Fitness, Velocity y Control</b>: los tres productos, construidos y funcionando.</span><span class="en"><b>Fitness, Velocity and Control</b>: the three products, built and working.</span></li>
             <li><span class="es">La <b>ciencia implementada</b>: carga (sRPE, ACWR), velocidad, salto y perfil fuerza-velocidad.</span><span class="en"><b>The science implemented</b>: load (sRPE, ACWR), velocity, jump and force-velocity profile.</span></li>
             <li><span class="es">Una <b>sola cuenta</b> para toda la familia de productos.</span><span class="en">One <b>single account</b> for the whole family of products.</span></li>
             <li><span class="es">Fitness, en <b>beta cerrada</b>, con informe del atleta en PDF.</span><span class="en">Fitness, in <b>closed beta</b>, with a PDF athlete report.</span></li>
