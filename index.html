@@ -387,6 +387,25 @@
     .tag-fitness::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--fitness); }
     .centros-band p.intro { font-size: 15px; color: var(--ink2); margin-top: 10px; }
     .centros-band p.intro b { color: var(--ink); }
+    /* Sección de centros (nivel Fitness): escaparate panel + precio */
+    #centros .sec-eyebrow { color: var(--fitness); }
+    .showcase-centros { display: grid; grid-template-columns: 1.2fr 0.85fr; gap: 26px; margin-top: 30px; align-items: start; }
+    @media (max-width: 860px) { .showcase-centros { grid-template-columns: 1fr; } }
+    /* El panel del centro: cuadro de mando recreado */
+    .panel { background: var(--card); border: 1px solid var(--sep); border-radius: 16px; overflow: hidden; box-shadow: 0 18px 44px rgba(0,0,0,.14); }
+    .panel .top { display: flex; align-items: center; gap: 6px; padding: 12px 15px; background: var(--card-alt); border-bottom: 1px solid var(--sep); }
+    .panel .top i { width: 10px; height: 10px; border-radius: 50%; display: block; }
+    .panel .top .t { font-size: 12.5px; font-weight: 700; color: var(--ink2); margin-left: 10px; }
+    .panel .cuerpo { padding: 18px; }
+    .panel-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding-bottom: 6px; }
+    .panel-stat .v { font-size: 26px; font-weight: 900; font-variant-numeric: tabular-nums; letter-spacing: -0.5px; line-height: 1.1; }
+    .panel-stat .k { font-size: 11.5px; color: var(--gray); margin-top: 2px; }
+    .coach { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 0; border-top: 1px solid var(--sep); }
+    .coach .n { font-size: 13.5px; font-weight: 700; color: var(--ink); }
+    .coach .m { font-size: 11.5px; color: var(--gray); margin-top: 1px; }
+    .coach .estado { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+    .coach .estado::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+    .panel-cap { font-size: 12px; color: var(--gray); margin-top: 12px; text-align: center; }
     .centros-lista { list-style: none; margin-top: 18px; display: grid; gap: 11px; }
     .centros-lista li { position: relative; padding-left: 26px; font-size: 14.5px; color: var(--ink2); line-height: 1.5; }
     .centros-lista li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--fitness); font-weight: 800; }
@@ -760,6 +779,94 @@
         <a class="ver-detalle" style="--vd: var(--viz-fitness);" href="fitness.html" target="_blank" rel="noopener">
           <span class="es">Ver Fitness: vídeo y detalles</span><span class="en">See Fitness: video and details</span> <span class="flecha">→</span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Centros y clubes: Fitness para equipos ============ -->
+  <section id="centros" style="padding-top: 0;">
+    <div class="wrap">
+      <p class="sec-eyebrow"><span class="es">TrainLab Fitness · para centros</span><span class="en">TrainLab Fitness · for centers</span></p>
+      <h2>
+        <span class="es">Un gimnasio, muchos entrenadores, una sola cuenta.</span>
+        <span class="en">One gym, many coaches, one single account.</span>
+      </h2>
+      <p class="lead">
+        <span class="es">Centros y clubes no es otra app: es la misma TrainLab Fitness, con un modelo pensado para un equipo. El centro agrupa a toda su plantilla, ve el trabajo de cada entrenador desde un panel propio y paga una sola factura, mientras cada entrenador conserva su cuenta y sus atletas.</span>
+        <span class="en">Centers and clubs is not another app: it is the same TrainLab Fitness, with a model built for a team. The center groups its whole staff, sees each coach's work from a dedicated panel and pays a single invoice, while every coach keeps their own account and athletes.</span>
+      </p>
+
+      <div class="feats">
+        <div class="feat">
+          <h3><span class="es">Panel del centro</span><span class="en">Center panel</span></h3>
+          <p><span class="es">Toda la plantilla en un vistazo: qué entrenador lleva a quién, quién está activo esta semana y dónde conviene mirar.</span><span class="en">The whole staff at a glance: which coach handles whom, who is active this week and where to look.</span></p>
+        </div>
+        <div class="feat">
+          <h3><span class="es">Cada entrenador, su cuenta</span><span class="en">Each coach, their account</span></h3>
+          <p><span class="es">El centro agrupa, pero cada entrenador conserva su cuenta, sus atletas y su forma de trabajar. Nadie pierde autonomía.</span><span class="en">The center groups them, but each coach keeps their account, athletes and way of working. No one loses autonomy.</span></p>
+        </div>
+        <div class="feat">
+          <h3><span class="es">Una sola factura</span><span class="en">One single invoice</span></h3>
+          <p><span class="es">El centro paga por asiento, por sus entrenadores, en una única factura. Sin gestionar diez suscripciones sueltas.</span><span class="en">The center pays per seat, for its coaches, in a single invoice. No juggling ten separate subscriptions.</span></p>
+        </div>
+        <div class="feat">
+          <h3><span class="es">La calidad, bajo control</span><span class="en">Quality under control</span></h3>
+          <p><span class="es">Comprueba que toda la plantilla mantiene el nivel del servicio y sigue el método, sin mirar por encima del hombro.</span><span class="en">Check that the whole staff keeps the service level and follows the method, without looking over anyone's shoulder.</span></p>
+        </div>
+        <div class="feat">
+          <h3><span class="es">Menos lesiones en la plantilla</span><span class="en">Fewer squad injuries</span></h3>
+          <p><span class="es">El riesgo de carga de cada atleta, agregado: el centro ve venir los problemas antes de que se conviertan en bajas.</span><span class="en">Each athlete's load risk, aggregated: the center sees problems coming before they turn into absences.</span></p>
+        </div>
+        <div class="feat">
+          <h3><span class="es">Crece sin migrar</span><span class="en">Grow without migrating</span></h3>
+          <p><span class="es">Sumas entrenadores y atletas cuando quieras, sin cambiar de sistema ni perder el histórico de nadie.</span><span class="en">Add coaches and athletes whenever you want, without changing systems or losing anyone's history.</span></p>
+        </div>
+      </div>
+
+      <div class="showcase-centros">
+        <figure class="viz-fig" style="margin:0;">
+          <div class="panel" role="img" aria-label="Panel de gestión del centro en TrainLab Fitness, recreado">
+            <div class="top">
+              <i style="background: var(--red);"></i><i style="background: var(--orange);"></i><i style="background: var(--green);"></i>
+              <span class="t"><span class="es">Panel del centro · Club Atlas</span><span class="en">Center panel · Atlas Club</span></span>
+            </div>
+            <div class="cuerpo">
+              <div class="panel-stats">
+                <div class="panel-stat"><div class="v">5</div><div class="k"><span class="es">Entrenadores</span><span class="en">Coaches</span></div></div>
+                <div class="panel-stat"><div class="v">68</div><div class="k"><span class="es">Atletas</span><span class="en">Athletes</span></div></div>
+                <div class="panel-stat"><div class="v" style="color: var(--viz-force);">2</div><div class="k"><span class="es">Avisos de carga</span><span class="en">Load alerts</span></div></div>
+              </div>
+              <div class="coach">
+                <div><div class="n">Marta G.</div><div class="m"><span class="es">14 atletas</span><span class="en">14 athletes</span></div></div>
+                <span class="estado" style="color: var(--viz-fitness);"><span class="es">Al día</span><span class="en">Up to date</span></span>
+              </div>
+              <div class="coach">
+                <div><div class="n">Javier R.</div><div class="m"><span class="es">12 atletas</span><span class="en">12 athletes</span></div></div>
+                <span class="estado" style="color: var(--viz-force);"><span class="es">2 en carga alta</span><span class="en">2 in high load</span></span>
+              </div>
+              <div class="coach">
+                <div><div class="n">Lucía P.</div><div class="m"><span class="es">9 atletas</span><span class="en">9 athletes</span></div></div>
+                <span class="estado" style="color: var(--viz-fitness);"><span class="es">Al día</span><span class="en">Up to date</span></span>
+              </div>
+              <div class="coach">
+                <div><div class="n">Diego M.</div><div class="m"><span class="es">11 atletas</span><span class="en">11 athletes</span></div></div>
+                <span class="estado" style="color: var(--viz-fitness);"><span class="es">Al día</span><span class="en">Up to date</span></span>
+              </div>
+            </div>
+          </div>
+          <figcaption class="panel-cap"><span class="es">El panel del centro, recreado.</span><span class="en">The center panel, recreated.</span></figcaption>
+        </figure>
+        <div class="centros-precio">
+          <div class="cp-label"><span class="es">Precio por asiento</span><span class="en">Price per seat</span></div>
+          <div class="cp-dato">12,99 €<small>/<span class="es">entrenador · mes</span><span class="en">coach · mo</span></small></div>
+          <div class="cp-ejemplos">
+            <div class="fila"><span><span class="es">2 entrenadores</span><span class="en">2 coaches</span></span><b>25,98 €<span class="es">/mes</span><span class="en">/mo</span></b></div>
+            <div class="fila"><span><span class="es">5 entrenadores</span><span class="en">5 coaches</span></span><b>64,95 €<span class="es">/mes</span><span class="en">/mo</span></b></div>
+            <div class="fila"><span><span class="es">Más de 10</span><span class="en">More than 10</span></span><b><span class="es">a medida</span><span class="en">custom</span></b></div>
+          </div>
+          <a class="btn primary" href="mailto:hola@trainlabfitness.es?subject=TrainLab%20para%20centros"><span class="es">Hablemos de tu centro</span><span class="en">Let's talk about your center</span></a>
+          <p class="cp-nota"><span class="es">Cada entrenador conserva su cuenta. Precio de partida, en proceso.</span><span class="en">Each coach keeps their account. Starting price, in progress.</span></p>
+        </div>
       </div>
     </div>
   </section>
@@ -1387,32 +1494,6 @@
           <div class="det"><span class="es">El sensor de Velocity, la pulsera de Control, Force y Signal están en desarrollo. Anunciaremos su precio cuando estén listos.</span><span class="en">The Velocity sensor, the Control band, Force and Signal are in development. We will announce their price when they are ready.</span></div>
         </div>
       </div>
-
-      <!-- Centros y clubes: otro modelo dentro de Fitness -->
-      <div class="centros-band" id="centros">
-        <div class="centros-info">
-          <span class="tag-fitness"><span class="es">Dentro de TrainLab Fitness</span><span class="en">Inside TrainLab Fitness</span></span>
-          <h2><span class="es">Un gimnasio, muchos entrenadores, una sola cuenta.</span><span class="en">One gym, many coaches, one single account.</span></h2>
-          <p class="intro"><span class="es">Centros y clubes no es otra app: es la misma <b>TrainLab Fitness</b>, con otro modelo pensado para un equipo de entrenadores. El centro agrupa a toda su plantilla bajo una cuenta, ve el trabajo de cada entrenador desde un panel propio y paga una sola factura, mientras cada entrenador conserva su cuenta y sus atletas.</span><span class="en">Centers and clubs is not another app: it is the same <b>TrainLab Fitness</b>, with a different model built for a team of coaches. The center groups its whole staff under one account, sees each coach's work from a dedicated panel and pays a single invoice, while every coach keeps their own account and athletes.</span></p>
-          <ul class="centros-lista">
-            <li><span class="es"><b>Panel del centro incluido:</b> la actividad y la calidad del servicio de toda la plantilla, en un vistazo.</span><span class="en"><b>Center panel included:</b> the activity and service quality of the whole staff, at a glance.</span></li>
-            <li><span class="es"><b>Atletas sin tope por entrenador:</b> cada uno gestiona todos los que necesite.</span><span class="en"><b>Unlimited athletes per coach:</b> each one manages as many as they need.</span></li>
-            <li><span class="es"><b>Una sola factura:</b> el centro paga por sus entrenadores y cada uno conserva su cuenta.</span><span class="en"><b>One single invoice:</b> the center pays for its coaches and each keeps their own account.</span></li>
-            <li><span class="es"><b>Pensado para la dirección:</b> supervisar la calidad y reducir el riesgo de lesión de la plantilla.</span><span class="en"><b>Built for management:</b> supervise quality and reduce the squad's injury risk.</span></li>
-          </ul>
-        </div>
-        <div class="centros-precio">
-          <div class="cp-label"><span class="es">Precio por asiento</span><span class="en">Price per seat</span></div>
-          <div class="cp-dato">12,99 €<small>/<span class="es">entrenador · mes</span><span class="en">coach · mo</span></small></div>
-          <div class="cp-ejemplos">
-            <div class="fila"><span><span class="es">2 entrenadores</span><span class="en">2 coaches</span></span><b>25,98 €<span class="es">/mes</span><span class="en">/mo</span></b></div>
-            <div class="fila"><span><span class="es">5 entrenadores</span><span class="en">5 coaches</span></span><b>64,95 €<span class="es">/mes</span><span class="en">/mo</span></b></div>
-            <div class="fila"><span><span class="es">Más de 10</span><span class="en">More than 10</span></span><b><span class="es">a medida</span><span class="en">custom</span></b></div>
-          </div>
-          <a class="btn primary" href="mailto:hola@trainlabfitness.es?subject=TrainLab%20para%20centros"><span class="es">Hablemos de tu centro</span><span class="en">Let's talk about your center</span></a>
-          <p class="cp-nota"><span class="es">Precio de partida, en proceso como el resto.</span><span class="en">Starting price, in progress like the rest.</span></p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1721,7 +1802,7 @@
     // usuario pide menos movimiento, no se activa y todo se ve normal.
     (function () {
       try { if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; } catch (e) {}
-      var sel = ".prod, .feat, .feat-prod, .ref, .plan, .comp-col, .road-col, .faq, .showcase, .fundador-card, .como-funciona, .centros-band, .honesta, .integrada, .lista-card";
+      var sel = ".prod, .feat, .feat-prod, .ref, .plan, .comp-col, .road-col, .faq, .showcase, .showcase-centros, .fundador-card, .como-funciona, .honesta, .integrada, .lista-card";
       var elems = Array.prototype.slice.call(document.querySelectorAll(sel));
       if (!elems.length) return;
       document.body.classList.add("anim");
