@@ -137,8 +137,16 @@
       background: var(--azul-pulso); color: #fff; text-decoration: none;
       font-size: 13.5px; font-weight: 700; padding: 9px 16px; border-radius: 10px; white-space: nowrap;
     }
+    /* Entrada a la app Fitness (login en la propia web). Outline azul que se
+       rellena al pasar por encima: acción clara y distinta del CTA de la lista. */
+    .login-cta {
+      color: var(--azul-pulso); border: 1px solid var(--azul-pulso); text-decoration: none;
+      font-size: 13.5px; font-weight: 700; padding: 8px 15px; border-radius: 10px; white-space: nowrap;
+      transition: background .15s, color .15s;
+    }
+    .login-cta:hover { background: var(--azul-pulso); color: #fff; }
     @media (max-width: 860px) { .nav { display: none; } .langs { margin-left: auto; } }
-    @media (max-width: 420px) { .top-cta { display: none; } }
+    @media (max-width: 420px) { .top-cta, .login-cta { display: none; } }
 
     /* ============ Héroe (siempre azul noche: es el escenario del símbolo) ============ */
     .hero { background: var(--hbg); color: var(--hink); position: relative; overflow: hidden; padding: 96px 0 88px; }
@@ -575,6 +583,7 @@
         <button id="b-es" onclick="setLang('es')" aria-label="Español">ES</button>
         <button id="b-en" onclick="setLang('en')" aria-label="English">EN</button>
       </div>
+      <a class="login-cta" href="https://app.trainlabfitness.es"><span class="es">Iniciar sesión</span><span class="en">Log in</span></a>
       <a class="top-cta" href="#lista"><span class="es">Lista de espera</span><span class="en">Waitlist</span></a>
     </div>
   </div>
