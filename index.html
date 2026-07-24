@@ -145,7 +145,20 @@
       transition: background .15s, color .15s;
     }
     .login-cta:hover { background: var(--azul-pulso); color: #fff; }
-    @media (max-width: 860px) { .nav { display: none; } .langs { margin-left: auto; } }
+    /* Menú móvil (hamburguesa) */
+    .nav-toggle { display: none; margin-left: auto; background: transparent; border: 1px solid var(--sep); border-radius: 9px; width: 40px; height: 34px; cursor: pointer; padding: 0; align-items: center; justify-content: center; }
+    .nav-toggle .barra { position: relative; display: block; width: 18px; height: 2px; background: var(--ink); border-radius: 2px; }
+    .nav-toggle .barra::before, .nav-toggle .barra::after { content: ""; position: absolute; left: 0; width: 18px; height: 2px; background: var(--ink); border-radius: 2px; }
+    .nav-toggle .barra::before { top: -6px; } .nav-toggle .barra::after { top: 6px; }
+    @media (max-width: 860px) {
+      .nav-toggle { display: flex; }
+      .nav { position: absolute; top: 62px; left: 0; right: 0; flex-direction: column; gap: 0; align-items: stretch; margin-left: 0;
+             background: color-mix(in srgb, var(--bg) 97%, transparent); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+             border-bottom: 1px solid var(--sep); padding: 4px 20px 14px; box-shadow: 0 18px 30px rgba(20,26,40,.12); display: none; }
+      .nav.abierto { display: flex; }
+      .nav a { padding: 13px 2px; border-bottom: 1px solid var(--sep); font-size: 15.5px; }
+      .langs { margin-left: 0; }
+    }
     @media (max-width: 420px) { .top-cta, .login-cta { display: none; } }
 
     /* ============ Héroe (siempre azul noche: es el escenario del símbolo) ============ */
@@ -168,7 +181,31 @@
     .btn.primary:hover { filter: brightness(1.07); }
     .btn.ghost { background: transparent; color: var(--hink); border: 1px solid var(--hline); }
     .btn.ghost:hover { border-color: var(--hmuted); }
-    .cta-note { font-size: 13px; color: var(--hmuted); margin-top: 14px; }
+    .cta-note { font-size: 13px; color: var(--hmuted); margin-top: 16px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    /* Chip de escasez (plazas de la beta) */
+    .chip-plazas { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: #30D158;
+      background: rgba(48,209,88,.12); border: 1px solid rgba(48,209,88,.3); padding: 5px 12px; border-radius: 999px; }
+    .chip-plazas::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #30D158; box-shadow: 0 0 0 0 rgba(48,209,88,.5); animation: latido 2s infinite; }
+    @keyframes latido { 0% { box-shadow: 0 0 0 0 rgba(48,209,88,.5); } 70% { box-shadow: 0 0 0 7px rgba(48,209,88,0); } 100% { box-shadow: 0 0 0 0 rgba(48,209,88,0); } }
+    @media (prefers-reduced-motion: reduce) { .chip-plazas::before { animation: none; } }
+
+    /* Tira de 3 beneficios rápidos, justo bajo el hero */
+    .beneficios { border-bottom: 1px solid var(--sep); background: var(--card); }
+    .beneficios .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 26px 20px; }
+    @media (max-width: 720px) { .beneficios .wrap { grid-template-columns: 1fr; gap: 16px; } }
+    .benef-item { display: flex; align-items: flex-start; gap: 13px; }
+    .benef-item .ic { flex-shrink: 0; width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; background: var(--tint-green); color: var(--viz-fitness); }
+    .benef-item .ic svg { width: 21px; height: 21px; }
+    .benef-item h4 { font-size: 15px; font-weight: 800; }
+    .benef-item p { font-size: 13px; color: var(--ink2); margin-top: 2px; }
+
+    /* Banda de CTA a media página (azul noche, rompe la monotonía y convierte) */
+    .cta-band { background: var(--azul-noche); }
+    .cta-band .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 40px 20px; flex-wrap: wrap; }
+    .cta-band .txt { color: var(--hink); }
+    .cta-band h3 { font-size: clamp(21px, 3vw, 28px); font-weight: 800; letter-spacing: -0.4px; line-height: 1.15; }
+    .cta-band p { font-size: 14.5px; color: var(--hmuted); margin-top: 8px; max-width: 520px; }
+    .cta-band .btn { white-space: nowrap; }
 
     /* La línea de pulso, la firma de la marca, cruzando el escenario */
     .pulse-svg { position: absolute; left: 0; right: 0; bottom: -6px; width: 100%; height: 90px; opacity: .3; pointer-events: none; }
@@ -253,6 +290,12 @@
     .ec-prod .dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
     .ec-prod b { color: var(--ink); font-weight: 800; }
     .ec-prod .est { color: var(--gray); }
+    /* Próximos proyectos: Force y Signal como dos tarjetas compactas */
+    .futuros-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 36px; }
+    @media (max-width: 820px) { .futuros-grid { grid-template-columns: 1fr; } }
+    .futuros-grid .fila { border: 1px solid var(--sep); border-bottom: 1px solid var(--sep); border-radius: 18px; padding: 24px; background: var(--card); }
+    .futuros-grid .fila p { max-width: none; }
+    .futuros-grid .viz-fig { max-width: none !important; margin: 18px 0 0 !important; }
 
     /* --- Fitness --- */
     #fitness .sec-eyebrow { color: var(--fitness); }
@@ -581,9 +624,11 @@
         </svg>
         <span><span class="train">Train</span><span class="lab">Lab</span></span>
       </a>
-      <nav class="nav">
+      <button class="nav-toggle" aria-label="Menú" aria-expanded="false" onclick="alternarMenu(this)"><span class="barra"></span></button>
+      <nav class="nav" id="nav" onclick="cerrarMenu()">
         <a href="#ecosistema"><span class="es">Ecosistema</span><span class="en">Ecosystem</span></a>
         <a href="#fitness">Fitness</a>
+        <a href="#centros"><span class="es">Centros</span><span class="en">Centers</span></a>
         <a href="#ciencia"><span class="es">Ciencia</span><span class="en">Science</span></a>
         <a href="#precios"><span class="es">Precios</span><span class="en">Pricing</span></a>
       </nav>
@@ -606,14 +651,17 @@
           <span class="en">Coach with <span class="accent">data</span>, not guesswork.</span>
         </h1>
         <p class="sub">
-          <span class="es">TrainLab une la planificación, el control científico de la carga, la velocidad y la recuperación en una familia de productos que comparten una misma cuenta. Para entrenadores, centros deportivos y atletas.</span>
-          <span class="en">TrainLab brings planning, scientific load management, velocity and recovery together in a family of products that share one account. For coaches, training centers and athletes.</span>
+          <span class="es">Haz que tus atletas rindan más y se lesionen menos, entrégales informes que parecen de laboratorio y olvídate de las hojas de cálculo. TrainLab pone la ciencia del entrenamiento de tu lado.</span>
+          <span class="en">Get your athletes performing more and getting injured less, hand them reports that look like a lab's, and forget spreadsheets. TrainLab puts training science on your side.</span>
         </p>
         <div class="cta-row">
-          <a class="btn primary" href="#lista"><span class="es">Únete a la lista de espera</span><span class="en">Join the waitlist</span></a>
+          <a class="btn primary" href="#lista"><span class="es">Consigue tu plaza en la beta</span><span class="en">Get your beta spot</span></a>
           <a class="btn ghost" href="#ecosistema"><span class="es">Descubre el ecosistema</span><span class="en">Explore the ecosystem</span></a>
         </div>
-        <p class="cta-note"><span class="es">Beta con plazas limitadas. Sin compromiso.</span><span class="en">Limited beta spots. No commitment.</span></p>
+        <p class="cta-note">
+          <span class="chip-plazas"><span class="es">Plazas limitadas</span><span class="en">Limited spots</span></span>
+          <span class="es">Gratis, sin tarjeta y sin compromiso.</span><span class="en">Free, no card, no commitment.</span>
+        </p>
       </div>
 
       <div class="app-card" role="img" aria-label="Ejemplo de panel de la app con la carga del atleta">
@@ -638,6 +686,39 @@
       <path d="M0 60 H340 l18 -28 l26 52 l20 -38 l14 20 H760 l16 -24 l24 44 l18 -32 l12 16 H1200" />
     </svg>
   </header>
+
+  <!-- ============ Tira de beneficios ============ -->
+  <div class="beneficios">
+    <div class="wrap">
+      <div class="benef-item">
+        <span class="ic" style="background: var(--tint-green); color: var(--viz-fitness);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0l-1 1-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1 7.8 7.8 7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        </span>
+        <div>
+          <h4><span class="es">Menos lesiones</span><span class="en">Fewer injuries</span></h4>
+          <p><span class="es">El riesgo de carga, con semáforos, antes de que aparezca.</span><span class="en">Load risk, with traffic lights, before it shows up.</span></p>
+        </div>
+      </div>
+      <div class="benef-item">
+        <span class="ic" style="background: var(--accent-bg); color: var(--azul-pulso);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v5h5"/><path d="M19 8v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7z"/><path d="M9 13h6"/><path d="M9 17h4"/></svg>
+        </span>
+        <div>
+          <h4><span class="es">Informes que impresionan</span><span class="en">Reports that impress</span></h4>
+          <p><span class="es">Valoración y PDF con tu marca para entregar al atleta.</span><span class="en">Assessment and a branded PDF to hand to the athlete.</span></p>
+        </div>
+      </div>
+      <div class="benef-item">
+        <span class="ic" style="background: color-mix(in srgb, var(--purple) 13%, transparent); color: var(--viz-control);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3"/><path d="M12 21a8 8 0 1 0-8-8"/><path d="M4 13H1"/><path d="m7 8-2-2"/><path d="M12 12l3.5 2"/></svg>
+        </span>
+        <div>
+          <h4><span class="es">Cero hojas de cálculo</span><span class="en">Zero spreadsheets</span></h4>
+          <p><span class="es">Plan, registro y chat con cada atleta, en un solo sitio.</span><span class="en">Plan, logging and chat with each athlete, in one place.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ============ Ecosistema ============ -->
   <section id="ecosistema">
@@ -892,6 +973,17 @@
     </div>
   </section>
 
+  <!-- ============ CTA a media página ============ -->
+  <div class="cta-band">
+    <div class="wrap">
+      <div class="txt">
+        <h3><span class="es">¿Listo para dejar las hojas de cálculo?</span><span class="en">Ready to drop the spreadsheets?</span></h3>
+        <p><span class="es">Entra gratis en la beta y sé de los primeros entrenadores en probar TrainLab.</span><span class="en">Join the beta for free and be among the first coaches to try TrainLab.</span></p>
+      </div>
+      <a class="btn primary" href="#lista"><span class="es">Consigue tu plaza</span><span class="en">Get your spot</span></a>
+    </div>
+  </div>
+
   <!-- ============ El resto de la familia ============ -->
   <section id="familia" style="padding-top: 0;">
     <div class="wrap">
@@ -1069,6 +1161,7 @@
         <span class="en">Beyond the three products already working, TrainLab is preparing two pieces that will complete the athlete picture. They are in development: this is what they will be.</span>
       </p>
 
+      <div class="futuros-grid">
       <div class="fila force" id="force">
         <div class="banda"></div>
         <div>
@@ -1169,6 +1262,7 @@
               </figcaption>
             </figure>
         </div>
+      </div>
       </div>
     </div>
   </section>
@@ -1369,6 +1463,17 @@
       </div>
     </div>
   </section>
+
+  <!-- ============ CTA a media página ============ -->
+  <div class="cta-band">
+    <div class="wrap">
+      <div class="txt">
+        <h3><span class="es">Rigor de laboratorio, en tu bolsillo.</span><span class="en">Laboratory rigor, in your pocket.</span></h3>
+        <p><span class="es">Todo lo que has visto, por el precio de un par de cafés al mes. Empieza gratis.</span><span class="en">Everything you have seen, for the price of a couple of coffees a month. Start free.</span></p>
+      </div>
+      <a class="btn primary" href="#lista"><span class="es">Únete a la beta</span><span class="en">Join the beta</span></a>
+    </div>
+  </div>
 
   <!-- ============ Precios ============ -->
   <section id="precios">
@@ -1663,6 +1768,19 @@
       var movs = document.getElementById("f-movil").options;
       for (var j = 0; j < movs.length; j++) movs[j].textContent = TXT[l].moviles[j];
       try { localStorage.setItem("tl-lang", l); } catch (e) {}
+    }
+    // ---- Menú móvil ----
+    function alternarMenu(btn) {
+      var abierto = document.getElementById("nav").classList.toggle("abierto");
+      btn.setAttribute("aria-expanded", abierto ? "true" : "false");
+    }
+    function cerrarMenu() {
+      var nav = document.getElementById("nav");
+      if (nav.classList.contains("abierto")) {
+        nav.classList.remove("abierto");
+        var btn = document.querySelector(".nav-toggle");
+        if (btn) btn.setAttribute("aria-expanded", "false");
+      }
     }
     (function () {
       var guardado = null;
