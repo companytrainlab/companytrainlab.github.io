@@ -28,7 +28,7 @@ de privacidad en `privacidad.html`.
 El formulario llama a la Edge Function `lista-espera` de Supabase
 (repositorio de Fitness, `trainlab-web/supabase/functions/lista-espera/`),
 que guarda el alta en la tabla `lista_espera` (migración
-`19_lista_espera.sql`). RLS cerrado: solo escribe la función con la
+`19b_lista_espera.sql`). RLS cerrado: solo escribe la función con la
 service role. El campo oculto `telefono` es un señuelo antirrobots.
 
 ## Cómo se publica
