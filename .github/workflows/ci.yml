@@ -1,0 +1,22 @@
+# ============================================================
+#  CI de la web de la marca — el ÚNICO de los seis repositorios
+#  que no tenía red de seguridad (auditoría transversal, punto
+#  13), y es la web pública. Al ser HTML estático sin build, lo
+#  que se comprueba es lo que de verdad se rompe: enlaces
+#  internos, recursos que ya no existen, lang/title y el sitemap.
+# ============================================================
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  verificar:
+    name: Enlaces · lang/title · sitemap
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Comprobar la web (sin dependencias, python de serie)
+        run: python3 _tools/comprobar_web.py
