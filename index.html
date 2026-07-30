@@ -353,25 +353,6 @@
     .fila.force    { --acc: var(--force); }
     .fila.signal   { --acc: var(--signal); --acc-ink: var(--signal-ink); }
 
-    /* --- Por qué TrainLab: comparativa --- */
-    #porque .sec-eyebrow { color: var(--azul-pulso); }
-    .comparativa { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; align-items: stretch; }
-    @media (max-width: 720px) { .comparativa { grid-template-columns: 1fr; } }
-    .comp-col { border-radius: 18px; padding: 26px 24px; border: 1px solid var(--sep); }
-    .comp-antes { background: var(--card-alt); }
-    .comp-despues { background: var(--azul-noche); border-color: var(--hline); color: var(--hink); position: relative; overflow: hidden; }
-    .comp-cab { font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 18px; }
-    .comp-antes .comp-cab { color: var(--gray); }
-    .comp-despues .comp-cab { color: #9AA6BC; }
-    .comp-col ul { list-style: none; display: grid; gap: 14px; }
-    .comp-col li { position: relative; padding-left: 30px; font-size: 14.5px; line-height: 1.5; }
-    .comp-antes li { color: var(--ink2); }
-    .comp-despues li { color: #DFE5EF; }
-    .comp-col li::before { position: absolute; left: 0; top: -1px; font-size: 16px; font-weight: 800; }
-    .comp-antes li::before { content: "✕"; color: var(--red); }
-    .comp-despues li::before { content: "✓"; color: #30D158; }
-    .comp-despues li b { color: #fff; }
-    .comp-cierre { margin-top: 26px; border-left: 4px solid var(--azul-pulso); background: var(--card); border-radius: 0 16px 16px 0; padding: 20px 24px; font-size: 16px; color: var(--ink); font-weight: 600; }
 
     /* --- Roadmap: en qué estamos --- */
 
@@ -1618,45 +1599,6 @@
     </div>
   </section>
 
-  <!-- ============ Por qué TrainLab ============ -->
-  <section id="porque">
-    <div class="wrap">
-      <p class="sec-eyebrow"><span class="es">Por qué TrainLab</span><span class="en">Why TrainLab</span></p>
-      <h2>
-        <span class="es">Lo que hoy son tres apps distintas, en una sola familia.</span>
-        <span class="en">What today takes three separate apps, in a single family.</span>
-      </h2>
-      <p class="lead">
-        <span class="es">Para tener lo que ofrece TrainLab, hoy hay que juntar varias apps distintas: caras, casi todas en inglés y que no se hablan entre sí. Esa es la diferencia.</span>
-        <span class="en">To get what TrainLab offers, today you have to piece together several separate apps: expensive, mostly in English and not talking to each other. That is the difference.</span>
-      </p>
-      <div class="comparativa">
-        <div class="comp-col comp-antes">
-          <div class="comp-cab"><span class="es">Hoy, sin TrainLab</span><span class="en">Today, without TrainLab</span></div>
-          <ul>
-            <li><span class="es">Una app de gestión, cara y pensada en inglés.</span><span class="en">A management app, expensive and built in English.</span></li>
-            <li><span class="es">Un sensor de velocidad de varios cientos de euros.</span><span class="en">A velocity sensor costing several hundred euros.</span></li>
-            <li><span class="es">Otra pulsera de recuperación, con su propia suscripción.</span><span class="en">Another recovery band, with its own subscription.</span></li>
-            <li><span class="es">Apps que no se hablan entre sí: los datos, sueltos.</span><span class="en">Apps that do not talk to each other: scattered data.</span></li>
-          </ul>
-        </div>
-        <div class="comp-col comp-despues">
-          <div class="comp-cab"><span class="es">Con TrainLab</span><span class="en">With TrainLab</span></div>
-          <ul>
-            <li><span class="es">Una <b>familia de productos</b> que encajan y crecen juntos.</span><span class="en">A <b>family of products</b> that fit together and grow as one.</span></li>
-            <li><span class="es">Una <b>sola cuenta</b> y un <b>solo expediente</b> del atleta.</span><span class="en">One <b>single account</b> and one <b>single record</b> for the athlete.</span></li>
-            <li><span class="es">Todo <b>incluido en el plan</b>, sin pagar por análisis ni por informe.</span><span class="en">Everything <b>included in the plan</b>, no paying per analysis or per report.</span></li>
-            <li><span class="es">La carga, la velocidad y la recuperación, <b>conectadas</b>.</span><span class="en">Load, velocity and recovery, <b>connected</b>.</span></li>
-          </ul>
-        </div>
-      </div>
-      <p class="comp-cierre">
-        <span class="es">Con TrainLab dejas de pagar, aprender y hacer malabares con varias apps distintas: todo tu atleta vive en un solo sitio, hecho para ti.</span>
-        <span class="en">With TrainLab you stop paying for, learning and juggling several different apps: your whole athlete lives in one place, built for you.</span>
-      </p>
-    </div>
-  </section>
-
   <!-- ============ Ciencia ============ -->
   <section id="ciencia">
     <div class="wrap">
@@ -1736,7 +1678,7 @@
             <a class="doi-link" href="https://doi.org/10.1055/s-0030-1248333" target="_blank" rel="noopener"><span class="es">Ver estudio</span><span class="en">Read the study</span> <span class="flecha">↗</span></a>
           </div>
         </div>
-        <div class="ref" style="--acc: var(--viz-velocity);">
+        <div class="ref" style="--acc: var(--viz-fitness);">
           <span class="donde"><span class="es">Fitness</span><span class="en">Fitness</span></span>
           
           <h3><span class="es">Perfil fuerza-velocidad</span><span class="en">Force velocity profile</span></h3>
@@ -1769,6 +1711,66 @@
             <a class="doi-link" href="https://doi.org/10.1136/bjsports-2016-096278" target="_blank" rel="noopener"><span class="es">Ver estudio</span><span class="en">Read the study</span> <span class="flecha">↗</span></a>
           </div>
         </div>
+        <div class="ref" style="--acc: var(--viz-fitness);">
+          <span class="donde"><span class="es">Fitness</span><span class="en">Fitness</span></span>
+          <h3><span class="es">Carga, fatiga y lesión</span><span class="en">Load, fatigue and injury</span></h3>
+          <div class="autor">Jones y col., 2017</div>
+          <p class="p-cuerpo"><span class="es">Revisión sistemática de qué marcadores de carga y fatiga se asocian de verdad con lesionarse o enfermar.</span><span class="en">Systematic review of which load and fatigue markers are actually associated with injury and illness.</span></p>
+          <div class="dentro"><span class="es"><b>Es la razón de que la app te pida el esfuerzo percibido</b> y el control de bienestar: son los marcadores que la evidencia respalda.</span><span class="en"><b>It is why the app asks for perceived exertion</b> and the wellness check: those are the markers the evidence supports.</span></div>
+          <div class="ref-links">
+            <a class="doi-link" href="https://doi.org/10.1007/s40279-016-0619-5" target="_blank" rel="noopener"><span class="es">Ver estudio</span><span class="en">Read the study</span> <span class="flecha">&#8599;</span></a>
+          </div>
+        </div>
+        <div class="ref" style="--acc: var(--viz-velocity);">
+          <span class="donde"><span class="es">Velocity</span><span class="en">Velocity</span></span>
+          <h3><span class="es">Autorregular por velocidad</span><span class="en">Auto-regulating by velocity</span></h3>
+          <div class="autor">Guo y col., 2026</div>
+          <p class="p-cuerpo"><span class="es">Seis semanas de sentadilla ajustando la carga por la velocidad del día, frente a un porcentaje fijo del 1RM.</span><span class="en">Six weeks of squatting adjusting load by the day's velocity, against a fixed percentage of 1RM.</span></p>
+          <div class="dentro"><span class="es"><b>Los dos métodos funcionaron</b>, y el de velocidad salió algo mejor en fuerza máxima y sprint. Es un ensayo pequeño, de 20 atletas: apunta, no zanja.</span><span class="en"><b>Both methods worked</b>, and the velocity one came out slightly better for maximal strength and sprint. It is a small trial of 20 athletes: it points, it does not settle.</span></div>
+          <div class="ref-links">
+            <a class="doi-link" href="https://doi.org/10.3389/fphys.2026.1757046" target="_blank" rel="noopener"><span class="es">Ver estudio</span><span class="en">Read the study</span> <span class="flecha">&#8599;</span></a>
+          </div>
+        </div>
+        <div class="ref" style="--acc: var(--viz-fitness);">
+          <span class="donde"><span class="es">Fitness</span><span class="en">Fitness</span></span>
+          <h3><span class="es">Cerca del fallo, ¿hace falta?</span><span class="en">Proximity to failure</span></h3>
+          <div class="autor">Refalo y col., 2023</div>
+          <p class="p-cuerpo"><span class="es">Metaanálisis sobre cuánto hay que acercarse al fallo muscular para ganar masa muscular.</span><span class="en">Meta-analysis on how close to muscular failure you need to train to gain muscle mass.</span></p>
+          <div class="dentro"><span class="es"><b>Da sentido a programar por RIR</b> y a cortar la serie a tiempo, en vez de llevar cada una al límite.</span><span class="en"><b>It gives meaning to programming by RIR</b> and ending sets in time, instead of taking every one to the limit.</span></div>
+          <div class="ref-links">
+            <a class="doi-link" href="https://doi.org/10.1007/s40279-022-01784-y" target="_blank" rel="noopener"><span class="es">Ver estudio</span><span class="en">Read the study</span> <span class="flecha">&#8599;</span></a>
+          </div>
+        </div>
+        <div class="ref" style="--acc: var(--viz-control);">
+          <span class="donde"><span class="es">Control</span><span class="en">Control</span></span>
+          <h3><span class="es">Dormir y rendir</span><span class="en">Sleep and performance</span></h3>
+          <div class="autor">Cunha y col., 2023</div>
+          <p class="p-cuerpo"><span class="es">Revisión sistemática del efecto real que tienen las intervenciones sobre el sueño en el rendimiento deportivo.</span><span class="en">Systematic review of the real effect of sleep interventions on athletic performance.</span></p>
+          <div class="dentro"><span class="es"><b>Lo que más funcionó fue dormir más</b>, de noche o con siestas. Por eso el sueño pesa en tu recuperación y no es solo un dato bonito de enseñar.</span><span class="en"><b>What worked best was sleeping more</b>, at night or with naps. That is why sleep weighs in your recovery and is not just a nice number to show.</span></div>
+          <div class="ref-links">
+            <a class="doi-link" href="https://doi.org/10.1186/s40798-023-00599-z" target="_blank" rel="noopener"><span class="es">Ver estudio</span><span class="en">Read the study</span> <span class="flecha">&#8599;</span></a>
+          </div>
+        </div>
+        <div class="ref" style="--acc: var(--viz-control);">
+          <span class="donde"><span class="es">Control</span><span class="en">Control</span></span>
+          <h3><span class="es">La VFC en fuerza</span><span class="en">HRV in strength training</span></h3>
+          <div class="autor">Addleman y col., 2024</div>
+          <p class="p-cuerpo"><span class="es">Revisión de cómo se usa la variabilidad de la frecuencia cardiaca en el entrenamiento de fuerza y acondicionamiento.</span><span class="en">Review of how heart rate variability is used in strength and conditioning.</span></p>
+          <div class="dentro"><span class="es"><b>Marca cómo se lee tu VFC</b>: contra tu propia línea de base y por tendencia, nunca como un número suelto de una mañana.</span><span class="en"><b>It sets how your HRV is read</b>: against your own baseline and by trend, never as a loose number from one morning.</span></div>
+          <div class="ref-links">
+            <a class="doi-link" href="https://doi.org/10.3390/jfmk9020093" target="_blank" rel="noopener"><span class="es">Ver estudio</span><span class="en">Read the study</span> <span class="flecha">&#8599;</span></a>
+          </div>
+        </div>
+        <div class="ref" style="--acc: var(--viz-control);">
+          <span class="donde"><span class="es">Control</span><span class="en">Control</span></span>
+          <h3><span class="es">La atleta femenina</span><span class="en">The female athlete</span></h3>
+          <div class="autor">de Jager y col., 2026</div>
+          <p class="p-cuerpo"><span class="es">Revisión viva sobre cómo se mueve la variabilidad cardiaca a lo largo del ciclo menstrual y con anticonceptivos hormonales.</span><span class="en">Living review on how heart rate variability shifts across the menstrual cycle and with hormonal contraceptives.</span></p>
+          <div class="dentro"><span class="es"><b>Porque media población no entrena igual todo el mes</b>, y una app que lo ignora se equivoca la mitad de las veces.</span><span class="en"><b>Because half the population does not train the same all month</b>, and an app that ignores it gets it wrong half the time.</span></div>
+          <div class="ref-links">
+            <a class="doi-link" href="https://doi.org/10.1007/s40279-025-02388-y" target="_blank" rel="noopener"><span class="es">Ver estudio</span><span class="en">Read the study</span> <span class="flecha">&#8599;</span></a>
+          </div>
+        </div>
       </div>
       <!-- El listón de validación -->
       <div class="liston">
@@ -1777,8 +1779,9 @@
           <span class="en">The bar, set before measuring</span>
         </h3>
         <p class="sub-lead">
-          <span class="es">Lo fácil es medir primero y decidir después qué resultado es "bueno". Nosotros hicimos lo contrario: dejamos por escrito cuánto error estamos dispuestos a aceptar en cada métrica, y contra qué aparato se compara, antes de tocar un sensor.</span>
-          <span class="en">The easy way is to measure first and decide afterwards what counts as "good". We did the opposite: we put in writing how much error we are willing to accept for each metric, and what device it is compared against, before touching a sensor.</span>
+          <span class="es">Lo fácil es medir primero y decidir después qué resultado es "bueno". Nosotros hicimos lo contrario: dejamos por escrito cuánto error estamos dispuestos a aceptar en cada métrica, y contra qué aparato se compara, antes de tocar un sensor. El método no es nuestro, es el consenso internacional para validar aparatos de consumo.</span>
+          <span class="en">The easy way is to measure first and decide afterwards what counts as "good". We did the opposite: we put in writing how much error we are willing to accept for each metric, and what device it is compared against, before touching a sensor. The method is not ours: it is the international consensus for validating consumer devices.</span>
+          <a class="doi-link" style="display:block; margin-top:12px;" href="https://doi.org/10.1007/s40279-022-01665-4" target="_blank" rel="noopener"><span class="es">Consenso INTERLIVE · Argent y col., 2022</span><span class="en">INTERLIVE consensus · Argent et al., 2022</span> <span class="flecha">&#8599;</span></a>
         </p>
         <div class="liston-tabla">
           <div class="liston-fila liston-cab">
@@ -1814,8 +1817,9 @@
       </div>
 
       <div class="honesta">
-        <span class="es">Y cuando no hay datos suficientes para un cálculo fiable, la app lo dice. Antes honesto que impresionante.</span>
-        <span class="en">And when there is not enough data for a reliable calculation, the app says so. Honest before impressive.</span>
+        <span class="es">Y cuando no hay datos suficientes para un cálculo fiable, la app lo dice. Antes honesto que impresionante. Un ejemplo incómodo: frente a un estudio del sueño de laboratorio, los relojes de consumo se desvían incluso en lo básico, unos 17 minutos de media en el tiempo total dormido. Sirven para seguir tu patrón, no para dar un número de laboratorio, y así es exactamente como TrainLab los usa.</span>
+        <span class="en">And when there is not enough data for a reliable calculation, the app says so. Honest before impressive. An uncomfortable example: against a lab sleep study, consumer watches drift even on the basics, about 17 minutes on average in total sleep time. They are good for following your pattern, not for giving a laboratory number, and that is exactly how TrainLab uses them.</span>
+        <a class="doi-link" style="display:inline-block; margin-top:10px;" href="https://doi.org/10.5664/jcsm.11460" target="_blank" rel="noopener"><span class="es">Relojes de sueño frente a polisomnografía · Lee y col., 2025</span><span class="en">Sleep trackers vs polysomnography · Lee et al., 2025</span> <span class="flecha">&#8599;</span></a>
       </div>
     </div>
   </section>
