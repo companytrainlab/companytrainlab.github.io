@@ -240,6 +240,12 @@
 
     /* --- Ecosistema --- */
     .prods { display: grid; grid-template-columns: repeat(auto-fit, minmax(196px, 1fr)); gap: 14px; margin-top: 40px; }
+    /* Los dos productos terminados mandan: tarjetas grandes, a media anchura. */
+    .prods-dos { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .prods-dos .prod { padding: 26px 24px; }
+    .prods-dos .prod h3 { font-size: 23px; }
+    .prods-dos .prod p { font-size: 15px; }
+    @media (max-width: 720px) { .prods-dos { grid-template-columns: 1fr; } }
     .prod {
       background: var(--card); border: 1px solid var(--sep); border-radius: 16px; padding: 20px 18px;
       display: flex; flex-direction: column; gap: 10px; border-top: 3px solid var(--acc, var(--sep));
@@ -296,6 +302,9 @@
     .futuros-grid .fila { border: 1px solid var(--sep); border-bottom: 1px solid var(--sep); border-radius: 18px; padding: 24px; background: var(--card); }
     .futuros-grid .fila p { max-width: none; }
     .futuros-grid .viz-fig { max-width: none !important; margin: 18px 0 0 !important; }
+    /* Velocity es el más avanzado de los tres: ocupa la fila entera. */
+    .futuros-grid #velocity { grid-column: 1 / -1; }
+    .futuros-grid #velocity .viz-fig { max-width: 620px !important; margin: 20px auto 0 !important; }
 
     /* --- Fitness --- */
     #fitness .sec-eyebrow { color: var(--fitness); }
@@ -574,6 +583,9 @@
     /* El teléfono: la pantalla de la app recreada a tamaño tarjeta */
     .showcase { display: grid; grid-template-columns: 1.1fr auto; gap: 26px; margin-top: 26px; align-items: start; }
     @media (max-width: 860px) { .showcase { grid-template-columns: 1fr; } .phone-fig { justify-self: center; } }
+    /* Dos tarjetas de igual peso (el 'auto' de arriba es para el móvil dibujado) */
+    .showcase-dos { grid-template-columns: 1fr 1fr; }
+    @media (max-width: 860px) { .showcase-dos { grid-template-columns: 1fr; } }
     .phone {
       width: 264px; background: var(--bg); border: 1px solid var(--sep); border-radius: 34px;
       padding: 14px 12px 16px; box-shadow: 0 18px 44px rgba(0,0,0,.14);
@@ -595,6 +607,84 @@
     .mini-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--sep); }
     .mini-stats .v { font-size: 16px; font-weight: 800; font-variant-numeric: tabular-nums; }
     .mini-stats .k { font-size: 10.5px; color: var(--gray); margin-top: 1px; }
+
+    /* Subtítulo dentro de una sección (un escalón por debajo del h2) */
+    .sub-tit { font-size: 27px; font-weight: 800; letter-spacing: -0.5px; margin: 0 0 8px; }
+    .sub-lead { font-size: 16px; color: var(--ink2); line-height: 1.6; margin: 0 0 22px; max-width: 62ch; }
+    @media (max-width: 620px) { .sub-tit { font-size: 23px; } }
+
+    /* ====== Capturas REALES de las apps, dentro de un marco de móvil ====== */
+    .marco {
+      flex: 0 0 auto; width: 232px; background: var(--azul-noche); border-radius: 30px;
+      padding: 8px; box-shadow: 0 16px 40px rgba(0,0,0,.18);
+    }
+    .marco img { display: block; width: 100%; height: auto; border-radius: 23px; background: #F1F2F6; }
+    .galeria { display: flex; gap: 20px; overflow-x: auto; padding: 4px 4px 18px; scroll-snap-type: x mandatory; }
+    .galeria::-webkit-scrollbar { height: 8px; }
+    .galeria::-webkit-scrollbar-thumb { background: var(--sep); border-radius: 4px; }
+    .galeria figure { flex: 0 0 auto; margin: 0; width: 232px; scroll-snap-align: center; }
+    .galeria figcaption {
+      font-size: 12.5px; color: var(--gray); line-height: 1.45; text-align: center; margin-top: 12px;
+    }
+    .galeria figcaption b { color: var(--ink); display: block; font-size: 13.5px; margin-bottom: 2px; }
+    .nota-capturas {
+      font-size: 12.5px; color: var(--gray); text-align: center; margin: 2px 0 0;
+    }
+
+    /* Los tres perfiles: centro, entrenador y atleta */
+    .perfiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 26px; }
+    .perfil {
+      background: var(--card); border: 1px solid var(--sep); border-radius: 18px; padding: 22px 20px 24px;
+      display: flex; flex-direction: column;
+    }
+    .perfil .rol {
+      font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--acc, var(--azul-pulso));
+    }
+    .perfil h4 { font-size: 19px; font-weight: 800; margin: 6px 0 8px; letter-spacing: -0.2px; }
+    .perfil p { font-size: 14.5px; color: var(--ink2); line-height: 1.55; margin: 0 0 14px; }
+    .perfil ul { margin: 0; padding-left: 18px; }
+    .perfil li { font-size: 13.5px; color: var(--ink2); line-height: 1.5; margin-bottom: 6px; }
+    .perfil ul { margin-bottom: 6px; }
+    .perfil .marco { width: 100%; max-width: 200px; margin: 18px auto 0; }
+    /* el visual se pega abajo para que las tres columnas casen */
+    .perfil .marco, .perfil .mini-panel { margin-top: auto; }
+    .mini-panel {
+      background: var(--azul-noche); border-radius: 14px; padding: 12px; margin: 18px 0 0;
+      box-shadow: 0 12px 30px rgba(0,0,0,.16);
+    }
+    .mini-panel .mp-tabs { display: flex; gap: 4px; margin-bottom: 10px; }
+    .mini-panel .mp-tabs span {
+      font-size: 9.5px; font-weight: 700; color: rgba(255,255,255,.5);
+      padding: 4px 7px; border-radius: 6px; white-space: nowrap;
+    }
+    .mini-panel .mp-tabs .on { background: rgba(255,255,255,.14); color: #fff; }
+    .mini-panel .mp-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .mini-panel .mp-kpi { background: rgba(255,255,255,.07); border-radius: 9px; padding: 9px 7px; text-align: center; }
+    .mini-panel .mp-kpi .v { font-size: 19px; font-weight: 800; color: #fff; font-variant-numeric: tabular-nums; line-height: 1.1; }
+    .mini-panel .mp-kpi .k { font-size: 8.5px; color: rgba(255,255,255,.55); margin-top: 3px; line-height: 1.25; }
+    .mini-panel .mp-fila {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 10.5px; color: rgba(255,255,255,.72); margin-top: 9px;
+      padding-top: 9px; border-top: 1px solid rgba(255,255,255,.12);
+    }
+    @media (max-width: 860px) { .perfiles { grid-template-columns: 1fr; } }
+
+    /* Comparativa a dos columnas (pulsera cualquiera vs Control) */
+    .comparativa { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0 4px; }
+    .comp-col { border: 1px solid var(--sep); border-radius: 14px; padding: 16px 15px; background: var(--bg); }
+    .comp-col.destacada { border-color: color-mix(in srgb, var(--viz-control) 45%, var(--sep)); background: var(--card); }
+    .comp-tit { font-size: 11px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px; }
+    .comp-frase { font-size: 14px; line-height: 1.55; color: var(--ink); margin: 0 0 8px; }
+    .comp-nota { font-size: 12.5px; line-height: 1.45; color: var(--gray); margin: 0; }
+    @media (max-width: 560px) { .comparativa { grid-template-columns: 1fr; } }
+
+    /* Cabina de escritorio (captura ancha) */
+    .cabina-fig { margin: 26px 0 0; }
+    .cabina-marco {
+      background: var(--azul-noche); border-radius: 16px; padding: 10px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.20);
+    }
+    .cabina-marco img { display: block; width: 100%; height: auto; border-radius: 9px; }
 
     /* ============ Pie (azul noche, como el símbolo manda) ============ */
     footer { background: var(--hbg); color: var(--hmuted); padding: 44px 0; }
@@ -629,6 +719,7 @@
         <a href="#ecosistema"><span class="es">Ecosistema</span><span class="en">Ecosystem</span></a>
         <a href="#fitness">Fitness</a>
         <a href="#centros"><span class="es">Centros</span><span class="en">Centers</span></a>
+        <a href="#control">Control</a>
         <a href="#ciencia"><span class="es">Ciencia</span><span class="en">Science</span></a>
         <a href="#precios"><span class="es">Precios</span><span class="en">Pricing</span></a>
       </nav>
@@ -729,40 +820,35 @@
         <span class="en">Complete on their own. Unbeatable together.</span>
       </h2>
       <p class="lead">
-        <span class="es">Como un iPhone y un Mac: cada producto funciona solo, pero juntos crean un flujo de trabajo que ninguno tiene por separado. Tres productos que ya funcionan, una cuenta y una sola foto del atleta, con dos piezas más en camino.</span>
-        <span class="en">Like an iPhone and a Mac: each product stands on its own, but together they create a workflow none of them has alone. Three products already working, one account and a single picture of the athlete, with two more pieces on the way.</span>
+        <span class="es">Como un iPhone y un Mac: cada producto funciona solo, pero juntos crean un flujo de trabajo que ninguno tiene por separado. Dos productos terminados que ya puedes usar —el entrenamiento y la recuperación—, una cuenta y una sola foto del atleta.</span>
+        <span class="en">Like an iPhone and a Mac: each product stands on its own, but together they create a workflow none of them has alone. Two finished products you can already use —training and recovery—, one account and a single picture of the athlete.</span>
       </p>
 
-      <div class="prods">
+      <div class="prods prods-dos">
         <div class="prod fitness">
           <span class="apellido">Fitness</span>
           <h3><span class="tl">TrainLab</span> Fitness</h3>
           <p><span class="es">La app de gestión para entrenadores y centros: planifica, registra, mide la carga y habla con tus atletas. El centro del ecosistema.</span><span class="en">The management app for coaches and centers: plan, log, measure load and talk to your athletes. The heart of the ecosystem.</span></p>
           <span class="estado"><span class="es">En beta cerrada</span><span class="en">In closed beta</span></span>
         </div>
-        <div class="prod velocity">
-          <span class="apellido">Velocity</span>
-          <h3><span class="tl">TrainLab</span> Velocity</h3>
-          <p><span class="es">Entrenamiento basado en velocidad con un sensor propio en la barra, a una fracción del precio habitual.</span><span class="en">Velocity based training with its own bar sensor, at a fraction of the usual price.</span></p>
-          <span class="estado"><span class="es">App lista · sensor encargado</span><span class="en">App ready · sensor ordered</span></span>
-        </div>
         <div class="prod control">
           <span class="apellido">Control</span>
           <h3><span class="tl">TrainLab</span> Control</h3>
-          <p><span class="es">La recuperación del atleta cruzada con su carga real de entrenamiento. Con la pulsera TrainLab o con tu propio reloj.</span><span class="en">Athlete recovery crossed with their real training load. With the TrainLab band or your own watch.</span></p>
-          <span class="estado"><span class="es">Pulsera en validación</span><span class="en">Band in validation</span></span>
+          <p><span class="es">La recuperación del atleta cruzada con su carga real de entrenamiento. Con la pulsera TrainLab o con el reloj que ya llevas puesto.</span><span class="en">Athlete recovery crossed with their real training load. With the TrainLab band or the watch you already wear.</span></p>
+          <span class="estado"><span class="es">En beta cerrada</span><span class="en">In closed beta</span></span>
         </div>
       </div>
 
       <div class="en-camino">
         <span class="ec-label"><span class="es">En camino</span><span class="en">On the way</span></span>
+        <a class="ec-prod" href="#futuros"><span class="dot" style="background: var(--velocity);"></span><b>Velocity</b><span class="es">· velocidad de la barra</span><span class="en">· bar velocity</span> <span class="est"><span class="es">· en desarrollo</span><span class="en">· in development</span></span></a>
         <a class="ec-prod" href="#futuros"><span class="dot" style="background: var(--force);"></span><b>Force</b><span class="es">· fuerza y readaptación</span><span class="en">· strength & rehab</span> <span class="est"><span class="es">· en desarrollo</span><span class="en">· in development</span></span></a>
         <a class="ec-prod" href="#futuros"><span class="dot" style="background: var(--signal);"></span><b>Signal</b><span class="es">· electromiografía</span><span class="en">· electromyography</span> <span class="est"><span class="es">· en diseño</span><span class="en">· in design</span></span></a>
       </div>
 
       <div class="integrada">
-        <span class="es"><b>Nadie necesita todas las apps para tener un producto redondo.</b> Fitness ya trae de serie una versión ligera de Velocity (medición por vídeo) y de Control (lectura de la salud del iPhone). Cada producto de la familia es el salto profesional de algo que ya probaste dentro de Fitness.</span>
-        <span class="en"><b>Nobody needs every app to get a complete product.</b> Fitness already ships with a light version of Velocity (video based measurement) and Control (iPhone health data). Each product in the family is the professional upgrade of something you already tried inside Fitness.</span>
+        <span class="es"><b>No necesitas comprar nada más para tener un producto redondo.</b> Fitness ya trae de serie la medición por vídeo y la lectura de la salud del iPhone, y Control funciona con el reloj que ya llevas puesto. Lo que viene después son saltos profesionales opcionales de algo que ya probaste dentro.</span>
+        <span class="en"><b>You don't need to buy anything else to get a complete product.</b> Fitness already ships with video measurement and iPhone health data, and Control works with the watch you already wear. What comes next are optional professional upgrades of something you already tried inside.</span>
       </div>
     </div>
   </section>
@@ -885,7 +971,160 @@
           </figcaption>
         </figure>
       </div>
-      <div style="text-align:center; margin-top: 28px;">
+      <!-- Capturas REALES de la app del entrenador -->
+      <h3 class="sub-tit" style="margin-top: 46px;">
+        <span class="es">La app del entrenador, por dentro</span>
+        <span class="en">The coach app, from the inside</span>
+      </h3>
+      <p class="sub-lead">
+        <span class="es">Estas no son ilustraciones: son capturas de la app funcionando, con un grupo de ejemplo de ocho atletas.</span>
+        <span class="en">These are not illustrations: they are screenshots of the app running, with a sample group of eight athletes.</span>
+      </p>
+      <div class="galeria">
+        <figure>
+          <div class="marco"><img src="img/f-resumen.webp" width="660" height="1351" loading="lazy" decoding="async"
+            alt="Panel del entrenador con 8 atletas, 4 citas de hoy y el ACWR de cada uno"></div>
+          <figcaption>
+            <b><span class="es">Panel del entrenador</span><span class="en">Coach dashboard</span></b>
+            <span class="es">Tu día entero de un vistazo: citas, alertas y el estado de carga de cada atleta.</span>
+            <span class="en">Your whole day at a glance: appointments, alerts and each athlete's load status.</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <div class="marco"><img src="img/f-analisis.webp" width="660" height="1351" loading="lazy" decoding="async"
+            alt="Análisis de un atleta con disponibilidad 94 y la serie de los últimos 14 días"></div>
+          <figcaption>
+            <b><span class="es">Análisis del atleta</span><span class="en">Athlete analysis</span></b>
+            <span class="es">Kilos, carga y bienestar en 7, 30 o 90 días, con la disponibilidad de hoy calculada.</span>
+            <span class="en">Volume, load and wellness over 7, 30 or 90 days, with today's readiness computed.</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <div class="marco"><img src="img/f-agenda.webp" width="660" height="1351" loading="lazy" decoding="async"
+            alt="Agenda del día con cuatro citas: sesión, valoración, sesión y seguimiento"></div>
+          <figcaption>
+            <b><span class="es">Agenda</span><span class="en">Schedule</span></b>
+            <span class="es">Mes, semana, día y próximas citas. Se exporta a tu calendario.</span>
+            <span class="en">Month, week, day and upcoming appointments. Exports to your calendar.</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <div class="marco"><img src="img/f-plan.webp" width="660" height="1351" loading="lazy" decoding="async"
+            alt="Programación por atleta agrupada por disciplina: fuerza y resistencia"></div>
+          <figcaption>
+            <b><span class="es">Programación</span><span class="en">Programming</span></b>
+            <span class="es">La temporada de cada atleta, agrupada por disciplina, con macro, meso y microciclos.</span>
+            <span class="en">Each athlete's season, grouped by discipline, with macro, meso and microcycles.</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <div class="marco"><img src="img/f-valoracion.webp" width="660" height="1351" loading="lazy" decoding="async"
+            alt="Valoración del atleta con análisis de explosividad, fuerza, perfil fuerza-velocidad y carrera"></div>
+          <figcaption>
+            <b><span class="es">Valoración</span><span class="en">Assessment</span></b>
+            <span class="es">La batería completa, más los análisis por vídeo: RFD del salto, VBT y perfil F-V.</span>
+            <span class="en">The full battery, plus video analysis: jump RFD, VBT and F-V profile.</span>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="nota-capturas">
+        <span class="es">Capturas reales de la app en desarrollo, con datos de ejemplo. El aspecto puede cambiar antes del lanzamiento.</span>
+        <span class="en">Real screenshots of the app in development, with sample data. Looks may change before launch.</span>
+      </p>
+
+      <!-- Los tres perfiles -->
+      <h3 class="sub-tit" style="margin-top: 52px;">
+        <span class="es">Tres perfiles, una sola cuenta</span>
+        <span class="en">Three profiles, one single account</span>
+      </h3>
+      <p class="sub-lead">
+        <span class="es">La misma app cambia de cara según quién entra. Nadie ve de más, y nadie tiene que aprender una herramienta que no es la suya.</span>
+        <span class="en">The same app changes face depending on who signs in. Nobody sees more than they should, and nobody has to learn a tool that isn't theirs.</span>
+      </p>
+      <div class="perfiles">
+        <div class="perfil" style="--acc: var(--viz-control);">
+          <span class="rol"><span class="es">Perfil 1 · Centro</span><span class="en">Profile 1 · Center</span></span>
+          <h4><span class="es">El que dirige</span><span class="en">The one who runs it</span></h4>
+          <p>
+            <span class="es">Ve el negocio: cuántos atletas hay, cuántos están activos, qué entrenador lleva a quién y qué entra por caja.</span>
+            <span class="en">Sees the business: how many athletes there are, how many are active, which coach handles whom and what comes in.</span>
+          </p>
+          <ul>
+            <li><span class="es">Resumen del centro: activos, con plan y cumplimiento.</span><span class="en">Center summary: active, with a plan and adherence.</span></li>
+            <li><span class="es">Plantilla de entrenadores y reparto de atletas.</span><span class="en">Coaching staff and athlete allocation.</span></li>
+            <li><span class="es">Caja: qué se paga por plaza y cuánto suma.</span><span class="en">Billing: what each seat costs and the total.</span></li>
+            <li><span class="es">Nunca entra en la conversación privada de un entrenador con su atleta.</span><span class="en">Never enters a coach's private conversation with their athlete.</span></li>
+          </ul>
+          <div class="mini-panel" role="img" aria-label="Panel del centro con 4 entrenadores, 68 atletas y 94 % de cumplimiento">
+            <div class="mp-tabs">
+              <span class="on"><span class="es">Resumen</span><span class="en">Overview</span></span>
+              <span><span class="es">Plantilla</span><span class="en">Staff</span></span>
+              <span><span class="es">Atletas</span><span class="en">Athletes</span></span>
+              <span><span class="es">Caja</span><span class="en">Billing</span></span>
+            </div>
+            <div class="mp-kpis">
+              <div class="mp-kpi"><div class="v">4</div><div class="k"><span class="es">Entrenadores</span><span class="en">Coaches</span></div></div>
+              <div class="mp-kpi"><div class="v">68</div><div class="k"><span class="es">Atletas</span><span class="en">Athletes</span></div></div>
+              <div class="mp-kpi"><div class="v" style="color: var(--fitness);">94 %</div><div class="k"><span class="es">Cumplimiento</span><span class="en">Adherence</span></div></div>
+            </div>
+            <div class="mp-fila">
+              <span><span class="es">Activos</span><span class="en">Active</span></span><b style="color:#fff;">61 / 68</b>
+            </div>
+          </div>
+        </div>
+        <div class="perfil" style="--acc: var(--azul-pulso);">
+          <span class="rol"><span class="es">Perfil 2 · Entrenador</span><span class="en">Profile 2 · Coach</span></span>
+          <h4><span class="es">El que entrena</span><span class="en">The one who coaches</span></h4>
+          <p>
+            <span class="es">Su puesto de trabajo completo: la agenda del día, el plan de cada atleta, la carga bajo control y el chat.</span>
+            <span class="en">Their complete workstation: today's schedule, each athlete's plan, load under control and the chat.</span>
+          </p>
+          <ul>
+            <li><span class="es">El día entero: citas, alertas y quién viene cargado.</span><span class="en">The whole day: appointments, alerts and who arrives loaded.</span></li>
+            <li><span class="es">Programación por temporada y valoración completa.</span><span class="en">Season programming and the full assessment.</span></li>
+            <li><span class="es">Chat directo con cada atleta, dentro de la app.</span><span class="en">Direct chat with each athlete, inside the app.</span></li>
+            <li><span class="es">Hasta 20 atletas por entrenador, a propósito.</span><span class="en">Up to 20 athletes per coach, on purpose.</span></li>
+          </ul>
+          <div class="marco"><img src="img/f-resumen.webp" width="660" height="1351" loading="lazy" decoding="async"
+            alt="Panel del entrenador en TrainLab Fitness"></div>
+        </div>
+        <div class="perfil" style="--acc: var(--viz-fitness);">
+          <span class="rol"><span class="es">Perfil 3 · Atleta</span><span class="en">Profile 3 · Athlete</span></span>
+          <h4><span class="es">El que entrena de verdad</span><span class="en">The one actually training</span></h4>
+          <p>
+            <span class="es">Una versión simplificada del mismo dato: qué toca hoy, cómo viene, cómo va progresando y hablar con su entrenador.</span>
+            <span class="en">A simplified version of the same data: what's on today, how they're doing, how they're progressing, and talking to their coach.</span>
+          </p>
+          <ul>
+            <li><span class="es">Su disponibilidad de hoy y la sesión que toca.</span><span class="en">Today's readiness and the session due.</span></li>
+            <li><span class="es">El control de la mañana, en medio minuto.</span><span class="en">The morning check, in half a minute.</span></li>
+            <li><span class="es">Sus récords y su progreso, sin pedirlos.</span><span class="en">Their records and progress, without asking.</span></li>
+            <li><span class="es">No ve el panel del centro ni al resto del grupo.</span><span class="en">They don't see the center panel or the rest of the group.</span></li>
+          </ul>
+          <div class="marco"><img src="img/f-atleta-hoy.webp" width="660" height="1351" loading="lazy" decoding="async"
+            alt="Vista del atleta con la disponibilidad de hoy y su semana"></div>
+        </div>
+      </div>
+
+      <!-- Cabina de escritorio -->
+      <h3 class="sub-tit" style="margin-top: 52px;">
+        <span class="es">Y en el ordenador, la cabina</span>
+        <span class="en">And on the computer, the cockpit</span>
+      </h3>
+      <p class="sub-lead">
+        <span class="es">La misma cuenta, en pantalla grande. Todo el grupo ordenado por quién está listo para apretar y a quién toca aflojar hoy, sin abrir a nadie.</span>
+        <span class="en">The same account, on a big screen. Your whole group sorted by who is ready to push and who needs to ease off today, without opening anyone.</span>
+      </p>
+      <figure class="cabina-fig">
+        <div class="cabina-marco"><img src="img/c-cabina.webp" width="1400" height="875" loading="lazy" decoding="async"
+          alt="Cabina de escritorio de TrainLab Fitness con doce atletas y su semáforo de disponibilidad"></div>
+        <figcaption style="text-align:center; font-size:13px; color: var(--gray); margin-top: 14px;">
+          <span class="es">Captura real de la cabina de escritorio, con datos de ejemplo. Verde: listo para apretar. Ámbar: a vigilar. Rojo: toca aflojar.</span>
+          <span class="en">Real screenshot of the desktop cockpit, with sample data. Green: ready to push. Amber: watch. Red: ease off.</span>
+        </figcaption>
+      </figure>
+
+      <div style="text-align:center; margin-top: 34px;">
         <a class="ver-detalle" style="--vd: var(--viz-fitness);" href="fitness.html" target="_blank" rel="noopener">
           <span class="es">Ver Fitness: vídeo y detalles</span><span class="en">See Fitness: video and details</span> <span class="flecha">→</span>
         </a>
@@ -941,14 +1180,15 @@
               <span class="t"><span class="es">Panel del centro · Club Atlas</span><span class="en">Center panel · Atlas Club</span></span>
             </div>
             <div class="tabs">
-              <span><span class="es">Resumen</span><span class="en">Overview</span></span>
-              <span class="on"><span class="es">Análisis</span><span class="en">Analysis</span></span>
-              <span><span class="es">Entrenadores</span><span class="en">Coaches</span></span>
+              <span class="on"><span class="es">Resumen</span><span class="en">Overview</span></span>
+              <span><span class="es">Plantilla</span><span class="en">Staff</span></span>
+              <span><span class="es">Atletas</span><span class="en">Athletes</span></span>
+              <span><span class="es">Caja</span><span class="en">Billing</span></span>
             </div>
             <div class="cuerpo">
               <div class="panel-stats">
-                <div class="panel-stat"><div class="v">68</div><div class="k"><span class="es">Atletas activos</span><span class="en">Active athletes</span></div></div>
-                <div class="panel-stat"><div class="v" style="color: var(--viz-fitness);">94 %</div><div class="k"><span class="es">Al día</span><span class="en">Up to date</span></div></div>
+                <div class="panel-stat"><div class="v">68</div><div class="k"><span class="es">Atletas</span><span class="en">Athletes</span></div></div>
+                <div class="panel-stat"><div class="v" style="color: var(--viz-fitness);">94 %</div><div class="k"><span class="es">Cumplimiento</span><span class="en">Adherence</span></div></div>
                 <div class="panel-stat"><div class="v" style="color: var(--viz-force);">2</div><div class="k"><span class="es">En riesgo</span><span class="en">At risk</span></div></div>
               </div>
               <div class="panel-sub"><span class="es">Carga media del centro · últimas 8 semanas</span><span class="en">Average center load · last 8 weeks</span></div>
@@ -961,7 +1201,7 @@
               </div>
             </div>
           </div>
-          <figcaption class="panel-cap"><span class="es">El panel de análisis del centro, recreado.</span><span class="en">The center's analysis panel, recreated.</span></figcaption>
+          <figcaption class="panel-cap"><span class="es">El panel del centro, recreado. Pestañas reales: resumen, plantilla, atletas y caja.</span><span class="en">The center panel, recreated. Real tabs: overview, staff, athletes and billing.</span></figcaption>
         </figure>
         <div class="centros-cta">
           <h3><span class="es">Pensado para quien dirige.</span><span class="en">Built for whoever runs the place.</span></h3>
@@ -985,33 +1225,180 @@
   </div>
 
   <!-- ============ El resto de la familia ============ -->
-  <section id="familia" style="padding-top: 0;">
+  <!-- ============ Control ============ -->
+  <section id="control">
     <div class="wrap">
+      <p class="sec-eyebrow" style="color: var(--viz-control);">TrainLab Control</p>
+      <h2>
+        <span class="es">Saber cómo llegas, antes de entrenar.</span>
+        <span class="en">Know how you arrive, before you train.</span>
+      </h2>
+      <p class="lead">
+        <span class="es">Las pulseras de recuperación miran el descanso de forma aislada. Control lo cruza con la carga que de verdad has entrenado, y cada mañana te dice en una frase cómo estás y qué te conviene hoy. De nada sirve saber que has dormido mal si nadie ajusta el entrenamiento por ello.</span>
+        <span class="en">Recovery wearables look at rest in isolation. Control crosses it with the load you actually trained, and every morning tells you in one sentence how you are and what suits you today. Knowing you slept badly is useless if nobody adjusts the training for it.</span>
+      </p>
+
+      <div class="feats">
+        <div class="feat">
+          <h3><span class="es">Un minuto por la mañana</span><span class="en">One minute in the morning</span></h3>
+          <p><span class="es">Bienestar, energía, estrés, sueño y recuperación percibida. Con banderas para lo que se sale de lo normal: enfermedad, alcohol, viaje o un día estresante.</span><span class="en">Wellness, energy, stress, sleep and perceived recovery. With flags for whatever is out of the ordinary: illness, alcohol, travel or a stressful day.</span></p>
+        </div>
+        <div class="feat">
+          <h3><span class="es">Recuperación en un número</span><span class="en">Recovery in one number</span></h3>
+          <p><span class="es">Variabilidad cardíaca, pulso en reposo y duración y eficiencia del sueño, resumidos en un valor de 0 a 100 que se entiende sin ser médico.</span><span class="en">Heart rate variability, resting pulse and sleep duration and efficiency, summed up in a 0 to 100 value you understand without being a doctor.</span></p>
+        </div>
+        <div class="feat">
+          <h3><span class="es">Tu base, no la media de nadie</span><span class="en">Your baseline, not anyone's average</span></h3>
+          <p><span class="es">Cada dato se compara con TU línea de base de 28 días. Una VFC de 56 ms no significa nada; que esté por debajo de tu base, sí.</span><span class="en">Every value is compared with YOUR own 28 day baseline. An HRV of 56 ms means nothing; being below your baseline does.</span></p>
+        </div>
+        <div class="feat">
+          <h3><span class="es">Aviso de sobreentrenamiento</span><span class="en">Overtraining warning</span></h3>
+          <p><span class="es">Seis señales vigiladas a la vez. Cuando varias se encienden juntas, Control te lo dice claro y te explica cuáles son.</span><span class="en">Six signals watched at once. When several light up together, Control says so plainly and tells you which ones.</span></p>
+        </div>
+        <div class="feat">
+          <h3><span class="es">Modelo fitness-fatiga</span><span class="en">Fitness-fatigue model</span></h3>
+          <p><span class="es">La forma que has construido en seis semanas frente a la fatiga de los últimos siete días. Cuando la fatiga baja, llegas fresco.</span><span class="en">The fitness you built over six weeks against the fatigue of the last seven days. When fatigue drops, you arrive fresh.</span></p>
+        </div>
+        <div class="feat">
+          <h3><span class="es">Tu reloj o la pulsera</span><span class="en">Your watch or the band</span></h3>
+          <p><span class="es">Con tu reloj los datos llegan por Apple Salud. Con la pulsera TrainLab, la suscripción va incluida para siempre.</span><span class="en">With your watch, data arrives via Apple Health. With the TrainLab band, the subscription is included forever.</span></p>
+        </div>
+      </div>
+
+      <!-- Capturas REALES de Control -->
+      <h3 class="sub-tit" style="margin-top: 46px;">
+        <span class="es">Control, por dentro</span>
+        <span class="en">Control, from the inside</span>
+      </h3>
+      <p class="sub-lead">
+        <span class="es">Cuatro pantallas de la app funcionando: el control de la mañana, la fisiología, la semana y la lectura automática.</span>
+        <span class="en">Four screens of the app running: the morning check, the physiology, the week and the automatic reading.</span>
+      </p>
+      <div class="galeria">
+        <figure>
+          <div class="marco"><img src="img/ctl-hoy.webp" width="660" height="1351" loading="lazy" decoding="async"
+            alt="Registro diario de ControLab con bienestar, energia, estres, sueno y recuperacion percibida"></div>
+          <figcaption>
+            <b><span class="es">El control de la mañana</span><span class="en">The morning check</span></b>
+            <span class="es">Cinco toques y listo. Con racha, para que no se te olvide.</span>
+            <span class="en">Five taps and done. With a streak, so you don't forget.</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <div class="marco"><img src="img/ctl-recup.webp" width="660" height="1351" loading="lazy" decoding="async"
+            alt="Recuperacion de hoy con valor 54 y la tendencia de la variabilidad cardiaca a 28 dias"></div>
+          <figcaption>
+            <b><span class="es">Recuperación</span><span class="en">Recovery</span></b>
+            <span class="es">Solo fisiología: VFC, pulso en reposo y sueño, cada uno contra tu base.</span>
+            <span class="en">Physiology only: HRV, resting pulse and sleep, each against your baseline.</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <div class="marco"><img src="img/ctl-analisis.webp" width="660" height="1351" loading="lazy" decoding="async"
+            alt="Analisis con el modelo fitness-fatiga, riesgo de sobreentrenamiento moderado y lectura automatica"></div>
+          <figcaption>
+            <b><span class="es">Análisis</span><span class="en">Analysis</span></b>
+            <span class="es">Forma frente a fatiga, señales de sobreentrenamiento y lectura automática.</span>
+            <span class="en">Fitness against fatigue, overtraining signals and an automatic reading.</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <div class="marco"><img src="img/ctl-semana.webp" width="660" height="1351" loading="lazy" decoding="async"
+            alt="Resumen semanal con el veredicto, la carga en unidades arbitrarias y los objetivos de la OMS"></div>
+          <figcaption>
+            <b><span class="es">Tu semana</span><span class="en">Your week</span></b>
+            <span class="es">Un veredicto en una frase, la carga real y los objetivos de la OMS.</span>
+            <span class="en">A one sentence verdict, your real load and the WHO targets.</span>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="nota-capturas">
+        <span class="es">Capturas reales de la app en desarrollo, con datos de ejemplo. El aspecto puede cambiar antes del lanzamiento.</span>
+        <span class="en">Real screenshots of the app in development, with sample data. Looks may change before launch.</span>
+      </p>
+
+      <div class="showcase showcase-dos" style="margin-top: 40px;">
+        <figure class="viz-fig viz-card">
+          <div class="p-lbl"><span class="es">Recuperación · hoy</span><span class="en">Recovery · today</span></div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+            <div class="p-dato">83</div>
+            <span class="p-chip" style="background: color-mix(in srgb, var(--viz-control) 15%, transparent); color: var(--viz-control);"><span class="es">Listo para entrenar</span><span class="en">Ready to train</span></span>
+          </div>
+          <div class="viz-sub"><span class="es">VFC de 14 noches frente a tu base de 28 días · datos de ejemplo</span><span class="en">14 nights of HRV against your 28 day baseline · sample data</span></div>
+          <svg class="viz" viewBox="0 0 300 84" role="img" aria-label="VFC de 14 noches con la banda de la base y una noche corta senalada">
+            <rect x="10" y="24" width="280" height="20" fill="var(--viz-control)" opacity="0.12"/>
+            <text class="eje" x="287" y="38" text-anchor="end"><tspan class="es">base</tspan><tspan class="en">baseline</tspan></text>
+            <polyline points="10,32 31.5,28 53.1,34 74.6,30 96.2,38 117.7,26 139.2,32 160.8,62 182.3,50 203.8,40 225.4,34 246.9,28 268.5,30 290,26" fill="none" stroke="var(--viz-control)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="160.8" cy="62" r="4" fill="var(--orange)" stroke="var(--card)" stroke-width="2" data-tip="VFC 49 ms"/>
+            <circle cx="290" cy="26" r="3.5" fill="var(--viz-control)" stroke="var(--card)" stroke-width="2" data-tip="VFC 67 ms"/>
+            <text class="eje" x="160.8" y="78" text-anchor="middle"><tspan class="es">noche corta</tspan><tspan class="en">short night</tspan></text>
+          </svg>
+          <div class="mini-stats">
+            <div><div class="v">64 <small>ms</small></div><div class="k"><span class="es">VFC anoche</span><span class="en">HRV last night</span></div></div>
+            <div><div class="v">52</div><div class="k"><span class="es">FC reposo (ppm)</span><span class="en">Resting HR (bpm)</span></div></div>
+            <div><div class="v">7,4 <small>h</small></div><div class="k"><span class="es">Sueño</span><span class="en">Sleep</span></div></div>
+          </div>
+          <figcaption>
+            <span class="es">La noche corta se ve al momento, y la sesión de hoy se adapta antes de que te pases de frenada.</span>
+            <span class="en">The short night shows up instantly, and today's session adapts before you overreach.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="viz-fig viz-card">
+          <div class="viz-tit"><span class="es">Lo que Control ve y una pulsera sola no</span><span class="en">What Control sees and a wearable alone does not</span></div>
+          <div class="viz-sub"><span class="es">La misma semana, mirada de dos maneras</span><span class="en">The same week, looked at two ways</span></div>
+          <div class="comparativa">
+            <div class="comp-col">
+              <div class="comp-tit"><span class="es">Una pulsera cualquiera</span><span class="en">Any wearable</span></div>
+              <p class="comp-frase"><span class="es">«Has dormido 6 h 10 min. Tu recuperación es del 54 %.»</span><span class="en">“You slept 6 h 10 min. Your recovery is 54%.”</span></p>
+              <p class="comp-nota"><span class="es">Un dato cierto que no te dice qué hacer.</span><span class="en">A true number that does not tell you what to do.</span></p>
+            </div>
+            <div class="comp-col destacada">
+              <div class="comp-tit" style="color: var(--viz-control);">TrainLab Control</div>
+              <p class="comp-frase"><span class="es">«Fatiga acumulándose: subiste la carga un 19 % mientras tu recuperación bajaba. Baja la carga un 10-20 % y prioriza el descanso.»</span><span class="en">“Fatigue building up: you raised load by 19% while your recovery dropped. Cut load by 10-20% and prioritize rest.”</span></p>
+              <p class="comp-nota"><span class="es">El mismo dato, cruzado con lo que entrenaste, convertido en una decisión.</span><span class="en">The same data, crossed with what you trained, turned into a decision.</span></p>
+            </div>
+          </div>
+          <figcaption>
+            <span class="es">Esa frase es la que enseña la app de verdad: sale de cruzar la carga de la semana con tu recuperación.</span>
+            <span class="en">That sentence is the one the app actually shows: it comes from crossing the week's load with your recovery.</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div style="text-align:center; margin-top: 34px;">
+        <a class="ver-detalle" style="--vd: var(--viz-control);" href="control.html" target="_blank" rel="noopener">
+          <span class="es">Ver Control: vídeo y detalles</span><span class="en">See Control: video and details</span> <span class="flecha">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Próximos proyectos: Force y Signal ============ -->
+  <section id="futuros">
+    <div class="wrap">
+      <p class="sec-eyebrow" style="color: var(--azul-pulso);"><span class="es">Próximos proyectos</span><span class="en">Upcoming projects</span></p>
+      <h2>
+        <span class="es">La familia sigue creciendo.</span>
+        <span class="en">The family keeps growing.</span>
+      </h2>
+      <p class="lead">
+        <span class="es">Además de Fitness y Control, TrainLab trabaja en tres piezas que completarán la foto del atleta: la velocidad, la fuerza y la señal del músculo. Están en desarrollo: esto es lo que serán.</span>
+        <span class="en">Besides Fitness and Control, TrainLab is working on three pieces that will complete the athlete picture: velocity, strength and the muscle signal. They are in development: this is what they will be.</span>
+      </p>
+
+      <div class="futuros-grid">
       <div class="fila velocity" id="velocity">
         <div class="banda"></div>
         <div>
-          <h3><span class="tl">TrainLab</span> Velocity <span class="estado"><span class="es">App lista · sensor encargado</span><span class="en">App ready · sensor ordered</span></span></h3>
-          <p><span class="es">La velocidad de la barra es la medida objetiva del esfuerzo real. Velocity la trae a tu gimnasio con un sensor propio y una metodología clara, sin pagar los cientos de euros de los sensores de siempre. Entrenar por porcentajes es usar el peso de un buen día en un mal día; la velocidad te dice, en el momento, cuánto cuesta de verdad cada repetición.</span><span class="en">Bar velocity is the objective measure of real effort. Velocity brings it to your gym with its own sensor and a clear methodology, without paying the hundreds of euros of the usual sensors. Training by percentages means using a good day's weight on a bad day; velocity tells you, in the moment, how much each rep truly costs.</span></p>
-          <div class="feats-prod">
-            <div class="feat-prod">
-              <h4><span class="es">Corta la serie a tiempo</span><span class="en">Cut the set in time</span></h4>
-              <p><span class="es">Cuando la velocidad cae el porcentaje marcado, la serie ya cumplió. Entrenas la calidad, no la fatiga inútil.</span><span class="en">When velocity drops the set target, the set is done. You train quality, not useless fatigue.</span></p>
-            </div>
-            <div class="feat-prod">
-              <h4><span class="es">Perfil fuerza-velocidad</span><span class="en">Force-velocity profile</span></h4>
-              <p><span class="es">Descubre si a tu atleta le falta fuerza o velocidad, y entrena justo lo que necesita.</span><span class="en">Find out whether your athlete lacks force or velocity, and train exactly what they need.</span></p>
-            </div>
-            <div class="feat-prod">
-              <h4><span class="es">Elite sin precio de elite</span><span class="en">Elite without the elite price</span></h4>
-              <p><span class="es">Un sensor asequible con la app incluida y sin suscripción, frente a los cientos de euros de siempre.</span><span class="en">An affordable sensor, app included, no subscription, versus the usual hundreds of euros.</span></p>
-            </div>
-            <div class="feat-prod">
-              <h4><span class="es">Todo entra solo en Fitness</span><span class="en">It all flows into Fitness</span></h4>
-              <p><span class="es">Cada repetición cae en el expediente del atleta. Sin copiar datos a mano.</span><span class="en">Every rep lands in the athlete's record. No copying data by hand.</span></p>
-            </div>
-          </div>
-          <div class="showcase">
-            <figure class="viz-fig viz-card">
+          <h3><span class="tl">TrainLab</span> Velocity <span class="estado"><span class="es">En desarrollo</span><span class="en">In development</span></span></h3>
+          <p><span class="es">Entrenar por porcentajes es usar el peso de un buen día en un mal día. La velocidad de la barra dice, en el momento, cuánto cuesta de verdad cada repetición. Velocity la traerá a tu gimnasio con un sensor propio, sin pagar los cientos de euros de los sensores de siempre. La app está hecha y el sensor está en pruebas; falta pulirlo mucho antes de ponerle fecha.</span><span class="en">Training by percentages means using a good day's weight on a bad day. Bar velocity tells you, in the moment, how much each rep truly costs. Velocity will bring it to your gym with its own sensor, without paying the hundreds of euros of the usual ones. The app is built and the sensor is under test; it needs a lot of polish before we put a date on it.</span></p>
+          <ul>
+            <li><span class="es">Corta la serie cuando la velocidad cae lo marcado: entrenas calidad, no fatiga inútil.</span><span class="en">Ends the set when velocity drops the set amount: you train quality, not useless fatigue.</span></li>
+            <li><span class="es">Perfil fuerza-velocidad: si al atleta le falta fuerza o le falta velocidad.</span><span class="en">Force-velocity profile: whether the athlete lacks force or lacks velocity.</span></li>
+            <li><span class="es">Mientras tanto, Fitness ya mide la velocidad por vídeo, sin coste por análisis.</span><span class="en">Meanwhile, Fitness already measures velocity by video, with no per analysis cost.</span></li>
+          </ul>
+<figure class="viz-fig viz-card" style="max-width: 620px; margin: 22px auto 0;">
               <div class="viz-tit"><span class="es">Una serie al 75 %: la velocidad de cada repetición</span><span class="en">One set at 75%: the velocity of every rep</span></div>
               <div class="viz-sub"><span class="es">Metros por segundo · corte al perder el 20 % · datos de ejemplo</span><span class="en">Meters per second · cutoff at 20% loss · sample data</span></div>
               <svg class="viz" viewBox="0 0 360 176" role="img" aria-label="Velocidad por repetición de una serie con la línea de corte del 20 por ciento">
@@ -1041,127 +1428,9 @@
                 <span class="en">The first rep is the one that counts: at 20% velocity loss the set has done its job, and the gray reps are wasted.</span>
               </figcaption>
             </figure>
-            <figure class="phone-fig">
-              <div class="phone" role="img" aria-label="Pantalla de una serie en TrainLab Velocity, recreada">
-                <div class="isla"></div>
-                <div class="p-tit"><span class="es">Serie · Sentadilla</span><span class="en">Set · Squat</span></div>
-                <div class="p-card">
-                  <div class="p-lbl"><span class="es">Velocidad media</span><span class="en">Average velocity</span></div>
-                  <div class="p-dato">0,74<span style="font-size:16px; color: var(--gray); font-weight:600;"> m/s</span></div>
-                  <span class="p-chip" style="background: color-mix(in srgb, var(--viz-velocity) 15%, transparent); color: var(--viz-velocity);"><span class="es">6 reps válidas</span><span class="en">6 valid reps</span></span>
-                </div>
-                <div class="p-card">
-                  <div class="mini-stats">
-                    <div><div class="v">0,82</div><div class="k"><span class="es">Mejor rep</span><span class="en">Best rep</span></div></div>
-                    <div><div class="v">−20 %</div><div class="k"><span class="es">Pérdida</span><span class="en">Loss</span></div></div>
-                    <div><div class="v">0,80</div><div class="k"><span class="es">Objetivo</span><span class="en">Target</span></div></div>
-                  </div>
-                </div>
-              </div>
-              <figcaption style="text-align:center;">
-                <span class="es">La pantalla de una serie, recreada.</span>
-                <span class="en">A set screen, recreated.</span>
-              </figcaption>
-            </figure>
-          </div>
-          <a class="ver-detalle" style="--vd: var(--viz-velocity);" href="velocity.html" target="_blank" rel="noopener">
-            <span class="es">Ver Velocity: vídeo y detalles</span><span class="en">See Velocity: video and details</span> <span class="flecha">→</span>
-          </a>
         </div>
       </div>
 
-      <div class="fila control" id="control">
-        <div class="banda"></div>
-        <div>
-          <h3><span class="tl">TrainLab</span> Control <span class="estado"><span class="es">Pulsera en validación</span><span class="en">Band in validation</span></span></h3>
-          <p><span class="es">Las pulseras de recuperación miran el descanso de forma aislada. Control lo cruza con la carga real que planifica el entrenador, y le cuenta a los dos cómo llega el atleta a la sesión de hoy. De nada sirve saber que has dormido mal si nadie ajusta tu entrenamiento por ello: Control conecta las dos cosas.</span><span class="en">Recovery wearables look at rest in isolation. Control crosses it with the real load the coach plans, and tells both how the athlete arrives at today's session. Knowing you slept badly is useless if no one adjusts your training for it: Control connects the two.</span></p>
-          <div class="feats-prod">
-            <div class="feat-prod">
-              <h4><span class="es">Tu reloj o la pulsera</span><span class="en">Your watch or the band</span></h4>
-              <p><span class="es">Con tu reloj, los datos llegan por Apple Salud. Con la pulsera TrainLab, la suscripción va incluida para siempre.</span><span class="en">With your watch, data arrives via Apple Health. With the TrainLab band, the subscription is included forever.</span></p>
-            </div>
-            <div class="feat-prod">
-              <h4><span class="es">Recuperación cruzada con la carga</span><span class="en">Recovery crossed with load</span></h4>
-              <p><span class="es">No mira el descanso aislado: lo cruza con lo que de verdad has entrenado esta semana.</span><span class="en">It does not look at rest in isolation: it crosses it with what you actually trained this week.</span></p>
-            </div>
-            <div class="feat-prod">
-              <h4><span class="es">Un número que se entiende</span><span class="en">A number you understand</span></h4>
-              <p><span class="es">Sueño, frecuencia cardiaca y variabilidad en un feedback claro, sin necesidad de ser médico.</span><span class="en">Sleep, heart rate and variability in clear feedback, no need to be a doctor.</span></p>
-            </div>
-            <div class="feat-prod">
-              <h4><span class="es">Conectado con tu entrenador</span><span class="en">Connected to your coach</span></h4>
-              <p><span class="es">Ve cómo te recuperas junto a lo que te ha mandado, y ajusta antes de que te pases de frenada.</span><span class="en">They see how you recover next to what they prescribed, and adjust before you overreach.</span></p>
-            </div>
-          </div>
-          <div class="showcase">
-            <figure class="viz-fig viz-card">
-              <div class="p-lbl"><span class="es">Recuperación · hoy</span><span class="en">Recovery · today</span></div>
-              <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
-                <div class="p-dato">83</div>
-                <span class="p-chip"><span class="es">Listo para entrenar</span><span class="en">Ready to train</span></span>
-              </div>
-              <div class="viz-sub"><span class="es">VFC de 14 noches frente a tu base de 28 días · datos de ejemplo</span><span class="en">14 nights of HRV against your 28 day baseline · sample data</span></div>
-              <svg class="viz" viewBox="0 0 300 84" role="img" aria-label="VFC de 14 noches con la banda de la base y una noche corta señalada">
-                <rect x="10" y="24" width="280" height="20" fill="var(--viz-control)" opacity="0.12"/>
-                <text class="eje" x="287" y="38" text-anchor="end"><tspan class="es">base</tspan><tspan class="en">baseline</tspan></text>
-                <polyline points="10,32 31.5,28 53.1,34 74.6,30 96.2,38 117.7,26 139.2,32 160.8,62 182.3,50 203.8,40 225.4,34 246.9,28 268.5,30 290,26" fill="none" stroke="var(--viz-control)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-                <circle cx="160.8" cy="62" r="4" fill="var(--orange)" stroke="var(--card)" stroke-width="2" data-tip="VFC 49 ms"/>
-                <circle cx="290" cy="26" r="3.5" fill="var(--viz-control)" stroke="var(--card)" stroke-width="2" data-tip="VFC 67 ms"/>
-                <text class="eje" x="160.8" y="78" text-anchor="middle"><tspan class="es">noche corta</tspan><tspan class="en">short night</tspan></text>
-              </svg>
-              <div class="mini-stats">
-                <div><div class="v">64 <small>ms</small></div><div class="k"><span class="es">VFC anoche</span><span class="en">HRV last night</span></div></div>
-                <div><div class="v">52</div><div class="k"><span class="es">FC reposo (ppm)</span><span class="en">Resting HR (bpm)</span></div></div>
-                <div><div class="v">7,4 <small>h</small></div><div class="k"><span class="es">Sueño</span><span class="en">Sleep</span></div></div>
-              </div>
-              <figcaption>
-                <span class="es">La tarjeta de recuperación, recreada: la noche corta se ve al momento y la sesión de hoy se adapta.</span>
-                <span class="en">The recovery card, recreated: the short night shows up instantly and today's session adapts.</span>
-              </figcaption>
-            </figure>
-            <figure class="phone-fig">
-              <div class="phone" role="img" aria-label="Pantalla de recuperación en TrainLab Control, recreada">
-                <div class="isla"></div>
-                <div class="p-tit"><span class="es">Hoy · Recuperación</span><span class="en">Today · Recovery</span></div>
-                <div class="p-card">
-                  <div class="p-lbl"><span class="es">Disponibilidad</span><span class="en">Readiness</span></div>
-                  <div class="p-dato">83</div>
-                  <span class="p-chip" style="background: color-mix(in srgb, var(--viz-control) 15%, transparent); color: var(--viz-control);"><span class="es">Listo para entrenar</span><span class="en">Ready to train</span></span>
-                </div>
-                <div class="p-card">
-                  <div class="p-sec"><span class="es">Tu sesión de hoy</span><span class="en">Your session today</span></div>
-                  <div class="p-mini" style="margin-top:2px;"><span class="es">Ajustada a tu recuperación</span><span class="en">Adjusted to your recovery</span></div>
-                  <div class="p-fila" style="margin-top:8px;"><span><span class="es">Puedes apretar</span><span class="en">You can push</span></span><b style="color: var(--viz-control);"><span class="es">Adelante</span><span class="en">Go</span></b></div>
-                </div>
-              </div>
-              <figcaption style="text-align:center;">
-                <span class="es">La pantalla de hoy del atleta, recreada.</span>
-                <span class="en">The athlete's today screen, recreated.</span>
-              </figcaption>
-            </figure>
-          </div>
-          <a class="ver-detalle" style="--vd: var(--viz-control);" href="control.html" target="_blank" rel="noopener">
-            <span class="es">Ver Control: vídeo y detalles</span><span class="en">See Control: video and details</span> <span class="flecha">→</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ Próximos proyectos: Force y Signal ============ -->
-  <section id="futuros">
-    <div class="wrap">
-      <p class="sec-eyebrow" style="color: var(--azul-pulso);"><span class="es">Próximos proyectos</span><span class="en">Upcoming projects</span></p>
-      <h2>
-        <span class="es">La familia sigue creciendo.</span>
-        <span class="en">The family keeps growing.</span>
-      </h2>
-      <p class="lead">
-        <span class="es">Más allá de los tres productos que ya funcionan, TrainLab prepara dos piezas que completarán la foto del atleta. Están en desarrollo: esto es lo que serán.</span>
-        <span class="en">Beyond the three products already working, TrainLab is preparing two pieces that will complete the athlete picture. They are in development: this is what they will be.</span>
-      </p>
-
-      <div class="futuros-grid">
       <div class="fila force" id="force">
         <div class="banda"></div>
         <div>
@@ -1325,7 +1594,7 @@
           <div class="cab"><span class="punto"></span><span class="es">La base</span><span class="en">The foundation</span></div>
           <div class="fase"><span class="es">Hecho</span><span class="en">Done</span></div>
           <ul>
-            <li><span class="es"><b>Fitness, Velocity y Control</b>: los tres productos, construidos y funcionando.</span><span class="en"><b>Fitness, Velocity and Control</b>: the three products, built and working.</span></li>
+            <li><span class="es"><b>Fitness y Control</b>: los dos productos, terminados y funcionando.</span><span class="en"><b>Fitness and Control</b>: both products, finished and working.</span></li>
             <li><span class="es">La <b>ciencia implementada</b>: carga (sRPE, ACWR), velocidad, salto y perfil fuerza-velocidad.</span><span class="en"><b>The science implemented</b>: load (sRPE, ACWR), velocity, jump and force-velocity profile.</span></li>
             <li><span class="es">Una <b>sola cuenta</b> para toda la familia de productos.</span><span class="en">One <b>single account</b> for the whole family of products.</span></li>
             <li><span class="es">Fitness, en <b>beta cerrada</b>, con informe del atleta en PDF.</span><span class="en">Fitness, in <b>closed beta</b>, with a PDF athlete report.</span></li>
@@ -1338,8 +1607,8 @@
           <ul>
             <li><span class="es">Puliendo <b>Fitness</b> con el primer grupo de la beta.</span><span class="en">Polishing <b>Fitness</b> with the first beta group.</span></li>
             <li><span class="es">Llevando las apps a <b>Android</b> (ya compilan).</span><span class="en">Bringing the apps to <b>Android</b> (they already build).</span></li>
-            <li><span class="es"><b>Velocity</b>: a la espera del sensor para calibrarlo.</span><span class="en"><b>Velocity</b>: awaiting the sensor to calibrate it.</span></li>
             <li><span class="es"><b>Control</b>: validando la pulsera física.</span><span class="en"><b>Control</b>: validating the physical band.</span></li>
+            <li><span class="es"><b>Velocity</b>: puliendo la app y calibrando el sensor.</span><span class="en"><b>Velocity</b>: polishing the app and calibrating the sensor.</span></li>
           </ul>
         </div>
         <div class="road-col road-siguiente">
