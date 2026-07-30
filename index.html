@@ -289,13 +289,34 @@
     }
     .integrada b { color: var(--ink); }
     /* Ecosistema: Force y Signal "en camino" (discretos) */
-    .en-camino { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 18px; }
-    .en-camino .ec-label { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--gray); }
-    .ec-prod { display: inline-flex; align-items: center; gap: 9px; font-size: 13.5px; color: var(--ink2); text-decoration: none; background: var(--card); border: 1px solid var(--sep); border-radius: 999px; padding: 8px 15px; }
-    .ec-prod:hover { border-color: var(--gray); }
-    .ec-prod .dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
-    .ec-prod b { color: var(--ink); font-weight: 800; }
-    .ec-prod .est { color: var(--gray); }
+    /* En camino: una lista limpia, no pastillas sueltas */
+    .en-camino { margin-top: 26px; }
+    .en-camino .ec-label {
+      display: block; font-size: 12px; font-weight: 800; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--gray); margin-bottom: 10px;
+    }
+    .ec-lista { background: var(--card); border: 1px solid var(--sep); border-radius: 16px; overflow: hidden; }
+    .ec-prod {
+      display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 14px;
+      padding: 15px 18px; text-decoration: none; color: var(--ink2);
+      border-top: 1px solid var(--sep); transition: background .18s ease;
+    }
+    .ec-prod:first-child { border-top: 0; }
+    .ec-prod:hover { background: var(--bg); }
+    .ec-prod .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .ec-prod b { color: var(--ink); font-weight: 800; font-size: 16px; }
+    .ec-prod .desc { font-size: 14px; color: var(--ink2); }
+    .ec-prod .est {
+      font-size: 11.5px; font-weight: 700; color: var(--gray);
+      background: var(--bg); border: 1px solid var(--sep); border-radius: 999px; padding: 4px 11px; white-space: nowrap;
+    }
+    .ec-prod .fl { color: var(--gray); font-size: 15px; transition: transform .18s ease; }
+    .ec-prod:hover .fl { transform: translateX(3px); }
+    @media (max-width: 560px) {
+      .ec-prod { grid-template-columns: auto 1fr auto; gap: 10px; padding: 13px 15px; }
+      .ec-prod .desc { grid-column: 2 / -1; grid-row: 2; font-size: 13px; }
+      .ec-prod .fl { display: none; }
+    }
     /* Próximos proyectos: Force y Signal como dos tarjetas compactas */
     .futuros-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 36px; }
     @media (max-width: 820px) { .futuros-grid { grid-template-columns: 1fr; } }
@@ -353,34 +374,78 @@
     .comp-cierre { margin-top: 26px; border-left: 4px solid var(--azul-pulso); background: var(--card); border-radius: 0 16px 16px 0; padding: 20px 24px; font-size: 16px; color: var(--ink); font-weight: 600; }
 
     /* --- Roadmap: en qué estamos --- */
-    #roadmap .sec-eyebrow { color: var(--azul-pulso); }
-    .road-nota {
-      display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--ink2);
-      background: var(--card); border: 1px solid var(--sep); border-radius: 999px; padding: 7px 15px;
-    }
-    .road-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
-    @media (max-width: 820px) { .road-cols { grid-template-columns: 1fr; } }
-    .road-col { background: var(--card); border: 1px solid var(--sep); border-radius: 16px; padding: 22px 20px; border-top: 3px solid var(--rc, var(--sep)); }
-    .road-col .cab { display: flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 800; }
-    .road-col .cab .punto { width: 10px; height: 10px; border-radius: 50%; background: var(--rc); flex-shrink: 0; }
-    .road-col .fase { font-size: 11.5px; font-weight: 700; color: var(--gray); margin: 2px 0 0 19px; }
-    .road-col ul { list-style: none; margin-top: 16px; display: grid; gap: 12px; }
-    .road-col li { font-size: 13.5px; color: var(--ink2); line-height: 1.5; padding-left: 19px; position: relative; }
-    .road-col li::before { content: ""; position: absolute; left: 0; top: 7px; width: 7px; height: 7px; border-radius: 50%; background: var(--rc); opacity: .55; }
-    .road-col li b { color: var(--ink); font-weight: 700; }
-    .road-hecho    { --rc: var(--fitness); }
-    .road-marcha   { --rc: var(--azul-pulso); }
-    .road-siguiente{ --rc: var(--gray); }
 
     /* --- Ciencia --- */
     #ciencia .sec-eyebrow { color: var(--azul-pulso); }
-    .refs { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 40px; }
-    .ref { background: var(--card); border: 1px solid var(--sep); border-radius: 16px; padding: 20px; }
+    /* Cifras de la base científica */
+    .ciencia-cifras {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 34px;
+    }
+    .cifra {
+      background: var(--card); border: 1px solid var(--sep); border-radius: 16px;
+      padding: 22px 18px; text-align: center;
+    }
+    .cifra .n {
+      font-size: 40px; font-weight: 900; letter-spacing: -1.5px; line-height: 1;
+      color: var(--azul-pulso); font-variant-numeric: tabular-nums;
+    }
+    .cifra .t { font-size: 13.5px; font-weight: 700; color: var(--ink); margin-top: 8px; }
+    .cifra .s { font-size: 12px; color: var(--gray); margin-top: 3px; line-height: 1.4; }
+    @media (max-width: 820px) { .ciencia-cifras { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 440px) { .ciencia-cifras { grid-template-columns: 1fr; } }
+
+    .refs { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 22px; }
+    .ref {
+      background: var(--card); border: 1px solid var(--sep); border-radius: 16px; padding: 20px;
+      border-top: 3px solid var(--acc, var(--azul-pulso));
+    }
     .ref h3 { font-size: 16px; font-weight: 800; }
     .ref { display: flex; flex-direction: column; }
     .ref .autor { font-size: 12px; font-weight: 700; color: var(--azul-pulso); margin-top: 2px; }
     .ref p { font-size: 13.5px; color: var(--ink2); margin-top: 8px; }
     .ref .p-cuerpo { flex: 1; }
+    /* Qué hace ese método DENTRO de la app: la parte útil */
+    .ref .dentro {
+      font-size: 12.5px; color: var(--ink2); line-height: 1.5; margin-top: 10px;
+      padding-top: 10px; border-top: 1px dashed var(--sep);
+    }
+    .ref .dentro b { color: var(--ink); }
+    .ref .donde {
+      display: inline-block; font-size: 10.5px; font-weight: 800; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--acc, var(--azul-pulso));
+      background: color-mix(in srgb, var(--acc, var(--azul-pulso)) 12%, transparent);
+      border-radius: 999px; padding: 3px 9px; margin-bottom: 10px; align-self: flex-start;
+    }
+
+    /* El listón de validación, fijado antes de medir */
+    .liston { margin-top: 44px; }
+    .liston-tabla {
+      background: var(--card); border: 1px solid var(--sep); border-radius: 16px;
+      overflow: hidden; margin-top: 18px;
+    }
+    .liston-fila {
+      display: grid; grid-template-columns: 1.3fr 1.2fr auto; gap: 16px; align-items: center;
+      padding: 15px 20px; border-top: 1px solid var(--sep);
+    }
+    .liston-fila:first-child { border-top: 0; }
+    .liston-cab {
+      background: var(--bg); font-size: 11px; font-weight: 800; letter-spacing: .07em;
+      text-transform: uppercase; color: var(--gray);
+    }
+    .liston-fila .que { font-size: 14.5px; font-weight: 700; color: var(--ink); }
+    .liston-fila .contra { font-size: 13.5px; color: var(--ink2); }
+    .liston-fila .umbral {
+      font-size: 14px; font-weight: 800; color: var(--viz-fitness); font-variant-numeric: tabular-nums;
+      white-space: nowrap; text-align: right;
+    }
+    .liston-cab .umbral { color: var(--gray); font-weight: 800; }
+    .liston-nota { font-size: 14px; color: var(--ink2); line-height: 1.6; margin: 16px 0 0; max-width: 74ch; }
+    .liston-nota b { color: var(--ink); }
+    @media (max-width: 640px) {
+      .liston-fila { grid-template-columns: 1fr auto; gap: 4px 12px; }
+      .liston-fila .contra { grid-column: 1 / -1; font-size: 12.5px; }
+      .liston-cab { display: none; }
+    }
     .ref-links { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-top: 12px; }
     .doi-link { font-size: 12.5px; font-weight: 700; color: var(--gray); text-decoration: none; }
     .doi-link:hover { color: var(--azul-pulso); }
@@ -820,8 +885,8 @@
         <span class="en">Complete on their own. Unbeatable together.</span>
       </h2>
       <p class="lead">
-        <span class="es">Como un iPhone y un Mac: cada producto funciona solo, pero juntos crean un flujo de trabajo que ninguno tiene por separado. Dos productos terminados que ya puedes usar —el entrenamiento y la recuperación—, una cuenta y una sola foto del atleta.</span>
-        <span class="en">Like an iPhone and a Mac: each product stands on its own, but together they create a workflow none of them has alone. Two finished products you can already use —training and recovery—, one account and a single picture of the athlete.</span>
+        <span class="es">Como un iPhone y un Mac: cada producto funciona solo, pero juntos crean un flujo de trabajo que ninguno tiene por separado. Dos productos terminados que ya puedes usar, el entrenamiento y la recuperación, con una cuenta y una sola foto del atleta.</span>
+        <span class="en">Like an iPhone and a Mac: each product stands on its own, but together they create a workflow none of them has alone. Two finished products you can already use, training and recovery, with one account and a single picture of the athlete.</span>
       </p>
 
       <div class="prods prods-dos">
@@ -841,9 +906,26 @@
 
       <div class="en-camino">
         <span class="ec-label"><span class="es">En camino</span><span class="en">On the way</span></span>
-        <a class="ec-prod" href="#futuros"><span class="dot" style="background: var(--velocity);"></span><b>Velocity</b><span class="es">· velocidad de la barra</span><span class="en">· bar velocity</span> <span class="est"><span class="es">· en desarrollo</span><span class="en">· in development</span></span></a>
-        <a class="ec-prod" href="#futuros"><span class="dot" style="background: var(--force);"></span><b>Force</b><span class="es">· fuerza y readaptación</span><span class="en">· strength & rehab</span> <span class="est"><span class="es">· en desarrollo</span><span class="en">· in development</span></span></a>
-        <a class="ec-prod" href="#futuros"><span class="dot" style="background: var(--signal);"></span><b>Signal</b><span class="es">· electromiografía</span><span class="en">· electromyography</span> <span class="est"><span class="es">· en diseño</span><span class="en">· in design</span></span></a>
+        <div class="ec-lista">
+          <a class="ec-prod" href="#futuros">
+            <span class="dot" style="background: var(--velocity);"></span>
+            <span><b>Velocity</b> <span class="desc"><span class="es">La velocidad de la barra, con un sensor propio.</span><span class="en">Bar velocity, with its own sensor.</span></span></span>
+            <span class="est"><span class="es">En desarrollo</span><span class="en">In development</span></span>
+            <span class="fl">→</span>
+          </a>
+          <a class="ec-prod" href="#futuros">
+            <span class="dot" style="background: var(--force);"></span>
+            <span><b>Force</b> <span class="desc"><span class="es">Fuerza isométrica y asimetrías para readaptar.</span><span class="en">Isometric strength and asymmetries for rehab.</span></span></span>
+            <span class="est"><span class="es">En desarrollo</span><span class="en">In development</span></span>
+            <span class="fl">→</span>
+          </a>
+          <a class="ec-prod" href="#futuros">
+            <span class="dot" style="background: var(--signal);"></span>
+            <span><b>Signal</b> <span class="desc"><span class="es">Qué músculo trabaja de verdad en cada ejercicio.</span><span class="en">Which muscle actually works in each exercise.</span></span></span>
+            <span class="est"><span class="es">En diseño</span><span class="en">In design</span></span>
+            <span class="fl">→</span>
+          </a>
+        </div>
       </div>
 
       <div class="integrada">
@@ -1563,8 +1645,7 @@
           <ul>
             <li><span class="es">Una <b>familia de productos</b> que encajan y crecen juntos.</span><span class="en">A <b>family of products</b> that fit together and grow as one.</span></li>
             <li><span class="es">Una <b>sola cuenta</b> y un <b>solo expediente</b> del atleta.</span><span class="en">One <b>single account</b> and one <b>single record</b> for the athlete.</span></li>
-            <li><span class="es"><b>Precio europeo</b>, sin los cientos de euros de siempre.</span><span class="en"><b>European pricing</b>, without the usual hundreds of euros.</span></li>
-            <li><span class="es">En <b>español</b> (y en inglés), pensado para tu mercado.</span><span class="en">In <b>Spanish</b> (and English), built for your market.</span></li>
+            <li><span class="es">Todo <b>incluido en el plan</b>, sin pagar por análisis ni por informe.</span><span class="en">Everything <b>included in the plan</b>, no paying per analysis or per report.</span></li>
             <li><span class="es">La carga, la velocidad y la recuperación, <b>conectadas</b>.</span><span class="en">Load, velocity and recovery, <b>connected</b>.</span></li>
           </ul>
         </div>
@@ -1573,55 +1654,6 @@
         <span class="es">Con TrainLab dejas de pagar, aprender y hacer malabares con varias apps distintas: todo tu atleta vive en un solo sitio, hecho para ti.</span>
         <span class="en">With TrainLab you stop paying for, learning and juggling several different apps: your whole athlete lives in one place, built for you.</span>
       </p>
-    </div>
-  </section>
-
-  <!-- ============ Roadmap: en qué estamos ============ -->
-  <section id="roadmap">
-    <div class="wrap">
-      <p class="sec-eyebrow"><span class="es">En qué estamos</span><span class="en">Where we are</span></p>
-      <h2>
-        <span class="es">Lo que ya puedes usar y lo que está por llegar.</span>
-        <span class="en">What you can use today and what's on the way.</span>
-      </h2>
-      <p class="lead">
-        <span class="es">Esto es lo que ya funciona, lo que llega ahora y lo que viene después. Te lo contamos claro para que sepas qué esperar, sin prometer fechas que no podamos cumplir.</span>
-        <span class="en">Here's what already works, what's arriving now and what comes next. Told straight so you know what to expect, with no dates we can't keep.</span>
-      </p>
-
-      <div class="road-cols">
-        <div class="road-col road-hecho">
-          <div class="cab"><span class="punto"></span><span class="es">La base</span><span class="en">The foundation</span></div>
-          <div class="fase"><span class="es">Hecho</span><span class="en">Done</span></div>
-          <ul>
-            <li><span class="es"><b>Fitness y Control</b>: los dos productos, terminados y funcionando.</span><span class="en"><b>Fitness and Control</b>: both products, finished and working.</span></li>
-            <li><span class="es">La <b>ciencia implementada</b>: carga (sRPE, ACWR), velocidad, salto y perfil fuerza-velocidad.</span><span class="en"><b>The science implemented</b>: load (sRPE, ACWR), velocity, jump and force-velocity profile.</span></li>
-            <li><span class="es">Una <b>sola cuenta</b> para toda la familia de productos.</span><span class="en">One <b>single account</b> for the whole family of products.</span></li>
-            <li><span class="es">Fitness, en <b>beta cerrada</b>, con informe del atleta en PDF.</span><span class="en">Fitness, in <b>closed beta</b>, with a PDF athlete report.</span></li>
-            <li><span class="es">Medición por vídeo y lectura de la salud del iPhone, <b>incluidas</b>.</span><span class="en">Video measurement and iPhone health data, <b>included</b>.</span></li>
-          </ul>
-        </div>
-        <div class="road-col road-marcha">
-          <div class="cab"><span class="punto"></span><span class="es">Ahora mismo</span><span class="en">Right now</span></div>
-          <div class="fase"><span class="es">En marcha</span><span class="en">In progress</span></div>
-          <ul>
-            <li><span class="es">Puliendo <b>Fitness</b> con el primer grupo de la beta.</span><span class="en">Polishing <b>Fitness</b> with the first beta group.</span></li>
-            <li><span class="es">Llevando las apps a <b>Android</b> (ya compilan).</span><span class="en">Bringing the apps to <b>Android</b> (they already build).</span></li>
-            <li><span class="es"><b>Control</b>: validando la pulsera física.</span><span class="en"><b>Control</b>: validating the physical band.</span></li>
-            <li><span class="es"><b>Velocity</b>: puliendo la app y calibrando el sensor.</span><span class="en"><b>Velocity</b>: polishing the app and calibrating the sensor.</span></li>
-          </ul>
-        </div>
-        <div class="road-col road-siguiente">
-          <div class="cab"><span class="punto"></span><span class="es">Lo que viene</span><span class="en">What's next</span></div>
-          <div class="fase"><span class="es">Después</span><span class="en">Next</span></div>
-          <ul>
-            <li><span class="es">Abrir más <b>plazas de la beta</b>.</span><span class="en">Open more <b>beta spots</b>.</span></li>
-            <li><span class="es">Publicar en la <b>App Store</b>.</span><span class="en">Publish on the <b>App Store</b>.</span></li>
-            <li><span class="es"><b>Force</b> y <b>Signal</b>: montar y calibrar su hardware.</span><span class="en"><b>Force</b> and <b>Signal</b>: build and calibrate their hardware.</span></li>
-            <li><span class="es">Un <b>paquete</b> que una las suscripciones del ecosistema.</span><span class="en">A <b>bundle</b> tying the ecosystem subscriptions together.</span></li>
-          </ul>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1634,60 +1666,153 @@
         <span class="en">Every number has a reference behind it.</span>
       </h2>
       <p class="lead">
-        <span class="es">TrainLab no inventa métricas: implementa métodos publicados y revisados por pares. Estos son algunos de los que ya viven dentro del ecosistema.</span>
-        <span class="en">TrainLab does not invent metrics: it implements published, peer reviewed methods. These are some of the ones already living inside the ecosystem.</span>
+        <span class="es">TrainLab no inventa métricas: implementa métodos publicados y revisados por pares. Detrás de la app hay una base bibliográfica de verdad, con cada afirmación atada a su artículo y a su DOI.</span>
+        <span class="en">TrainLab does not invent metrics: it implements published, peer reviewed methods. Behind the app there is a real bibliographic base, with every claim tied to its paper and its DOI.</span>
+      </p>
+
+      <div class="ciencia-cifras">
+        <div class="cifra">
+          <div class="n">111</div>
+          <div class="t"><span class="es">Artículos revisados por pares</span><span class="en">Peer reviewed papers</span></div>
+          <div class="s"><span class="es">Priorizando revistas Q1, revisiones sistemáticas y metaanálisis.</span><span class="en">Prioritizing Q1 journals, systematic reviews and meta analyses.</span></div>
+        </div>
+        <div class="cifra">
+          <div class="n">20</div>
+          <div class="t"><span class="es">Áreas temáticas</span><span class="en">Topic areas</span></div>
+          <div class="s"><span class="es">De la validez de cada sensor al sueño, la readaptación o la atleta femenina.</span><span class="en">From each sensor's validity to sleep, rehab or the female athlete.</span></div>
+        </div>
+        <div class="cifra">
+          <div class="n">9</div>
+          <div class="t"><span class="es">Volúmenes de monografía</span><span class="en">Monograph volumes</span></div>
+          <div class="s"><span class="es">Qué se puede afirmar con honestidad y qué todavía no.</span><span class="en">What can honestly be claimed and what cannot yet.</span></div>
+        </div>
+        <div class="cifra">
+          <div class="n">1</div>
+          <div class="t"><span class="es">Protocolo de validación</span><span class="en">Validation protocol</span></div>
+          <div class="s"><span class="es">Con el listón puesto por escrito antes de medir nada.</span><span class="en">With the bar set in writing before measuring anything.</span></div>
+        </div>
+      </div>
+
+      <h3 class="sub-tit" style="margin-top: 46px;">
+        <span class="es">Los métodos que ya están dentro</span>
+        <span class="en">The methods already inside</span>
+      </h3>
+      <p class="sub-lead">
+        <span class="es">Cada uno con su artículo original y, debajo, para qué sirve exactamente cuando abres la app.</span>
+        <span class="en">Each with its original paper and, underneath, exactly what it does when you open the app.</span>
       </p>
       <div class="refs">
-        <div class="ref">
+        <div class="ref" style="--acc: var(--viz-fitness);">
+          <span class="donde"><span class="es">Fitness</span><span class="en">Fitness</span></span>
+          
           <h3><span class="es">Carga sRPE</span><span class="en">sRPE load</span></h3>
           <div class="autor">Foster y col., 2001</div>
           <p class="p-cuerpo"><span class="es">La carga interna de cada sesión, cuantificada en unidades arbitrarias a partir del esfuerzo percibido.</span><span class="en">The internal load of each session, quantified in arbitrary units from perceived exertion.</span></p>
+          <div class="dentro"><span class="es"><b>Cada sesión que registras</b> se convierte en carga, y de ahí salen el semáforo del panel y la monotonía de la semana.</span><span class="en"><b>Every session you log</b> becomes load, and from there come the dashboard traffic lights and the week's monotony.</span></div>
           <div class="ref-links">
             <a class="doi-link" href="https://doi.org/10.1519/1533-4287(2001)015%3C0109:ANATME%3E2.0.CO;2" target="_blank" rel="noopener"><span class="es">Ver estudio</span><span class="en">Read the study</span> <span class="flecha">↗</span></a>
           </div>
         </div>
-        <div class="ref">
+        <div class="ref" style="--acc: var(--viz-fitness);">
+          <span class="donde"><span class="es">Fitness</span><span class="en">Fitness</span></span>
+          
           <h3>ACWR</h3>
           <div class="autor">Hulin, Gabbett y col., 2016</div>
           <p class="p-cuerpo"><span class="es">El ratio de carga aguda frente a crónica que anticipa el riesgo de lesión antes de que aparezca.</span><span class="en">The acute to chronic workload ratio that anticipates injury risk before it shows up.</span></p>
+          <div class="dentro"><span class="es"><b>Es el aviso que salta</b> cuando un atleta sube la carga demasiado rápido, semanas antes de que se note.</span><span class="en"><b>It is the flag that goes up</b> when an athlete raises load too fast, weeks before it shows.</span></div>
           <div class="ref-links">
             <a class="calc-link" href="acwr.html"><span class="es">Calculadora gratuita</span><span class="en">Free calculator</span></a>
             <a class="doi-link" href="https://doi.org/10.1136/bjsports-2015-094817" target="_blank" rel="noopener"><span class="es">Ver estudio</span><span class="en">Read the study</span> <span class="flecha">↗</span></a>
           </div>
         </div>
-        <div class="ref">
+        <div class="ref" style="--acc: var(--viz-velocity);">
+          <span class="donde"><span class="es">Fitness · Velocity</span><span class="en">Fitness · Velocity</span></span>
+          
           <h3><span class="es">Entrenamiento por velocidad</span><span class="en">Velocity based training</span></h3>
           <div class="autor">González-Badillo, Sánchez-Medina, 2010</div>
           <p class="p-cuerpo"><span class="es">La velocidad de la barra como medida objetiva del esfuerzo real, en lugar del porcentaje teórico.</span><span class="en">Bar velocity as the objective measure of real effort, instead of a theoretical percentage.</span></p>
+          <div class="dentro"><span class="es"><b>Corta la serie a tiempo</b>: cuando la velocidad cae lo marcado, esa serie ya cumplió su objetivo.</span><span class="en"><b>Ends the set in time</b>: when velocity drops the set amount, that set already did its job.</span></div>
           <div class="ref-links">
             <a class="doi-link" href="https://doi.org/10.1055/s-0030-1248333" target="_blank" rel="noopener"><span class="es">Ver estudio</span><span class="en">Read the study</span> <span class="flecha">↗</span></a>
           </div>
         </div>
-        <div class="ref">
+        <div class="ref" style="--acc: var(--viz-velocity);">
+          <span class="donde"><span class="es">Fitness</span><span class="en">Fitness</span></span>
+          
           <h3><span class="es">Perfil fuerza-velocidad</span><span class="en">Force velocity profile</span></h3>
           <div class="autor">Samozino, Morin y col., 2008</div>
           <p class="p-cuerpo"><span class="es">El desequilibrio entre fuerza y velocidad de cada atleta, que orienta hacia dónde entrenar.</span><span class="en">Each athlete's imbalance between force and velocity, which guides what to train next.</span></p>
+          <div class="dentro"><span class="es"><b>Te dice qué entrenar</b>: si a tu atleta le falta fuerza o le falta velocidad, en vez de darle más de todo.</span><span class="en"><b>Tells you what to train</b>: whether your athlete lacks force or lacks velocity, instead of giving them more of everything.</span></div>
           <div class="ref-links">
             <a class="doi-link" href="https://doi.org/10.1016/j.jbiomech.2008.07.028" target="_blank" rel="noopener"><span class="es">Ver estudio</span><span class="en">Read the study</span> <span class="flecha">↗</span></a>
           </div>
         </div>
-        <div class="ref">
+        <div class="ref" style="--acc: var(--viz-fitness);">
+          <span class="donde"><span class="es">Fitness</span><span class="en">Fitness</span></span>
+          
           <h3><span class="es">Salto por vídeo</span><span class="en">Video jump testing</span></h3>
           <div class="autor">Balsalobre-Fernández y col., 2015</div>
           <p class="p-cuerpo"><span class="es">La altura del salto medida con la cámara del móvil, validada científicamente frente a plataformas.</span><span class="en">Jump height measured with the phone camera, scientifically validated against force platforms.</span></p>
+          <div class="dentro"><span class="es"><b>Sin comprar nada</b>: mides la altura del salto con la cámara del móvil, dentro de la valoración.</span><span class="en"><b>Without buying anything</b>: you measure jump height with the phone camera, inside the assessment.</span></div>
           <div class="ref-links">
             <a class="doi-link" href="https://doi.org/10.1080/02640414.2014.996184" target="_blank" rel="noopener"><span class="es">Ver estudio</span><span class="en">Read the study</span> <span class="flecha">↗</span></a>
           </div>
         </div>
-        <div class="ref">
+        <div class="ref" style="--acc: var(--viz-force);">
+          <span class="donde"><span class="es">Force</span><span class="en">Force</span></span>
+          
           <h3><span class="es">Vuelta al deporte</span><span class="en">Return to sport</span></h3>
           <div class="autor"><span class="es">Consenso de Berna, 2016</span><span class="en">Bern consensus, 2016</span></div>
           <p class="p-cuerpo"><span class="es">Los criterios internacionales que guían la readaptación de lesiones paso a paso.</span><span class="en">The international criteria that guide return to sport step by step.</span></p>
+          <div class="dentro"><span class="es"><b>Dar el alta con un número</b> y no por sensación: los criterios guían la readaptación paso a paso.</span><span class="en"><b>Clearing an injury with a number</b> instead of by feel: the criteria guide rehab step by step.</span></div>
           <div class="ref-links">
             <a class="doi-link" href="https://doi.org/10.1136/bjsports-2016-096278" target="_blank" rel="noopener"><span class="es">Ver estudio</span><span class="en">Read the study</span> <span class="flecha">↗</span></a>
           </div>
         </div>
       </div>
+      <!-- El listón de validación -->
+      <div class="liston">
+        <h3 class="sub-tit">
+          <span class="es">El listón, puesto antes de medir</span>
+          <span class="en">The bar, set before measuring</span>
+        </h3>
+        <p class="sub-lead">
+          <span class="es">Lo fácil es medir primero y decidir después qué resultado es "bueno". Nosotros hicimos lo contrario: dejamos por escrito cuánto error estamos dispuestos a aceptar en cada métrica, y contra qué aparato se compara, antes de tocar un sensor.</span>
+          <span class="en">The easy way is to measure first and decide afterwards what counts as "good". We did the opposite: we put in writing how much error we are willing to accept for each metric, and what device it is compared against, before touching a sensor.</span>
+        </p>
+        <div class="liston-tabla">
+          <div class="liston-fila liston-cab">
+            <span class="que"><span class="es">Qué se mide</span><span class="en">What is measured</span></span>
+            <span class="contra"><span class="es">Contra qué se compara</span><span class="en">Compared against</span></span>
+            <span class="umbral"><span class="es">Error máximo aceptado</span><span class="en">Max accepted error</span></span>
+          </div>
+          <div class="liston-fila">
+            <span class="que"><span class="es">Velocidad media de la barra</span><span class="en">Mean bar velocity</span></span>
+            <span class="contra"><span class="es">Transductor lineal</span><span class="en">Linear transducer</span></span>
+            <span class="umbral">&lt; 0,12 m/s</span>
+          </div>
+          <div class="liston-fila">
+            <span class="que"><span class="es">1RM estimado</span><span class="en">Estimated 1RM</span></span>
+            <span class="contra"><span class="es">1RM medido de verdad</span><span class="en">Directly measured 1RM</span></span>
+            <span class="umbral">&le; 10 %</span>
+          </div>
+          <div class="liston-fila">
+            <span class="que"><span class="es">Altura del salto</span><span class="en">Jump height</span></span>
+            <span class="contra"><span class="es">Plataforma de fuerza</span><span class="en">Force platform</span></span>
+            <span class="umbral">&lt; 5 cm</span>
+          </div>
+          <div class="liston-fila">
+            <span class="que"><span class="es">Frecuencia cardiaca en reposo</span><span class="en">Resting heart rate</span></span>
+            <span class="contra"><span class="es">Banda pectoral o ECG</span><span class="en">Chest strap or ECG</span></span>
+            <span class="umbral">&lt; 5 lpm</span>
+          </div>
+        </div>
+        <p class="liston-nota">
+          <span class="es"><b>Y esto es lo importante:</b> los sensores propios todavía están en validación. Publicaremos los resultados cumplan o no el listón, porque un umbral que se mueve después de ver el resultado no vale nada.</span>
+          <span class="en"><b>And here is the important part:</b> our own sensors are still being validated. We will publish the results whether or not they clear the bar, because a threshold you move after seeing the result is worth nothing.</span>
+        </p>
+      </div>
+
       <div class="honesta">
         <span class="es">Y cuando no hay datos suficientes para un cálculo fiable, la app lo dice. Antes honesto que impresionante.</span>
         <span class="en">And when there is not enough data for a reliable calculation, the app says so. Honest before impressive.</span>
@@ -2165,7 +2290,7 @@
     // usuario pide menos movimiento, no se activa y todo se ve normal.
     (function () {
       try { if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; } catch (e) {}
-      var sel = ".prod, .feat, .feat-prod, .ref, .plan, .comp-col, .road-col, .faq, .showcase, .showcase-centros, .fundador-card, .como-funciona, .honesta, .integrada, .lista-card";
+      var sel = ".prod, .feat, .feat-prod, .ref, .plan, .comp-col, .faq, .showcase, .showcase-centros, .fundador-card, .como-funciona, .honesta, .integrada, .lista-card";
       var elems = Array.prototype.slice.call(document.querySelectorAll(sel));
       if (!elems.length) return;
       document.body.classList.add("anim");
